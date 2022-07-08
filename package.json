@@ -1,0 +1,22 @@
+{
+  "name": "deck.rocks",
+  "version": "1.0.0",
+  "description": "fun side project for generating pitch decks using GPT-3",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creatorrr/deck.rocks.git"
+  },
+  "author": "Diwank Singh <singh@diwank.name>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/creatorrr/deck.rocks/issues"
+  },
+  "homepage": "https://github.com/creatorrr/deck.rocks#readme",
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}
