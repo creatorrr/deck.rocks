@@ -5,7 +5,9 @@ import openai from "../clients/openai";
 import { openaiModels, SAFETY_MAP } from "../env";
 
 async function _safety(content) {
-  const { data: { choices }} = await openai.createCompletion({
+  const {
+    data: { choices },
+  } = await openai.createCompletion({
     model: openaiModels.safety,
     prompt: `<|endoftext|>${content}
 --

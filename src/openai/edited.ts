@@ -10,8 +10,10 @@ const defaultEditOpts = {
   temperature: 0.3,
 };
 
-async function _edited(input, opts={}) {
-  const { data: { choices }} = await openai.createEdit({
+async function _edited(input, opts = {}) {
+  const {
+    data: { choices },
+  } = await openai.createEdit({
     ...defaultEditOpts,
     ...opts,
     input,

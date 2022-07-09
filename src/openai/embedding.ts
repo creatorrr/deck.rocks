@@ -8,8 +8,12 @@ const defaultEmbeddingOpts = {
   model: openaiModels.embedding,
 };
 
-async function _embedding(input, opts={}) {
-  const { data: { data: [{ embedding }] }} = await openai.createEmbedding({
+async function _embedding(input, opts = {}) {
+  const {
+    data: {
+      data: [{ embedding }],
+    },
+  } = await openai.createEmbedding({
     ...defaultEmbeddingOpts,
     ...opts,
     input,

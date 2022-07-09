@@ -1,0 +1,23 @@
+<section>
+  <h2>Competition</h2>
+
+  <h4>
+    <div class="align-center item-grid gap-6 small-80">
+      ${competition.map(c => `
+      <div>
+        <a href="${c.url}">
+          <img
+            src="${c.thumbnail.url}&frame=1"
+            alt="${c.name}"
+            class="round grayed-out"
+            loading="lazy"
+          />
+
+          ${c.name}
+        </a>
+        <p><small> ${c.tagline} </small></p>
+      </div>
+      `).join("\n")}
+    </div>
+  </h4>
+</section>

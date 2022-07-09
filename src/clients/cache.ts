@@ -26,12 +26,12 @@ class RedisCache {
   async delete(key) {
     return redis.del(key);
   }
-};
+}
 
 export const cache = new RedisCache();
 
 // Needed to convert function args into keys
 // The ':' prefix is so we can easily search in redis
-const resolver = args => ':' + hash.MD5(args);
+const resolver = (args) => ":" + hash.MD5(args);
 
-export const memoize = fn => _memoize(fn, resolver, cache);
+export const memoize = (fn) => _memoize(fn, resolver, cache);

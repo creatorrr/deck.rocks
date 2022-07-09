@@ -1,6 +1,6 @@
 // data/businessModels.ts
 
-import _ from "lodash";
+import { identity, startCase } from "lodash";
 
 import { normalizeBusinessModelName } from "../utils/misc";
 
@@ -57,24 +57,35 @@ A retailer is the last link in the supply chain. These businesses purchase goods
 Examples: This is a popular type of business model — used by big-name companies like Nordstrom, Home Depot, Target and Best Buy.
 `;
 
+type BusinessModel = {
+  name: string;
+  description: string;
+  examples: string;
+};
+
 // Most of this processing is very ad hoc
-export const businessModels = businessModelsDescriptions
-  .split(/\n\d{1,2}\.\s/)
-  .filter(_.identity)
-  .map(x => {
-    let [name, ...rest] = x.split('\n');
-    return { name: name.trim(), rest: rest.join() };
-  })
-  .map(({ name, rest }) => {
-    const [description, examples] = rest.split("Examples: ");
-    return { name, description: description.replace(/\s+/g, " "), examples };
-  })
-  .reduce(
-    (prev, { name, description, examples }) => ({
-      ...prev,
-      [normalizeBusinessModelName(name)]: {name: _.startCase(name), description, examples}
-    }),
-    {}
-  );
+export const businessModels: { [key: string]: BusinessModel } =
+  businessModelsDescriptions
+    .split(/\n\d{1,2}\.\s/)
+    .filter(identity)
+    .map((x) => {
+      let [name, ...rest] = x.split("\n");
+      return { name: name.trim(), rest: rest.join() };
+    })
+    .map(({ name, rest }) => {
+      const [description, examples] = rest.split("Examples: ");
+      return { name, description: description.replace(/\s+/g, " "), examples };
+    })
+    .reduce(
+      (prev, { name, description, examples }) => ({
+        ...prev,
+        [normalizeBusinessModelName(name)]: {
+          name: startCase(name),
+          description,
+          examples,
+        },
+      }),
+      {}
+    );
 
 export default businessModels;

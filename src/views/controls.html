@@ -1,0 +1,21 @@
+<h3 id="home-button" class="p-absolute left-1">
+  <a href="/">deck.rocks</a> 🤘
+</h3>
+
+<div id="controls">
+  {% include "general/form.html" %} ${ !prefill ? "" : `<a
+    href="javascript:;"
+    class="p-absolute top-1 right-5"
+    onclick="navigator.clipboard.writeText(window.location.href+'&nocontrols'); alert('Copied!'); window.location=window.location.href+'&nocontrols';"
+  >
+    ☆ Permalink
+  </a>
+
+  <a
+    href="javascript:;"
+    class="p-absolute top-1 right-1"
+    onclick="document.querySelector('${contentSelector}').contentWindow.location.search = '?print-pdf';  setTimeout(() => document.querySelector('${contentSelector}').contentWindow.print(), 200)"
+  >
+    🖶 Print </a
+  >` }
+</div>

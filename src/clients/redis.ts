@@ -6,7 +6,7 @@ import { makePromise } from "../utils/misc";
 import { redisEndpoint, redisPassword } from "../env";
 
 export let redis: Redis;
-const [redisHost, redisPort] = redisEndpoint.split(':');
+const [redisHost, redisPort] = redisEndpoint.split(":");
 
 // connect to redis and return client when ready
 export const connectRedis = async () => {
@@ -21,5 +21,6 @@ export const connectRedis = async () => {
   return promise;
 };
 
-connectRedis()
-  .then(client => { redis = client; });
+connectRedis().then((client) => {
+  redis = client;
+});

@@ -2,12 +2,10 @@
 
 import _ from "lodash";
 
-import { redis } from "./redis";
+import { redis } from "../clients/redis";
 
-export const getRandomFromCache = async namespace => {
-  const key = _(
-    await redis.keys(`_${namespace}:*`)
-  )
+export const getRandomFromCache = async (namespace) => {
+  const key = _(await redis.keys(`_${namespace}:*`))
     .shuffle()
     .first();
 

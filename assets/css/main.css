@@ -1,0 +1,228 @@
+.no-margin {
+  margin: 0;
+}
+
+.no-border {
+  border: none;
+}
+
+.p-absolute {
+  position: absolute;
+}
+
+.top-1 {
+  top: 1em;
+}
+
+.left-1 {
+  left: 1.25em;
+}
+
+.right-1 {
+  right: 1.25em;
+}
+
+.right-5 {
+  right: 5.25em;
+}
+
+.hidden {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.va-top {
+  vertical-align: top;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.lh1 {
+  line-height: 1;
+}
+
+.lh2 {
+  line-height: 2em;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.bg-dark {
+  background-color: #223 !important;
+  border-radius: 0.2em;
+  padding: 1em 2em;
+}
+
+.color-gray {
+  color: gray !important;
+}
+
+.color-dark {
+  color: #334 !important;
+}
+
+.round {
+  border-radius: 50%;
+  display: block;
+  width: auto;
+}
+
+.grayed-out {
+  filter: grayscale(1);
+}
+
+.bg-white {
+  background: white;
+}
+
+.inverted-color {
+  color: white;
+  text-shadow: 1px 2px 3px grey;
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 1em 2em;
+}
+
+.gap-6 {
+  gap: 6em;
+}
+
+.item-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.small-60 {
+  font-size: 60%;
+}
+
+.small-80 {
+  font-size: 60%;
+}
+
+body.format-site > header {
+  padding: 3em 0;
+}
+
+body.format-site > header > img.logo {
+  border: 6px solid white;
+  height: 6em;
+  margin: 1.2em auto;
+}
+
+body.format-site > header > h1 {
+  border: 4px solid;
+  display: inline-block;
+  padding: 0 0.66em;
+}
+
+body.format-site #market-size > h3 {
+  padding: 16px 24px;
+  font-size: 100px;
+}
+
+body.format-site #experts-say {
+  padding: 3em 5em;
+}
+
+body.format-site #owen > h1 {
+  position: relative;
+  top: -4em;
+  right: 1em;
+}
+
+body.format-deck div.reveal.custom {
+  width: 80rem;
+  height: 45rem;
+  margin: 0 auto;
+}
+
+body.format-deck #opening {
+  width: 80rem;
+  height: 45rem;
+  margin: 0 auto;
+}
+
+body.format-deck #opening img.logo {
+  padding: 1em auto;
+  border: 6px solid white;
+}
+
+body.format-deck #opening h2 {
+  padding: 0.5em;
+  border: 4px solid white;
+}
+
+body.format-deck #market-size h3 {
+  padding: 16px 24px;
+  font-size: 120px;
+}
+
+body.format-deck #market-size p {
+  margin-top: 3em;
+}
+
+body.format-deck pre {
+  padding: 1em;
+  white-space: pre-wrap;
+}
+
+body.format-deck #owen h2 {
+  margin-top: 40%;
+}
+
+#input-form {
+  margin-top: 1em;
+}
+
+#input-form > textarea {
+  padding: 1.5em;
+  background: rgb(237, 255, 237);
+}
+
+#input-form > input[type="submit"] {
+  padding: 0.33em;
+  width: 2em;
+  font-size: 1.5em;
+}
+
+#home-button {
+  margin-top: 0.75em;
+}
+
+#controls {
+  z-index: 10;
+}
+
+#intro {
+  margin-top: 0;
+}
+
+#intro ul {
+  list-style: none;
+}
+
+iframe#giphy {
+  width: -webkit-fill-available;
+  pointer-events: none;
+  height: 240px;
+}
+
+iframe#giphy + .overlay {
+  margin-top: -2em;
+  margin-bottom: 2em;
+}
