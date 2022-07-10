@@ -1,7 +1,7 @@
 // router/home.ts
 
-import Hi from "../views/hi";
+import Home from "../views/Home";
 
 export default async (ctx) => {
-  await ctx.render(Hi, { name: "Diwank" });
+  await ctx.render(Home);
 };

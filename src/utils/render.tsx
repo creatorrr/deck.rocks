@@ -1,22 +1,19 @@
 // utils/render.tsx
 
+import { pipeline } from "node:stream/promises";
 import { renderToStaticNodeStream } from "react-dom/server";
 
-import { makePromise } from "./misc";
-
 export const render = async (ctx, next) => {
-  const [rendered, end, error] = makePromise();
-
   ctx.render = async (Component, props = {}) => {
     const component = <Component {...props} />;
     const stream = renderToStaticNodeStream(component);
 
-    stream.on("error", error);
-    stream.on("end", end);
+    stream.setEncoding("utf8");
+    ctx.res.setHeader("content-type", "text/html; charset=utf-8");
 
-    stream.pipe(ctx.res);
+    ctx.res.headersSent || ctx.res.flushHeaders();
 
-    return await rendered;
+    return await pipeline(stream, ctx.res);
   };
 
   await next();

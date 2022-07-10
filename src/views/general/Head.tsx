@@ -1,0 +1,30 @@
+// views/general/Head.tsx
+
+interface HeadProps {
+  tagline?: string;
+  name?: string;
+  state?: { [key: string]: any };
+}
+
+export default ({
+  name = "decks rock!",
+  tagline = "",
+  state = {},
+}: HeadProps) => (
+  <head>
+    <meta charSet="UTF-8" />
+    <title>{tagline ? name + ": " + tagline : name}</title>
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤘</text></svg>"
+    />
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cash/8.1.1/cash.min.js"></script>
+
+    <script>{`window.APPLICATION_STATE = ${JSON.stringify(state)};`}</script>
+    <script src="/js/form.js"></script>
+  </head>
+);
