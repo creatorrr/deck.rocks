@@ -16,7 +16,7 @@ export const {
 export const assetsPath = path.join(__dirname, "../assets");
 export const viewsPath = path.join(__dirname, "./views");
 
-export const PORT = parseInt(process.env.PORT || "3000");
+export const PORT = parseInt(process.env.PORT) || 3000;
 
 export const replicateEndpoint = "https://api.replicate.com/v1/predictions";
 

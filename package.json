@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/creatorrr/deck.rocks#readme",
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/ioredis": "^4.28.10",
     "@types/koa": "^2.13.4",
     "@types/koa__router": "^8.0.11",
@@ -34,6 +35,7 @@
     "@seregpie/vector-math": "^1.8.0",
     "cool-ascii-faces": "^1.3.4",
     "dictionary-en": "^3.2.0",
+    "dotenv": "^16.0.1",
     "ioredis": "^5.1.0",
     "koa": "^2.13.4",
     "koa-ratelimit": "^5.0.1",

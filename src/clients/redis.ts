@@ -21,6 +21,6 @@ export const connectRedis = async () => {
   return promise;
 };
 
-connectRedis().then((client) => {
+export const redisPromise = connectRedis().then((client) => {
   redis = client;
 });
