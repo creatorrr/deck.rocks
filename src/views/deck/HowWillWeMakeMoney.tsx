@@ -1,4 +1,4 @@
-// views/format-deck/HowWillWeMakeMoney.tsx
+// views/deck/HowWillWeMakeMoney.tsx
 
 import { sample } from "lodash";
 import { gradients } from "../../data/lists";

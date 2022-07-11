@@ -1,4 +1,4 @@
-// views/format-deck/Owen.tsx
+// views/deck/Owen.tsx
 
 export interface OwenWow {
   movie: string;

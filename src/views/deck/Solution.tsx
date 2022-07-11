@@ -1,4 +1,4 @@
-// views/format-deck/Solution.tsx
+// views/deck/Solution.tsx
 
 import { sample } from "lodash";
 import type { StockImage } from "./Opening";

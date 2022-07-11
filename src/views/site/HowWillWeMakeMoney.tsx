@@ -1,6 +1,6 @@
-// views/format-site/HowWillWeMakeMoney.tsx
+// views/site/HowWillWeMakeMoney.tsx
 
-import type { HowWillWeMakeMoneyProps } from "../format-deck/HowWillWeMakeMoney";
+import type { HowWillWeMakeMoneyProps } from "../deck/HowWillWeMakeMoney";
 
 export default ({
   businessModel,

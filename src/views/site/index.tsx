@@ -1,13 +1,13 @@
-// views/format-site/index.tsx
+// views/site/index.tsx
 
-import type { CompetitionProps } from "../format-deck/Competition";
-import type { OpeningProps } from "../format-deck/Opening";
-import type { WhatWeDoProps } from "../format-deck/WhatWeDo";
-import type { ProblemProps } from "../format-deck/Problem";
-import type { MarketSizeProps } from "../format-deck/MarketSize";
-import type { HowWillWeMakeMoneyProps } from "../format-deck/HowWillWeMakeMoney";
-import type { ExpertsSayProps } from "../format-deck/ExpertsSay";
-import type { OwenProps } from "../format-deck/Owen";
+import type { CompetitionProps } from "../deck/Competition";
+import type { OpeningProps } from "../deck/Opening";
+import type { WhatWeDoProps } from "../deck/WhatWeDo";
+import type { ProblemProps } from "../deck/Problem";
+import type { MarketSizeProps } from "../deck/MarketSize";
+import type { HowWillWeMakeMoneyProps } from "../deck/HowWillWeMakeMoney";
+import type { ExpertsSayProps } from "../deck/ExpertsSay";
+import type { OwenProps } from "../deck/Owen";
 
 import type { FooterProps } from "./Footer";
 import type { SolutionProps } from "./Solution";

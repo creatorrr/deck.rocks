@@ -1,4 +1,4 @@
-// views/format-deck/MarketSize.tsx
+// views/deck/MarketSize.tsx
 
 import { sample } from "lodash";
 import type { StockImage } from "./Opening";

@@ -1,7 +1,7 @@
-// views/format-site/MarketSize.tsx
+// views/site/MarketSize.tsx
 
 import { sample } from "lodash";
-import type { MarketSizeProps } from "../format-deck/MarketSize";
+import type { MarketSizeProps } from "../deck/MarketSize";
 
 export default ({
   stockImages,

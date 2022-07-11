@@ -1,6 +1,17 @@
-// views/format-site/Competition.tsx
+// views/deck/Competition.tsx
 
-import { CompetitionProps } from "../format-deck/Competition";
+export interface CompetitionEntity {
+  name: string;
+  url: string;
+  thumbnail: {
+    url: string;
+  };
+  tagline?: string;
+}
+
+export interface CompetitionProps {
+  competition: CompetitionEntity[];
+}
 
 export default ({ competition }: CompetitionProps) => (
   <section>
@@ -17,7 +28,6 @@ export default ({ competition }: CompetitionProps) => (
                 className="round grayed-out"
                 loading="lazy"
               />
-
               {c.name}
             </a>
             <p>

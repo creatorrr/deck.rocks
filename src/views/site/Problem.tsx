@@ -1,8 +1,6 @@
-// views/format-deck/Problem.tsx
+// views/site/Problem.tsx
 
-export interface ProblemProps {
-  problem: string;
-}
+import type { ProblemProps } from "../deck/Problem";
 
 export default ({ problem }: ProblemProps) => (
   <section>

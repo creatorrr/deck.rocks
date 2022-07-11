@@ -2,11 +2,11 @@
 
 import Head from "./general/Head";
 import Controls from "./Controls";
-import Site from "./format-site";
+import Site from "./site";
 
 import type { FormProps } from "./general/Form";
 import type { HeadProps } from "./general/Head";
-import type { SiteProps } from "./format-site";
+import type { SiteProps } from "./site";
 
 interface GeneratedSiteProps extends HeadProps, FormProps, SiteProps {
   nocontrols?: boolean;

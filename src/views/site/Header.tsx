@@ -1,7 +1,7 @@
-// views/format-site/Header.tsx
+// views/site/Header.tsx
 
 import { sample } from "lodash";
-import type { OpeningProps } from "../format-deck/Opening";
+import type { OpeningProps } from "../deck/Opening";
 
 export default ({ name, tagline, logos, stockImages }: OpeningProps) => (
   <header

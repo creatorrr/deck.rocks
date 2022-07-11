@@ -1,6 +1,6 @@
-// views/format-site/Problem.tsx
+// views/site/Problem.tsx
 
-import type { ExpertsSayProps } from "../format-deck/ExpertsSay";
+import type { ExpertsSayProps } from "../deck/ExpertsSay";
 
 import { sample } from "lodash";
 

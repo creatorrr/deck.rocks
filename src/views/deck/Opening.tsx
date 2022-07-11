@@ -1,4 +1,4 @@
-// views/format-deck/Opening.tsx
+// views/deck/Opening.tsx
 
 import { sample } from "lodash";
 

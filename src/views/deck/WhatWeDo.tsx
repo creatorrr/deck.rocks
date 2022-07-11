@@ -1,4 +1,4 @@
-// views/format-deck/WhatWeDoProps.tsx
+// views/deck/WhatWeDoProps.tsx
 
 import { sample } from "lodash";
 import { gradients } from "../../data/lists";

@@ -1,4 +1,4 @@
-// views/format-deck/Quote.tsx
+// views/deck/Quote.tsx
 
 interface QuoteProps {
   quote: string;

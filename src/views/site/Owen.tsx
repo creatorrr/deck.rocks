@@ -1,6 +1,6 @@
-// views/format-site/Owen.tsx
+// views/site/Owen.tsx
 
-import type { OwenProps } from "../format-deck/Owen";
+import type { OwenProps } from "../deck/Owen";
 
 export default ({ owenWow: { video } }: OwenProps) => (
   <section id="owen">

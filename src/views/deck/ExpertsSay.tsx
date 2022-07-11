@@ -1,4 +1,4 @@
-// views/format-deck/ExpertsSay.tsx
+// views/deck/ExpertsSay.tsx
 
 import { sample } from "lodash";
 import type { StockImage } from "./Opening";

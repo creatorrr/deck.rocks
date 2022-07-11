@@ -1,6 +1,6 @@
-// views/format-site/WhatWeDo.tsx
+// views/site/WhatWeDo.tsx
 
-import type { WhatWeDoProps } from "../format-deck/WhatWeDo";
+import type { WhatWeDoProps } from "../deck/WhatWeDo";
 
 export default ({ idea }: WhatWeDoProps) => (
 <section>
