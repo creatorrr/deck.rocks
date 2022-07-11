@@ -2,6 +2,14 @@
   margin: 0;
 }
 
+.margin-1 {
+  margin: 1em;
+}
+
+.margin-2 {
+  margin: 2em;
+}
+
 .no-border {
   border: none;
 }
@@ -111,7 +119,7 @@
 }
 
 .small-80 {
-  font-size: 60%;
+  font-size: 80%;
 }
 
 body.format-site > header {
@@ -190,6 +198,7 @@ body.format-deck #owen h2 {
 }
 
 #input-form > textarea {
+  width: 90%;
   padding: 1.5em;
   background: rgb(237, 255, 237);
 }

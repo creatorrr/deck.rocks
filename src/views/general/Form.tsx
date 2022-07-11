@@ -2,7 +2,7 @@
 
 import { MAX_INPUT_LENGTH } from "../../env";
 
-interface FormProps {
+export interface FormProps {
   prefill?: string;
   format?: "site" | "deck";
 }

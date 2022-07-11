@@ -1,11 +1,20 @@
 // views/Homei.tsx
 
 import Head from "./general/Head";
-import Form from "./general/Form";
+import Controls from "./Controls";
+import Intro from "./Intro";
 
-export default () => (
+import type { FormProps } from "./general/Form";
+import type { HeadProps } from "./general/Head";
+
+interface HomeProps extends HeadProps, FormProps {
+  idea: string;
+}
+
+export default ({ idea, ...props }: HomeProps) => (
   <html>
-    <Head />
-    <Form />
+    <Head {...props} />
+    <Controls {...props} />
+    <Intro idea={idea} />
   </html>
 );

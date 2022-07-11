@@ -1,15 +1,17 @@
 // views/general/Head.tsx
 
-interface HeadProps {
+import { frontendConfig } from "../../env";
+
+export interface HeadProps {
   tagline?: string;
   name?: string;
-  state?: { [key: string]: any };
+  appData?: { [key: string]: any };
 }
 
 export default ({
   name = "decks rock!",
   tagline = "",
-  state = {},
+  appData = {},
 }: HeadProps) => (
   <head>
     <meta charSet="UTF-8" />
@@ -24,7 +26,16 @@ export default ({
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cash/8.1.1/cash.min.js"></script>
 
-    <script>{`window.APPLICATION_STATE = ${JSON.stringify(state)};`}</script>
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `window.APPLICATION_DATA = ${JSON.stringify({
+          ...frontendConfig,
+          ...appData,
+        })};`,
+      }}
+    ></script>
+
     <script src="/js/form.js"></script>
+    <script src="/js/control.js"></script>
   </head>
 );
