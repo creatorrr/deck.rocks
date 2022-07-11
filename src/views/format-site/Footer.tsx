@@ -1,6 +1,6 @@
 // views/format-site/Footer.tsx
 
-interface FooterProps {
+export interface FooterProps {
   idea: string;
 }
 

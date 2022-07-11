@@ -13,10 +13,10 @@ $(() => {
     }
   );
 
-  videos.each((video) => videoObserver.observe(video));
+  videos.each((idx, video) => videoObserver.observe(video));
 
   $(document).on("click", () =>
-    videos.each((video) => {
+    videos.each((idx, video) => {
       $(video).prop("muted", false);
     })
   );

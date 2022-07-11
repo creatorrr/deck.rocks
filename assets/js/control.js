@@ -16,7 +16,7 @@ const handlePermalinkBtn = (e) => {
   window.location = permalink;
 };
 
-const handlePrintBtn = (e) => {
+const handlePrintBtnDeck = (e) => {
   // prevent anchor click
   e.preventDefault();
 
@@ -32,6 +32,19 @@ const handlePrintBtn = (e) => {
   contentWindow.setTimeout(() => contentWindow.print(), 500);
 };
 
+const handlePrintBtnSite = (e) => {
+  // prevent anchor click
+  e.preventDefault();
+
+  const controls = $("#controls");
+
+  $(window).one("beforeprint", () => controls.hide());
+  $(window).one("afterprint", () => controls.show());
+
+  // defer print
+  setTimeout(() => window.print(), 100);
+};
+
 $(() => {
   const { prefill } = APPLICATION_DATA;
   const controlsRoot = $("#controls");
@@ -43,6 +56,6 @@ $(() => {
   // Only if form was prefilled
   if (prefill) {
     permalinkBtn.on("click", handlePermalinkBtn);
-    printBtn.on("click", handlePrintBtn);
+    printBtn.on("click", handlePrintBtnSite);
   }
 });

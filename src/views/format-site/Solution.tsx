@@ -1,6 +1,6 @@
 // views/format-site/Solution.tsx
 
-interface SolutionProps {
+export interface SolutionProps {
   rationale: string;
 }
 

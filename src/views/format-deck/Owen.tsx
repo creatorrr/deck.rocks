@@ -1,13 +1,17 @@
 // views/format-deck/Owen.tsx
 
-export interface OwenProps {
+export interface OwenWow {
   movie: string;
   video: {
     ["720p"]: string;
   };
 }
 
-export default ({ video, movie }: OwenProps) => (
+export interface OwenProps {
+  owenWow: OwenWow;
+}
+
+export default ({ owenWow: { video, movie } }: OwenProps) => (
   <section
     id="owen"
     data-background-video={video["720p"]}

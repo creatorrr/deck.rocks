@@ -2,7 +2,7 @@
 
 import type { OwenProps } from "../format-deck/Owen";
 
-export default ({ video }: OwenProps) => (
+export default ({ owenWow: { video } }: OwenProps) => (
   <section id="owen">
     <video autoPlay loop muted>
       <source src={video["720p"]} type="video/mp4" />

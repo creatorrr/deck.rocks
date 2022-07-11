@@ -1,12 +1,12 @@
-// views/Intro.tsx
+// views/general/Intro.tsx
 
 import coolFace from "cool-ascii-faces";
 import { random as randomSuperb } from "superb";
 
-import Giphy from "./utils/Giphy";
-import Thanks from "./utils/Thanks";
+import Giphy from "../utils/Giphy";
+import Thanks from "../utils/Thanks";
 
-interface IntroProps {
+export interface IntroProps {
   idea: string;
 }
 
@@ -36,7 +36,7 @@ export default ({ idea }: IntroProps) => (
       <li>et voila! 😉 </li>
     </ol>
     <p className="align-right margin-1 lh2">
-      ~ <a href="https://diwank.name">Diwank</a> <br />
+      — <a href="https://diwank.name">Diwank</a> <br />
       {coolFace()}
     </p>
     <p className={`small-80 ${idea ? "block" : "hidden"}`}>

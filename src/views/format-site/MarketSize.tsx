@@ -17,7 +17,7 @@ export default ({
         backgroundImage: `url(${sample(stockImages).src.large})`,
       }}
     >
-      {marketSize}
+      ${marketSize}
       {marketSizeDenomination[0].toUpperCase()}
     </h3>
 

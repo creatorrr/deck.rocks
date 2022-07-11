@@ -3,8 +3,8 @@
 import { MAX_INPUT_LENGTH } from "../../env";
 
 export interface FormProps {
-  prefill?: string;
-  format?: "site" | "deck";
+  prefill: string;
+  format: "site" | "deck";
 }
 
 export default ({ prefill = "", format = "site" }: FormProps) => (
@@ -13,7 +13,7 @@ export default ({ prefill = "", format = "site" }: FormProps) => (
       <textarea
         className="va-top no-border"
         placeholder={"💡 What's your new idea?"}
-        autoFocus={!!prefill}
+        autoFocus={!prefill}
         name="idea"
         minLength={40}
         maxLength={MAX_INPUT_LENGTH}

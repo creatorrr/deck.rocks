@@ -9,7 +9,7 @@ export default ({ name, tagline, logos, stockImages }: OpeningProps) => (
       backgroundImage: `url(${sample(stockImages).src.large})`,
     }}
   >
-    <img src={sample(logos)} className="round logo" />
+    <img src={sample(logos)} className="round logo margin-center" />
 
     <h1 className="lh2 bg-white">{name}</h1>
 

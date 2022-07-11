@@ -5,11 +5,11 @@ import type { FormProps } from "./general/Form";
 
 export default (formProps: FormProps) => (
   <>
-    <h3 id="home-button" className="p-absolute left-1">
-      <a href="/">deck.rocks</a> 🤘
-    </h3>
-
     <div id="controls">
+      <h3 id="home-button" className="p-absolute left-1">
+        <a href="/">deck.rocks</a> 🤘
+      </h3>
+
       <Form {...formProps} />
       {formProps.prefill && (
         <>

@@ -3,19 +3,18 @@
 import Koa from "koa";
 import staticCache from "koa-static-cache";
 
-import { ready } from "./clients";
 import { assetsPath } from "./env";
 import router from "./router";
 import render from "./utils/render";
 
 export const app = new Koa();
 
+// import magic from "./magic";
+// const idea =
+//   "Clark industries builds advanced alien-tech weaponry and energy systems. The exoskeleton used for Silver Man suit is now available for everyone to protect against hackers.";
+// const generated = await magic({ idea });
+
 app
-  // Wait for all clients to become ready before mounting routes
-  .use(async (_, next) => {
-    await ready;
-    return next();
-  })
   .use(render)
   .use(staticCache(assetsPath))
   .use(router.routes())
