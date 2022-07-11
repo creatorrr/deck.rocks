@@ -35,7 +35,7 @@ export default ({ idea }: IntroProps) => (
       <li>get a deck tailor-made just for you </li>
       <li>et voila! 😉 </li>
     </ol>
-    <p className="align-right margin-2 lh2">
+    <p className="align-right margin-1 lh2">
       ~ <a href="https://diwank.name">Diwank</a> <br />
       {coolFace()}
     </p>

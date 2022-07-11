@@ -1,9 +1,8 @@
-// assets/js/form.js
-
-const { prefill, contentSelector } = APPLICATION_DATA;
-const controlsSelector = "#controls";
+// assets/js/control.js
 
 const handlePermalinkBtn = (e) => {
+  const { prefill, contentSelector } = APPLICATION_DATA;
+
   // prevent anchor click
   e.preventDefault();
 
@@ -21,8 +20,10 @@ const handlePrintBtn = (e) => {
   // prevent anchor click
   e.preventDefault();
 
+  const { prefill, contentSelector } = APPLICATION_DATA;
   const { contentWindow } = $(contentSelector);
-  if (!contentWindow) return console.log("iframe not found");
+
+  if (!contentWindow) return console.error("iframe not found");
 
   // Set iframe window parameter to print-pdf (for reveal.js)
   contentWindow.location.search = "?print-pdf";
@@ -31,13 +32,17 @@ const handlePrintBtn = (e) => {
   contentWindow.setTimeout(() => contentWindow.print(), 500);
 };
 
-prefill ||
-  $(() => {
-    const controlsRoot = $(controlsSelector);
-    const [permalinkBtn, printBtn] = ["permalink", "print"].map((id) =>
-      controlsRoot.find(`a#${id}`)
-    );
+$(() => {
+  const { prefill } = APPLICATION_DATA;
+  const controlsRoot = $("#controls");
 
-    permalinkBtn.on("click", controlsSelector, handlePermalinkBtn);
-    printBtn.on("click", controlsSelector, handlePrintBtn);
-  });
+  const [permalinkBtn, printBtn] = ["permalink", "print"]
+    .map((id) => controlsRoot.find(`a#${id}`))
+    .map($);
+
+  // Only if form was prefilled
+  if (prefill) {
+    permalinkBtn.on("click", handlePermalinkBtn);
+    printBtn.on("click", handlePrintBtn);
+  }
+});
