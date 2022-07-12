@@ -4,6 +4,7 @@
   "description": "fun side project for generating pitch decks using GPT-3",
   "main": "./dist/index.js",
   "scripts": {
+    "start": "tsc && node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
