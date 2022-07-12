@@ -43,5 +43,5 @@ export const SAFETY_MAP = {
 
 // Frontend config
 export const frontendConfig: { [key: string]: any } = {
-  contentSelector: "#content > iframe",
+  contentSelector: "#content",
 };

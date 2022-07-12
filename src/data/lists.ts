@@ -5,7 +5,7 @@ export const revealThemes = [
     (name) =>
       `https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/${name}.min.css`
   ),
-  "https://cdn.jsdelivr.net/gh/creatorrr/deck.rocks/assets/css/metropolis.css",
+  "/css/metropolis.css",
   "https://cdn.jsdelivr.net/gh/puzzle/pitc-revealjs-theme/theme/puzzle.css",
 ];
 

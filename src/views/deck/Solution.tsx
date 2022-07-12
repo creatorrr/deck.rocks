@@ -3,7 +3,7 @@
 import { sample } from "lodash";
 import type { StockImage } from "./Opening";
 
-interface SolutionProps {
+export interface SolutionProps {
   rationale: string;
   stockImages: StockImage[];
 }

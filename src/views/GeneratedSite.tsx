@@ -14,7 +14,7 @@ interface GeneratedSiteProps extends HeadProps, FormProps, SiteProps {
 
 export default ({ nocontrols, prefill, ...props }: GeneratedSiteProps) => (
   <html>
-    <Head {...props} appData={{ prefill }} />
+    <Head {...props} appData={{ prefill, format: "site" }} />
     <body className="format-site">
       {nocontrols || <Controls {...props} prefill={prefill} />}
       <Site {...props} />

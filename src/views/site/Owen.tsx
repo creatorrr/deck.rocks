@@ -1,5 +1,7 @@
 // views/site/Owen.tsx
 
+import coolFace from "cool-ascii-faces";
+
 import type { OwenProps } from "../deck/Owen";
 
 export default ({ owenWow: { video } }: OwenProps) => (
@@ -11,7 +13,7 @@ export default ({ owenWow: { video } }: OwenProps) => (
     <h1 className="align-right inverted-color">
       WOW
       <br />
-      （◎0◎）
+      {coolFace()}
     </h1>
   </section>
 );

@@ -16,30 +16,17 @@ const handlePermalinkBtn = (e) => {
   window.location = permalink;
 };
 
-const handlePrintBtnDeck = (e) => {
+const handlePrintBtn = (e) => {
   // prevent anchor click
-  e.preventDefault();
+  e && e.preventDefault();
 
-  const { prefill, contentSelector } = APPLICATION_DATA;
-  const { contentWindow } = $(contentSelector);
+  const { format } = APPLICATION_DATA;
 
-  if (!contentWindow) return console.error("iframe not found");
-
-  // Set iframe window parameter to print-pdf (for reveal.js)
-  contentWindow.location.search = "?print-pdf";
-
-  // defer print (wait for reveal.js to do its thing)
-  contentWindow.setTimeout(() => contentWindow.print(), 500);
-};
-
-const handlePrintBtnSite = (e) => {
-  // prevent anchor click
-  e.preventDefault();
-
-  const controls = $("#controls");
-
-  $(window).one("beforeprint", () => controls.hide());
-  $(window).one("afterprint", () => controls.show());
+  // Set window parameter to print-pdf (for reveal.js)
+  if (format === "deck" && !window.location.search.includes("print-pdf")) {
+    window.location.search += "&print-pdf";
+    return;
+  }
 
   // defer print
   setTimeout(() => window.print(), 100);
@@ -47,15 +34,23 @@ const handlePrintBtnSite = (e) => {
 
 $(() => {
   const { prefill } = APPLICATION_DATA;
-  const controlsRoot = $("#controls");
+  const controls = $("#controls");
+
+  $(window).on("beforeprint", () => controls.hide());
+  $(window).on("afterprint", () => controls.show());
 
   const [permalinkBtn, printBtn] = ["permalink", "print"]
-    .map((id) => controlsRoot.find(`a#${id}`))
+    .map((id) => controls.find(`a#${id}`))
     .map($);
+
+  // If printing is set up, start print after a delay
+  if (typeof Reveal !== "undefined" && Reveal.isPrintingPDF()) {
+    setTimeout(handlePrintBtn, 500);
+  }
 
   // Only if form was prefilled
   if (prefill) {
     permalinkBtn.on("click", handlePermalinkBtn);
-    printBtn.on("click", handlePrintBtnSite);
+    printBtn.on("click", handlePrintBtn);
   }
 });

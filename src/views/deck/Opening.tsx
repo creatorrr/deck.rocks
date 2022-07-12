@@ -22,7 +22,7 @@ export default ({ name, tagline, logos, stockImages }: OpeningProps) => (
     data-background-size="cover"
     data-background-repeat="no-repeat"
   >
-    <img src={sample(logos)} className="round logo" />
+    <img src={sample(logos)} className="round logo margin-center" />
 
     <h2 className="inverted-color">{name}</h2>
 

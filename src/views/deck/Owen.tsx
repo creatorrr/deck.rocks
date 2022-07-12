@@ -1,5 +1,7 @@
 // views/deck/Owen.tsx
 
+import coolFace from "cool-ascii-faces";
+
 export interface OwenWow {
   movie: string;
   video: {
@@ -11,7 +13,7 @@ export interface OwenProps {
   owenWow: OwenWow;
 }
 
-export default ({ owenWow: { video, movie } }: OwenProps) => (
+export default ({ owenWow: { video } }: OwenProps) => (
   <section
     id="owen"
     data-background-video={video["720p"]}
@@ -21,11 +23,7 @@ export default ({ owenWow: { video, movie } }: OwenProps) => (
     <h2 className="inverted-color">
       WOW
       <br></br>
-      （◎0◎）
+      {coolFace()}
     </h2>
-
-    <h4 className="align-center small-60 inverted-color">
-      <pre className="align-center">({movie})</pre>
-    </h4>
   </section>
 );
