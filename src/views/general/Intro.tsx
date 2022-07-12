@@ -39,13 +39,12 @@ export default ({ idea }: IntroProps) => (
       — <a href="https://diwank.name">Diwank</a> <br />
       {coolFace()}
     </p>
-    <p className={`small-80 ${idea ? "block" : "hidden"}`}>
+    <p className={`example small-80 ${idea ? "block" : "hidden"}`}>
       example:{" "}
       <a
         href={`/generate?idea=${encodeURIComponent(
           idea || ""
         )}&amp;format=deck`}
-        target="_blank"
       >
         {idea || ""}
       </a>

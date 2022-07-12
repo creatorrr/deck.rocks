@@ -213,9 +213,9 @@ body.format-deck #owen h2 {
 /* textarea.width + button.margin-left + button.width = 100% */
 
 #input-form > input[type="submit"] {
-  width: 8%;
-  margin-left: 2%;
-
+  width: 5em;
+  margin-top: 0;
+  float: right;
   padding: 0.33em;
   font-size: 1.5em;
 }
@@ -284,4 +284,11 @@ html.print-pdf body {
   footer {
     break-inside: avoid !important;
   }
+}
+
+.example {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

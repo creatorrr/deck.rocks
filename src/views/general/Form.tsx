@@ -22,8 +22,6 @@ export default ({ prefill = "", format = "site" }: FormProps) => (
       ></textarea>
       <input type="submit" className="va-top" value={"🔥"} />
 
-      <br></br>
-
       <span>Format:</span>
 
       <label>
