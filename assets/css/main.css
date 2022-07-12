@@ -207,7 +207,7 @@ body.format-deck #owen h2 {
 #input-form > textarea {
   padding: 1.5em;
   background: rgb(237, 255, 237);
-  width: 90%;
+  width: 99%;
 }
 
 /* textarea.width + button.margin-left + button.width = 100% */
