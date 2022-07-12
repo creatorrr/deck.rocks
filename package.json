@@ -4,8 +4,10 @@
   "description": "fun side project for generating pitch decks using GPT-3",
   "main": "./dist/index.js",
   "scripts": {
-    "start": "tsc && node .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "postinstall": "npm run build",
+    "start": "node .",
+    "start:dev": "tsnd --rs --cls src/index.ts"
   },
   "repository": {
     "type": "git",
