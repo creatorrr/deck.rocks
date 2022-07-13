@@ -6,7 +6,7 @@ import { memoize } from "../clients/cache";
 import embedding from "../openai/embedding";
 import getTopics from "./getTopics";
 
-async function _getTopicsWithEmbeddings(limit = Infinity) {
+async function getTopicsWithEmbeddings(limit = Infinity) {
   const topics = await getTopics();
 
   return await Promise.all(
@@ -17,5 +17,5 @@ async function _getTopicsWithEmbeddings(limit = Infinity) {
   );
 }
 
-export const getTopicsWithEmbeddings = memoize(_getTopicsWithEmbeddings);
+// export const getTopicsWithEmbeddings = memoize(_getTopicsWithEmbeddings);
 export default getTopicsWithEmbeddings;

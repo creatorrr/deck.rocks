@@ -10,7 +10,7 @@ const defaultEditOpts = {
   temperature: 0.3,
 };
 
-async function _edited(input, opts = {}) {
+async function edited(input, opts = {}) {
   const {
     data: { choices },
   } = await openai.createEdit({
@@ -22,5 +22,5 @@ async function _edited(input, opts = {}) {
   return choices;
 }
 
-export const edited = memoize(_edited);
+// export const edited = memoize(_edited);
 export default edited;

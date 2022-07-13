@@ -3,7 +3,7 @@
 import { memoize } from "../clients/cache";
 import { productHuntToken, PRODUCT_HUNT_ENDPOINT } from "../env";
 
-async function _getProducts(topicSlug, first = 5, featured = true) {
+async function getProducts(topicSlug, first = 5, featured = true) {
   const query = `{
     posts(featured:${
       featured ? "true" : "false"
@@ -40,5 +40,5 @@ async function _getProducts(topicSlug, first = 5, featured = true) {
   return nodes;
 }
 
-export const getProducts = memoize(_getProducts);
+// export const getProducts = memoize(_getProducts);
 export default getProducts;

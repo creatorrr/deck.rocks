@@ -8,7 +8,7 @@ const defaultEmbeddingOpts = {
   model: openaiModels.embedding,
 };
 
-async function _embedding(input, opts = {}) {
+async function embedding(input, opts = {}) {
   const {
     data: {
       data: [{ embedding }],
@@ -22,5 +22,5 @@ async function _embedding(input, opts = {}) {
   return embedding;
 }
 
-export const embedding = memoize(_embedding);
+// export const embedding = memoize(_embedding);
 export default embedding;

@@ -5,7 +5,7 @@ import { productHuntToken, PRODUCT_HUNT_ENDPOINT } from "../env";
 
 // This is a recursive function that follows all cursors until the list of topics is exhausted,
 // then returns the topics concated in a list
-async function _getTopics(prevNodes = [], after = "") {
+async function getTopics(prevNodes = [], after = "") {
   const query = `{
     topics(order: FOLLOWERS_COUNT, after: "${after}") {
       nodes {
@@ -46,5 +46,5 @@ async function _getTopics(prevNodes = [], after = "") {
   return !hasNextPage ? nodesSoFar : _getTopics(nodesSoFar, endCursor);
 }
 
-export const getTopics = memoize(_getTopics);
+// export const getTopics = memoize(_getTopics);
 export default getTopics;

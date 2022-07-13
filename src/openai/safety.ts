@@ -4,7 +4,7 @@ import { memoize } from "../clients/cache";
 import openai from "../clients/openai";
 import { openaiModels, SAFETY_MAP } from "../env";
 
-async function _safety(content) {
+async function safety(content) {
   const {
     data: { choices },
   } = await openai.createCompletion({
@@ -23,6 +23,6 @@ Label:`,
   return SAFETY_MAP[result];
 }
 
-const safety = memoize(_safety);
+// const safety = memoize(_safety);
 
 export default safety;

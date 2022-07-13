@@ -7,7 +7,7 @@ import { pexelsApiKey } from "../env";
 
 const pexels = createPexelsClient(pexelsApiKey);
 
-async function _searchImages(query, opts = { orientation: "landscape" }) {
+async function searchImages(query, opts = { orientation: "landscape" }) {
   const response = await pexels.photos.search({
     query,
     locale: "en-US",
@@ -20,5 +20,5 @@ async function _searchImages(query, opts = { orientation: "landscape" }) {
   return photos;
 }
 
-export const searchImages = memoize(_searchImages);
+// export const searchImages = memoize(_searchImages);
 export default searchImages;
