@@ -3,17 +3,13 @@
 import Redis from "ioredis";
 
 import { makePromise } from "../utils/misc";
-import { redisUrl } from "../env";
+import { redisUrl, redisSettings } from "../env";
 
 export let redis: Redis;
 
 // connect to redis and return client when ready
 export const connectRedis = async () => {
-  const client = new Redis(redisUrl, {
-    tls: {
-      rejectUnauthorized: false,
-    },
-  });
+  const client = new Redis(redisUrl, redisSettings);
 
   const [promise, resolve, reject] = makePromise();
   client.on("connect", () => resolve(client));

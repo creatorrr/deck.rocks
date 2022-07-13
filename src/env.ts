@@ -11,6 +11,14 @@ export const {
   PRODUCT_HUNT_TOKEN: productHuntToken,
 } = process.env;
 
+export const redisSettings = redisUrl.includes("0.0.0.0")
+  ? {}
+  : {
+      tls: {
+        rejectUnauthorized: false,
+      },
+    };
+
 export const assetsPath = path.join(__dirname, "../assets");
 export const viewsPath = path.join(__dirname, "./views");
 
