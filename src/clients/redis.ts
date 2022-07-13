@@ -9,7 +9,11 @@ export let redis: Redis;
 
 // connect to redis and return client when ready
 export const connectRedis = async () => {
-  const client = new Redis(redisUrl);
+  const client = new Redis(redisUrl, {
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
 
   const [promise, resolve, reject] = makePromise();
   client.on("connect", () => resolve(client));
