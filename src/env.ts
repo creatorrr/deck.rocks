@@ -6,9 +6,7 @@ export const {
   OPENAI_API_SECRET: apiKey,
   REPLICATE_API_KEY: replicateApiKey,
   REPLICATE_MODEL_VERSION: replicateModelVersion,
-  REDIS_ENDPOINT: redisEndpoint,
-  REDIS_USER: redisUser,
-  REDIS_PASSWORD: redisPassword,
+  REDIS_URL: redisUrl,
   PEXELS_API_KEY: pexelsApiKey,
   PRODUCT_HUNT_TOKEN: productHuntToken,
 } = process.env;

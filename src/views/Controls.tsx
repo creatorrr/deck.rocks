@@ -10,7 +10,6 @@ export default (formProps: FormProps) => (
         <a href="/">deck.rocks</a> 🤘
       </h3>
 
-      <Form {...formProps} />
       {formProps.prefill && (
         <>
           <a id="permalink" className="p-absolute top-1 right-5" href="#">
@@ -23,5 +22,6 @@ export default (formProps: FormProps) => (
         </>
       )}
     </div>
+    <Form {...formProps} />
   </>
 );

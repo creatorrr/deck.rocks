@@ -207,24 +207,23 @@ body.format-deck #owen h2 {
 #input-form > textarea {
   padding: 1.5em;
   background: rgb(237, 255, 237);
-  width: 99%;
+  width: 100%;
 }
-
-/* textarea.width + button.margin-left + button.width = 100% */
 
 #input-form > input[type="submit"] {
   width: 5em;
   margin-top: 0;
   float: right;
-  padding: 0.33em;
-  font-size: 1.5em;
+  padding: 0.5em 0.75em 0.5em 1em;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 #home-button {
   margin-top: 0.75em;
 }
 
-#controls {
+#input-form {
   z-index: 10;
 }
 

@@ -20,7 +20,7 @@ export default ({ prefill = "", format = "site" }: FormProps) => (
         required={true}
         defaultValue={prefill}
       ></textarea>
-      <input type="submit" className="va-top" value={"🔥"} />
+      <input type="submit" className="va-top" value={"Go! 🔥"} />
 
       <span>Format:</span>
 
