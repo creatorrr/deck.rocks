@@ -12,7 +12,7 @@ const defaultCompleteOpts = {
   n: 1,
 };
 
-async function _complete(prompt, opts = {}) {
+async function complete(prompt, opts = {}) {
   const {
     data: { choices },
   } = await openai.createCompletion({
@@ -24,5 +24,4 @@ async function _complete(prompt, opts = {}) {
   return choices.map((c) => ((c.text = c.text.trim()), c));
 }
 
-export const complete = memoize(_complete);
-export default complete;
+export default memoize(complete);

@@ -20,7 +20,7 @@ import findSimilarProducts from "./producthunt/findSimilarProducts";
 import { getQuote, getOwenWow } from "./utils/apis";
 import { normalizeBusinessModelName } from "./utils/misc";
 
-async function _magic({ idea, businessModelSlug }) {
+async function magic({ idea, businessModelSlug }) {
   const [
     name,
     tagline,
@@ -81,5 +81,4 @@ async function _magic({ idea, businessModelSlug }) {
   };
 }
 
-export const magic = memoize(_magic);
-export default magic;
+export default memoize(magic);

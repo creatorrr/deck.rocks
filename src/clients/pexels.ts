@@ -2,7 +2,7 @@
 
 import { createClient as createPexelsClient } from "pexels";
 
-import { memoize } from "../clients/cache";
+// import { memoize } from "../clients/cache";
 import { pexelsApiKey } from "../env";
 
 const pexels = createPexelsClient(pexelsApiKey);
@@ -20,5 +20,5 @@ async function searchImages(query, opts = { orientation: "landscape" }) {
   return photos;
 }
 
-// export const searchImages = memoize(_searchImages);
 export default searchImages;
+// export default memoize(searchImages);

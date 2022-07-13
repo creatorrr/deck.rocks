@@ -1,6 +1,6 @@
 // openai/safety.ts
 
-import { memoize } from "../clients/cache";
+// import { memoize } from "../clients/cache";
 import openai from "../clients/openai";
 import { openaiModels, SAFETY_MAP } from "../env";
 
@@ -23,6 +23,5 @@ Label:`,
   return SAFETY_MAP[result];
 }
 
-// const safety = memoize(_safety);
-
 export default safety;
+// export default memoize(safety);

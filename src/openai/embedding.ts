@@ -1,6 +1,6 @@
 // openai/embedding.ts
 
-import { memoize } from "../clients/cache";
+// import { memoize } from "../clients/cache";
 import openai from "../clients/openai";
 import { openaiModels } from "../env";
 
@@ -22,5 +22,5 @@ async function embedding(input, opts = {}) {
   return embedding;
 }
 
-// export const embedding = memoize(_embedding);
 export default embedding;
+// export default memoize(embedding);

@@ -8,7 +8,7 @@ import {
   replicateEndpoint,
 } from "../env";
 
-async function _genLogos(keywords, n = 1) {
+async function genLogos(keywords, n = 1) {
   const headers = {
     accept: "application/json",
     "content-type": "application/json",
@@ -39,5 +39,4 @@ async function _genLogos(keywords, n = 1) {
   return (await pollReplicate(url)).map(({ image }) => image);
 }
 
-export const genLogos = memoize(_genLogos);
-export default genLogos;
+export default memoize(genLogos);

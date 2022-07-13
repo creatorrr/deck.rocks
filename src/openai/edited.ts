@@ -1,6 +1,6 @@
 // openai/edited.ts
 
-import { memoize } from "../clients/cache";
+// import { memoize } from "../clients/cache";
 import openai from "../clients/openai";
 import { openaiModels } from "../env";
 
@@ -22,5 +22,5 @@ async function edited(input, opts = {}) {
   return choices;
 }
 
-// export const edited = memoize(_edited);
 export default edited;
+// export default memoize(edited);

@@ -2,7 +2,7 @@
 
 import { startCase } from "lodash";
 
-import { memoize } from "../clients/cache";
+// import { memoize } from "../clients/cache";
 import embedding from "../openai/embedding";
 import getTopics from "./getTopics";
 
@@ -17,5 +17,5 @@ async function getTopicsWithEmbeddings(limit = Infinity) {
   );
 }
 
-// export const getTopicsWithEmbeddings = memoize(_getTopicsWithEmbeddings);
 export default getTopicsWithEmbeddings;
+// export default memoize(getTopicsWithEmbeddings);
