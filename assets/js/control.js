@@ -35,9 +35,10 @@ const handlePrintBtn = (e) => {
 $(() => {
   const { prefill } = APPLICATION_DATA;
   const controls = $("#controls");
+  const form = $("#input-form");
 
-  $(window).on("beforeprint", () => controls.hide());
-  $(window).on("afterprint", () => controls.show());
+  $(window).on("beforeprint", () => (form.hide(), controls.hide()));
+  $(window).on("afterprint", () => (form.hide(), controls.show()));
 
   const [permalinkBtn, printBtn] = ["permalink", "print"]
     .map((id) => controls.find(`a#${id}`))

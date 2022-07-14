@@ -51,6 +51,7 @@ export default ({
       }}
     ></script>
 
+    <script src="/js/cyrb53.js"></script>
     <script src="/js/form.js"></script>
     <script src="/js/control.js"></script>
     <script src="/js/video-autoplay.js"></script>

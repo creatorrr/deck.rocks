@@ -2,14 +2,20 @@
 
 import path from "path";
 
-export const {
+export let {
   OPENAI_API_SECRET: apiKey,
   REPLICATE_API_KEY: replicateApiKey,
   REPLICATE_MODEL_VERSION: replicateModelVersion,
   REDIS_URL: redisUrl,
   PEXELS_API_KEY: pexelsApiKey,
   PRODUCT_HUNT_TOKEN: productHuntToken,
+  MAX_JOBS_PER_WORKER: _maxJobsPerWorker,
+  PORT: _port,
 } = process.env;
+
+redisUrl = redisUrl || "0.0.0.0:6379";
+export const maxJobsPerWorker = parseInt(_maxJobsPerWorker) || 50;
+export const port = parseInt(_port) || 3000;
 
 export const redisSettings = redisUrl.includes("0.0.0.0")
   ? {}
@@ -21,8 +27,6 @@ export const redisSettings = redisUrl.includes("0.0.0.0")
 
 export const assetsPath = path.join(__dirname, "../assets");
 export const viewsPath = path.join(__dirname, "./views");
-
-export const PORT = parseInt(process.env.PORT) || 3000;
 
 export const replicateEndpoint = "https://api.replicate.com/v1/predictions";
 
