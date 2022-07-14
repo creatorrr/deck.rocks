@@ -40,6 +40,9 @@ const revealOpts = {
   embedded: true,
   controlsLayout: "edges",
   controlsBackArrows: "visible",
+  hash: false,
+  fragments: false,
+  fragmentInURL: false,
 };
 
 export default (props: DeckProps) => (

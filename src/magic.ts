@@ -81,4 +81,5 @@ async function magic({ idea, businessModelSlug }) {
   };
 }
 
+export type Magic = Awaited<ReturnType<typeof magic>>;
 export default memoize(magic);

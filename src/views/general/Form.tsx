@@ -43,10 +43,6 @@ export default ({ prefill = "", format = "site" }: FormProps) => (
         />
         Deck
       </label>
-
-      <small className="block small-60 color-gray">
-        Generating new decks can take up to 30 seconds...
-      </small>
     </form>
   </>
 );

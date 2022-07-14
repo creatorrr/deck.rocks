@@ -1,23 +1,16 @@
 // router/generate.ts
 
-import { isUndefined } from "lodash";
+import cyrb53 from "cyrb53";
 
-import GeneratedDeck from "../views/GeneratedDeck";
-import GeneratedSite from "../views/GeneratedSite";
-import magic from "../magic";
+import queue from "../clients/queue";
 
 export default async (ctx) => {
-  let { idea, format, nocontrols } = ctx.query;
+  let { idea, format } = ctx.query;
   idea = idea.trim();
-  nocontrols = !isUndefined(nocontrols);
+  format = format || "deck";
 
-  const generated = await magic({ idea });
-  const Component = format === "deck" ? GeneratedDeck : GeneratedSite;
+  const job = await queue.add({ idea });
+  const hash = cyrb53(idea);
 
-  await ctx.render(Component, {
-    ...generated,
-    format,
-    nocontrols,
-    prefill: idea,
-  });
+  return ctx.redirect(`/status?job_id=${job.id}&hash=${hash}&format=${format}`);
 };

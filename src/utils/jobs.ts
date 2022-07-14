@@ -8,7 +8,7 @@ import cyrb53 from "cyrb53";
 
 export enum JobStatus {
   PROCESSING = 0,
-  COMPLETED = 1,
+  READY = 1,
   FAILED = 2,
 }
 

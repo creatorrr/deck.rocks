@@ -291,3 +291,15 @@ html.print-pdf body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.hl-red {
+  background-color: red;
+}
+
+.hl-green {
+  background-color: lawngreen;
+}
+
+.yo {
+  font-size: 15vh;
+}

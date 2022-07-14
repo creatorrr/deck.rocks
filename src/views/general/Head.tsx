@@ -8,6 +8,8 @@ export interface HeadProps {
   format: "site" | "deck";
   tagline: string;
   name: string;
+  redirectTo?: string;
+  redirectIn?: number;
   appData?: { [key: string]: any };
 }
 
@@ -16,10 +18,19 @@ export default ({
   name = "decks rock!",
   tagline = "",
   appData = {},
+  redirectIn,
+  redirectTo,
 }: HeadProps) => (
   <head>
     <meta charSet="UTF-8" />
     <title>{tagline ? name + ": " + tagline : name}</title>
+
+    {redirectTo && (
+      <meta
+        http-equiv="refresh"
+        content={`${redirectIn || 0}; url=${redirectTo}`}
+      />
+    )}
 
     <link
       rel="icon"

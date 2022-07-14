@@ -3,7 +3,11 @@
 import Form from "./general/Form";
 import type { FormProps } from "./general/Form";
 
-export default (formProps: FormProps) => (
+export interface ControlsProps extends FormProps {
+  showForm?: boolean;
+}
+
+export default ({ showForm = true, ...formProps }: ControlsProps) => (
   <>
     <div id="controls">
       <h3 id="home-button" className="p-absolute left-1">
@@ -22,6 +26,6 @@ export default (formProps: FormProps) => (
         </>
       )}
     </div>
-    <Form {...formProps} />
+    {showForm && <Form {...formProps} />}
   </>
 );

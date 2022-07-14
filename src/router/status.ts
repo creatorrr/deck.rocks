@@ -1,11 +1,14 @@
 // router/status.ts
 
+import type { JobWithStatus } from "../utils/jobs";
+
 import { isUndefined } from "lodash";
-import { JobWithStatus, JobError, getJobDetails } from "../utils/jobs";
+import { JobError, getJobDetails } from "../utils/jobs";
 import Status from "../views/Status";
 
 export default async (ctx) => {
-  const { job_id, hash } = ctx.query;
+  let { job_id, hash, format } = ctx.query;
+  format = format || "deck";
 
   if (isUndefined(job_id) || isUndefined(hash)) {
     ctx.body = "Both job_id and hash are required.";
@@ -23,6 +26,9 @@ export default async (ctx) => {
   }
 
   await ctx.render(Status, {
+    format,
+    hash,
+    job_id,
     job,
   });
 };

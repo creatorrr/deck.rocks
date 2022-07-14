@@ -3,49 +3,47 @@
 import type { HeadProps } from "./general/Head";
 import type { JobWithStatus } from "../utils/jobs";
 
-import { startCase } from "lodash";
-
+import Controls from "./Controls";
 import Head from "./general/Head";
-import { getRandomLoadingGif } from "../utils/img";
+import Loading from "./status/Loading";
+import Ready from "./status/Ready";
+import Failed from "./status/Failed";
 import { JobStatus } from "../utils/jobs";
-import { take, generateFunnies } from "../utils/misc";
 
 interface StatusProps extends HeadProps {
+  job_id: number | string;
+  hash: number | string;
   job: JobWithStatus;
 }
 
-export default ({ job, ...props }: StatusProps) => (
-  <html>
-    <Head {...props} />
-    <body>
-      <h3 className="align-center">
-        Status: &nbsp;
-        <mark>
-          <kbd>{startCase(JobStatus[job.status].toLowerCase())}</kbd>
-        </mark>
-      </h3>
-      <img src={getRandomLoadingGif()} className="margin-center" />
-      <cite className="align-center funny">Initializing awesomeness...</cite>
-      {take(generateFunnies(), 20).map((fun, i) => (
-        <cite className="align-center funny hidden" key={i}>
-          {fun}
-        </cite>
-      ))}
+export default ({ job_id, hash, job, ...props }: StatusProps) => {
+  let redirectTo, redirectIn;
 
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `setInterval(()=>{
-          // hide everything
-          const all = $(".funny");
-          all.addClass("hidden");
+  switch (job.status) {
+    case JobStatus.READY:
+      redirectTo = `/display?job_id=${job_id}&hash=${hash}&format=${props.format}`;
+      redirectIn = 2;
+      break;
+    default:
+      redirectTo = `/status?job_id=${job_id}&hash=${hash}&format=${props.format}`;
+      redirectIn = 10;
+      break;
+  }
 
-          // Show a random one
-          all.eq(
-            Math.floor(Math.random() * all.length)
-          ).removeClass("hidden")
-        }, 3000)`,
-        }}
-      ></script>
-    </body>
-  </html>
-);
+  return (
+    <html>
+      <Head {...props} redirectTo={redirectTo} redirectIn={redirectIn} />
+      <body>
+        <Controls showForm={false} format={props.format} prefill="" />
+
+        {job.status === JobStatus.FAILED ? (
+          <Failed status={job.status} />
+        ) : job.status === JobStatus.READY ? (
+          <Ready status={job.status} />
+        ) : (
+          <Loading status={job.status} />
+        )}
+      </body>
+    </html>
+  );
+};
