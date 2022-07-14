@@ -1,6 +1,19 @@
 // utils/misc.ts
 
 import { snakeCase } from "lodash";
+import Funnies from "funnies";
+
+// Util that takes first N elements from a generator
+export const take = (iter, n) =>
+  Array.from(Array(n), iter.next, iter).map(({ value }) => value);
+
+// Generator that produces a series of random funny messages
+export function* generateFunnies() {
+  const funnies = new Funnies();
+  while (true) {
+    yield funnies.message();
+  }
+}
 
 // Convert a business model string to a slug
 export const normalizeBusinessModelName = (name) =>

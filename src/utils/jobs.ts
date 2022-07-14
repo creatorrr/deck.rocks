@@ -7,20 +7,24 @@ import bullUtils from "bull/lib/scripts";
 import cyrb53 from "cyrb53";
 
 export enum JobStatus {
-  PENDING = 0,
+  PROCESSING = 0,
   COMPLETED = 1,
   FAILED = 2,
 }
+
+export type JobWithStatus = typeof Job & {
+  status: JobStatus;
+};
 
 export class JobError extends Error {}
 export class NotFoundError extends JobError {}
 export class HashMismatchError extends JobError {}
 
-export async function getJobStatus(
+export async function getJobDetails(
   job_id: string | number,
   hash: number | string = null,
   queue = generateQueue
-): Promise<JobStatus> {
+): Promise<JobWithStatus> {
   // Get job
   const job = await Job.fromId(queue, job_id);
   if (!job) throw new NotFoundError(`No job with ID: (${job_id})`);
@@ -39,5 +43,7 @@ export async function getJobStatus(
 
   // Get status of job
   const status: JobStatus = await bullUtils.isFinished(job);
-  return status;
+
+  // Return the whole thing
+  return { ...job, status };
 }

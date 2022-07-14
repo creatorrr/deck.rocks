@@ -6,8 +6,9 @@
   "type": "node12",
   "scripts": {
     "build": "tsc",
+    "build:watch": "tsc --watch",
     "postinstall": "npm run build",
-    "start": "pm2 start . -i -1",
+    "start": "node .",
     "workers": "pm2 start ./dist/worker.js -i -1",
     "stop": "pm2 stop all",
     "start:dev": "tsnd --rs --cls src/index.ts",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@types/bull": "^3.15.8",
     "@types/dotenv": "^8.2.0",
+    "@types/glob": "^7.2.0",
     "@types/ioredis": "^4.28.10",
     "@types/koa": "^2.13.4",
     "@types/koa__router": "^8.0.11",
@@ -46,6 +48,8 @@
     "cyrb53": "^1.0.0",
     "dictionary-en": "^3.2.0",
     "dotenv": "^16.0.1",
+    "funnies": "github:creatorrr/funnies",
+    "glob": "^8.0.3",
     "ioredis": "^5.1.0",
     "koa": "^2.13.4",
     "koa-ratelimit": "^5.0.1",

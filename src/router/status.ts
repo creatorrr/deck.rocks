@@ -1,7 +1,7 @@
 // router/status.ts
 
 import { isUndefined } from "lodash";
-import { JobStatus, JobError, getJobStatus } from "../utils/jobs";
+import { JobWithStatus, JobError, getJobDetails } from "../utils/jobs";
 import Status from "../views/Status";
 
 export default async (ctx) => {
@@ -12,9 +12,9 @@ export default async (ctx) => {
     return;
   }
 
-  let status: JobStatus;
+  let job: JobWithStatus;
   try {
-    status = await getJobStatus(job_id, hash);
+    job = await getJobDetails(job_id, hash);
   } catch (e) {
     if (!(e instanceof JobError)) throw e;
 
@@ -23,6 +23,6 @@ export default async (ctx) => {
   }
 
   await ctx.render(Status, {
-    status,
+    job,
   });
 };

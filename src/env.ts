@@ -13,10 +13,10 @@ export let {
   PORT: _port,
 } = process.env;
 
-redisUrl = redisUrl || "0.0.0.0:6379";
 export const maxJobsPerWorker = parseInt(_maxJobsPerWorker) || 50;
 export const port = parseInt(_port) || 3000;
 
+redisUrl = redisUrl || "0.0.0.0:6379";
 export const redisSettings = redisUrl.includes("0.0.0.0")
   ? {}
   : {
