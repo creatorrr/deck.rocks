@@ -1,5 +1,6 @@
 // views/general/Intro.tsx
 
+import classnames from "classnames";
 import coolFace from "cool-ascii-faces";
 import { random as randomSuperb } from "superb";
 
@@ -39,7 +40,14 @@ export default ({ idea }: IntroProps) => (
       — <a href="https://diwank.name">Diwank</a> <br />
       {coolFace()}
     </p>
-    <p className={`example small-80 ${idea ? "block" : "hidden"}`}>
+    <p
+      className={classnames({
+        example: true,
+        hidden: !idea,
+        block: !!idea,
+        "small-80": true,
+      })}
+    >
       example:{" "}
       <a
         href={`/generate?idea=${encodeURIComponent(

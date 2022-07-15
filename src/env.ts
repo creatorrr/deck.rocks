@@ -35,6 +35,7 @@ export const PRODUCT_HUNT_ENDPOINT =
 export const OWEN_ENDPOINT =
   "https://owen-wilson-wow-api.herokuapp.com/wows/random";
 export const QUOTES_ENDPOINT = "https://quotes.rest/qod";
+export const MIN_INPUT_LENGTH = 30;
 export const MAX_INPUT_LENGTH = (5 + 1) * 120; // 120 words with an average of 5 chars each and spaces
 
 export const openaiModels = {

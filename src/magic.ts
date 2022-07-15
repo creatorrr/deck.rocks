@@ -15,7 +15,6 @@ import genTopics from "./generate/genTopics";
 import genYoBeReal from "./generate/genYoBeReal";
 import genJargonExplanation from "./generate/genJargonExplanation";
 import predictBusinessModel from "./generate/predictBusinessModel";
-import edited from "./openai/edited";
 import findSimilarProducts from "./producthunt/findSimilarProducts";
 import { getQuote, getOwenWow } from "./utils/apis";
 import { normalizeBusinessModelName } from "./utils/misc";
@@ -29,7 +28,6 @@ async function magic({ idea, businessModelSlug }) {
     verdict,
     rationale,
     businessModelName,
-    editedIdea,
     quote,
     owenWow,
   ] = await Promise.all([
@@ -40,12 +38,9 @@ async function magic({ idea, businessModelSlug }) {
     genYoBeReal(idea),
     genJargonExplanation(idea),
     businessModelSlug || predictBusinessModel(idea),
-    edited(idea),
     getQuote(),
     getOwenWow(),
   ]);
-
-  idea = editedIdea ? editedIdea[0].text : idea;
 
   businessModelSlug = normalizeBusinessModelName(businessModelName);
   if (!has(businessModels, businessModelSlug)) {

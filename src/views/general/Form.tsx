@@ -1,21 +1,27 @@
 // views/general/Form.tsx
 
-import { MAX_INPUT_LENGTH } from "../../env";
+import { MIN_INPUT_LENGTH, MAX_INPUT_LENGTH } from "../../env";
+import FormTips from "../utils/FormTips";
 
 export interface FormProps {
   prefill: string;
   format: "site" | "deck";
+  errors?: string[];
+  tips?: string[];
 }
 
-export default ({ prefill = "", format = "site" }: FormProps) => (
+export default ({ errors, tips, prefill = "", format = "site" }: FormProps) => (
   <>
     <form id="input-form" action="/generate" method="GET">
+      {errors && <FormTips items={errors} type_="error" />}
+      {tips && <FormTips items={tips} type_="tip" />}
+
       <textarea
         className="va-top no-border"
         placeholder={"💡 What's your new idea?"}
         autoFocus={!prefill}
         name="idea"
-        minLength={40}
+        minLength={MIN_INPUT_LENGTH}
         maxLength={MAX_INPUT_LENGTH}
         required={true}
         defaultValue={prefill}

@@ -8,8 +8,8 @@ export default ({ competition }: CompetitionProps) => (
 
     <h4>
       <div className="align-center item-grid gap-6 small-80">
-        {competition.map((c) => (
-          <div>
+        {competition.map((c, i) => (
+          <div key={i}>
             <a href={c.url}>
               <img
                 src={`${c.thumbnail.url}&frame=1`}

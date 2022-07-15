@@ -3,6 +3,18 @@
   margin-right: auto !important;
 }
 
+.std-padding-sm {
+  padding: 0.2em 0.4em;
+}
+
+.std-padding-md {
+  padding: 0.4em 0.8em;
+}
+
+.std-padding-lg {
+  padding: 1em 2em;
+}
+
 .no-margin {
   margin: 0;
 }
@@ -17,6 +29,10 @@
 
 .no-border {
   border: none;
+}
+
+.p-relative {
+  position: relative;
 }
 
 .p-absolute {
@@ -37,6 +53,11 @@
 
 .right-5 {
   right: 5.25em;
+}
+
+.v-hidden {
+  visibility: hidden;
+  height: 0;
 }
 
 .hidden {
@@ -201,6 +222,7 @@ body.format-deck #owen h2 {
 }
 
 #input-form {
+  z-index: 10;
   margin-top: 1em;
 }
 
@@ -223,8 +245,8 @@ body.format-deck #owen h2 {
   margin-top: 0.75em;
 }
 
-#input-for m {
-  z-index: 10;
+#input-form label {
+  display: inline-block;
 }
 
 #intro {
@@ -296,10 +318,35 @@ html.print-pdf body {
   background-color: red;
 }
 
+.hl-orangered {
+  background-color: orangered;
+}
+
+.hl-lightsalmon {
+  background-color: lightsalmon;
+}
+
+.hl-lightyellow {
+  background-color: lightyellow;
+}
+
+.hl-yellow {
+  background-color: yellow;
+}
+
 .hl-green {
   background-color: lawngreen;
 }
 
+#hider {
+  display: none;
+}
+
+#hider:checked + .hideable {
+  visibility: hidden !important;
+  height: 0 !important;
+}
+
 .yo {
-  font-size: 15vh;
+  font-size: 12vh;
 }

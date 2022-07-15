@@ -25,11 +25,8 @@ export default ({
     <meta charSet="UTF-8" />
     <title>{tagline ? name + ": " + tagline : name}</title>
 
-    {redirectTo && (
-      <meta
-        http-equiv="refresh"
-        content={`${redirectIn || 0}; url=${redirectTo}`}
-      />
+    {redirectTo && redirectIn && (
+      <meta httpEquiv="refresh" content={`${redirectIn}; url=${redirectTo}`} />
     )}
 
     <link
