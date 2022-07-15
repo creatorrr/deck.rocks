@@ -3,11 +3,9 @@
 // import { memoize } from "../clients/cache";
 import { productHuntToken, PRODUCT_HUNT_ENDPOINT } from "../env";
 
-async function getProducts(topicSlug, first = 5, featured = true) {
+async function getProducts(topicSlug: string, featured = true) {
   const query = `{
-    posts(featured:${
-      featured ? "true" : "false"
-    }, topic: "${topicSlug}", first:${first}) {
+    posts(featured:${featured ? "true" : "false"}, topic: "${topicSlug}") {
       nodes {
         url,
         tagline,
