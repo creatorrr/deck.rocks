@@ -6,10 +6,11 @@ import { load as loadUSE } from "@tensorflow-models/universal-sentence-encoder";
 
 import { cosineSim } from "./math";
 
-// Preload when this model is imported
-const modelP = loadUSE();
+// Save reference to model promise
+let modelP;
 
 export const calculateSimilarity = async (src: string, targets: string[]) => {
+  modelP = modelP || loadUSE();
   const model = await modelP;
 
   // Calc embeddings

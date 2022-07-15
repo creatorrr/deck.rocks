@@ -1,5 +1,7 @@
 // generate/genLogos.ts
 
+import fetch from "cross-fetch";
+
 import { memoize } from "../clients/cache";
 import pollReplicate from "../utils/pollReplicate";
 import {

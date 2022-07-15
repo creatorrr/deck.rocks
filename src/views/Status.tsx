@@ -22,18 +22,18 @@ export default ({ job_id, hash, job, ...props }: StatusProps) => {
   switch (job.status) {
     case JobStatus.READY:
       redirectTo = `/display?job_id=${job_id}&hash=${hash}&format=${props.format}`;
-      redirectIn = 2;
+      redirectIn = 1;
       break;
     case JobStatus.PROCESSING:
       redirectTo = `/status?job_id=${job_id}&hash=${hash}&format=${props.format}`;
-      redirectIn = 10;
+      redirectIn = 6;
       break;
     case JobStatus.FAILED:
       redirectTo = `/status?job_id=${job_id}&hash=${hash}&format=${props.format}`;
       break;
     default:
       redirectTo = `/status?job_id=${job_id}&hash=${hash}&format=${props.format}`;
-      redirectIn = 10;
+      redirectIn = 6;
   }
 
   return (

@@ -22,7 +22,12 @@ export const findSimilarProducts = async (
     _.map(products, "tagline")
   );
 
-  return _(products).zip(similarities).sortBy([1]).takeRight(each).value();
+  return _(products)
+    .zip(similarities)
+    .sortBy([1])
+    .takeRight(each)
+    .map(([val]) => val)
+    .value();
 };
 
 export default findSimilarProducts;

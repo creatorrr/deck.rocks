@@ -1,5 +1,7 @@
 // utils/pollReplicate.ts
 
+import fetch from "cross-fetch";
+
 import { replicateApiKey } from "../env";
 import { wait } from "./misc";
 
