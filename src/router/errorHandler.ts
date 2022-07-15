@@ -10,6 +10,7 @@ export default async (ctx, next) => {
     ctx.app.emit("error", err, ctx);
 
     await ctx.render(Error, {
+      title: err.title,
       error: err.message,
     });
   }

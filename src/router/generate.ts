@@ -2,14 +2,24 @@
 
 import cyrb53 from "cyrb53";
 
-import { MIN_INPUT_LENGTH, MAX_INPUT_LENGTH } from "../env";
 import queue from "../clients/queue";
+import { MIN_INPUT_LENGTH, MAX_INPUT_LENGTH } from "../env";
+import moderate, { ContentPolicyError } from "../openai/moderate";
+import { isProfane } from "../utils/text";
 
 export default async (ctx) => {
   let { idea, format } = ctx.query;
   idea = idea || "";
   idea = idea.trim();
   format = format || "deck";
+
+  // Reject profane stuff
+  const profane = await isProfane(idea);
+  if (profane) throw new ContentPolicyError({ categories: ["profanity"] });
+
+  // Moderate input for compliance with OpenAI
+  const { flagged, categories } = await moderate(idea);
+  if (flagged) throw new ContentPolicyError({ categories });
 
   let error;
 

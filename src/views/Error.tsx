@@ -6,14 +6,19 @@ import Head from "./general/Head";
 
 export interface ErrorProps extends HeadProps {
   error: string;
+  title?: string;
 }
 
-export default ({ error, ...props }: ErrorProps) => (
+export default ({
+  title = "Something went wrong...",
+  error,
+  ...props
+}: ErrorProps) => (
   <html>
     <Head {...props} />
     <body>
       <section>
-        <h3> Something went wrong... </h3>
+        <h3> {title} </h3>
         <p> {error}</p>
         <hr></hr>
         <p className="small-60">
