@@ -1,5 +1,6 @@
 // env.ts
 
+import { isUndefined } from "lodash";
 import path from "path";
 
 export let {
@@ -11,7 +12,10 @@ export let {
   PRODUCT_HUNT_TOKEN: productHuntToken,
   MAX_JOBS_PER_WORKER: _maxJobsPerWorker,
   PORT: _port,
+  HIGH_ACCURACY: _highAccuracy,
 } = process.env;
+
+const highAccuracy = !isUndefined(_highAccuracy);
 
 export const maxJobsPerWorker = parseInt(_maxJobsPerWorker) || 50;
 export const port = parseInt(_port) || 3000;
@@ -40,7 +44,7 @@ export const MAX_INPUT_LENGTH = (5 + 1) * 120; // 120 words with an average of 5
 
 export const openaiModels = {
   embedding: "text-similarity-ada-001",
-  complete: "text-davinci-002",
+  complete: highAccuracy ? "text-davinci-002" : "text-curie-001",
   edited: "text-davinci-edit-001",
   safety: "content-filter-alpha",
 };
