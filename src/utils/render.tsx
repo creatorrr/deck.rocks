@@ -12,8 +12,6 @@ export const render = async (ctx, next) => {
     ctx.res.setHeader("content-type", "text/html; charset=utf-8");
     ctx.res.setHeader("Content-Security-Policy", "upgrade-insecure-requests");
 
-    ctx.res.headersSent || ctx.res.flushHeaders();
-
     return await pipeline(stream, ctx.res);
   };
 

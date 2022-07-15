@@ -13,11 +13,11 @@ export interface FormProps {
 export default ({ errors, tips, prefill = "", format = "site" }: FormProps) => (
   <>
     <form id="input-form" action="/generate" method="GET">
-      {errors && <FormTips items={errors} type_="error" />}
-      {tips && <FormTips items={tips} type_="tip" />}
+      {errors && !!errors.length && <FormTips items={errors} type_="error" />}
+      {tips && !!tips.length && <FormTips items={tips} type_="tip" />}
 
       <textarea
-        className="va-top no-border"
+        className="va-top no-border width-100"
         placeholder={"💡 What's your new idea?"}
         autoFocus={!prefill}
         name="idea"

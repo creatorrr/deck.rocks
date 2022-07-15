@@ -229,7 +229,6 @@ body.format-deck #owen h2 {
 #input-form > textarea {
   padding: 1.5em;
   background: rgb(237, 255, 237);
-  width: 100%;
 }
 
 #input-form > input[type="submit"] {
@@ -307,11 +306,14 @@ html.print-pdf body {
   }
 }
 
-.example {
-  width: 100%;
+.ellipsis {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.width-100 {
+  width: 100%;
 }
 
 .hl-red {

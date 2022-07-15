@@ -42,6 +42,7 @@ export default ({ idea }: IntroProps) => (
     </p>
     <p
       className={classnames({
+        ellipsis: true,
         example: true,
         hidden: !idea,
         block: !!idea,

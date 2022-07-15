@@ -4,6 +4,8 @@ import type { JobWithStatus } from "../utils/jobs";
 import type { Magic } from "../magic";
 
 import { isUndefined } from "lodash";
+
+import processText from "../text/process";
 import GeneratedDeck from "../views/GeneratedDeck";
 import GeneratedSite from "../views/GeneratedSite";
 import { JobStatus, JobError, getJobDetails } from "../utils/jobs";
@@ -33,8 +35,12 @@ export default async (ctx) => {
   const result: Magic = job.returnvalue as any;
   const Component = format === "deck" ? GeneratedDeck : GeneratedSite;
 
+  // Get tips to improve the idea
+  const { messages: tips } = await processText(result.idea);
+
   await ctx.render(Component, {
     ...result,
+    tips: tips.map(({ reason }) => reason).filter((x) => !!x),
     format,
     nocontrols,
     prefill: result.idea,
