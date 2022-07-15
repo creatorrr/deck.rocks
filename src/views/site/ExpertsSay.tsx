@@ -2,19 +2,11 @@
 
 import type { ExpertsSayProps } from "../deck/ExpertsSay";
 
-import { sample } from "lodash";
-
-export default ({ stockImages, verdict }: ExpertsSayProps) => (
-  <section
-    id="experts-say"
-    className="bg-cover"
-    style={{
-      background: `url(${sample(stockImages).src.large})`,
-    }}
-  >
-    <h2 className="lh2 inverted-color">Experts say</h2>
+export default ({ verdict }: ExpertsSayProps) => (
+  <article id="experts-say" className="bg-cover">
+    <h2 className="lh2">Experts say</h2>
     <h4>
-      <blockquote className="no-margin inverted-color">{verdict}</blockquote>
+      <blockquote className="no-margin">{verdict}</blockquote>
     </h4>
-  </section>
+  </article>
 );

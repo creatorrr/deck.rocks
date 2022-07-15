@@ -6,7 +6,7 @@ export default ({
   businessModel,
   howWillWeMakeMoney,
 }: HowWillWeMakeMoneyProps) => (
-  <section>
+  <article>
     <h2>How will we make money</h2>
     <p>
       <strong> {businessModel.name} </strong>
@@ -14,5 +14,5 @@ export default ({
     <p>{howWillWeMakeMoney}</p>
 
     <blockquote>{businessModel.description}</blockquote>
-  </section>
+  </article>
 );

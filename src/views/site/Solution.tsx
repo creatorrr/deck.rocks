@@ -1,12 +1,21 @@
 // views/site/Solution.tsx
 
+import type { StockImage } from "../deck/Opening";
+
+import { sample } from "lodash";
+
 export interface SolutionProps {
   rationale: string;
+  stockImages: StockImage[];
 }
 
-export default ({ rationale }: SolutionProps) => (
-  <section>
-    <h2>Solution</h2>
-    <blockquote>{rationale}</blockquote>
-  </section>
+export default ({ stockImages, rationale }: SolutionProps) => (
+  <article
+    style={{
+      background: `url(${sample(stockImages).src.large})`,
+    }}
+  >
+    <h2 className="lh2 inverted-color">Solution</h2>
+    <blockquote className="inverted-color">{rationale}</blockquote>
+  </article>
 );

@@ -1,5 +1,7 @@
 // openai/edited.ts
 
+import grammarify from "grammarify";
+
 // import { memoize } from "../clients/cache";
 import openai from "../clients/openai";
 import { openaiModels } from "../env";
@@ -10,7 +12,9 @@ const defaultEditOpts = {
   temperature: 0.3,
 };
 
-async function edited(input, opts = {}) {
+async function edited(input: string, opts = {}) {
+  input = grammarify.clean(input);
+
   const {
     data: { choices },
   } = await openai.createEdit({

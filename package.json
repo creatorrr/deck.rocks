@@ -52,6 +52,7 @@
     "dotenv": "^16.0.1",
     "funnies": "github:creatorrr/funnies",
     "glob": "^8.0.3",
+    "grammarify": "^2.0.1",
     "ioredis": "^5.1.0",
     "koa": "^2.13.4",
     "koa-ratelimit": "^5.0.1",

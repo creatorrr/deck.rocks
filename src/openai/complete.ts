@@ -1,5 +1,7 @@
 // openai/complete.ts
 
+import grammarify from "grammarify";
+
 import { memoize } from "../clients/cache";
 import openai from "../clients/openai";
 import { openaiModels } from "../env";
@@ -12,7 +14,9 @@ const defaultCompleteOpts = {
   n: 1,
 };
 
-async function complete(prompt, opts = {}) {
+async function complete(prompt: string, opts = {}) {
+  prompt = grammarify.clean(prompt);
+
   const {
     data: { choices },
   } = await openai.createCompletion({
@@ -21,7 +25,7 @@ async function complete(prompt, opts = {}) {
     prompt,
   });
 
-  return choices.map((c) => ((c.text = c.text.trim()), c));
+  return choices.map((c) => ((c.text = grammarify.clean(c.text.trim())), c));
 }
 
 export default memoize(complete);
