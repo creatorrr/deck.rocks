@@ -5,7 +5,7 @@ import fetch from "cross-fetch";
 // import { memoize } from "../clients/cache";
 import { productHuntToken, PRODUCT_HUNT_ENDPOINT } from "../env";
 
-async function getProducts(topicSlug: string, featured = true) {
+async function getProducts(topicSlug: string, featured = false) {
   const query = `{
     posts(featured:${featured ? "true" : "false"}, topic: "${topicSlug}") {
       nodes {
