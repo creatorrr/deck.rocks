@@ -9,7 +9,7 @@
     "build:watch": "tsc --watch",
     "postinstall": "npm run build",
     "start": "node .",
-    "workers": "pm2 start ./dist/worker.js -i -1",
+    "workers": "pm2-runtime start ./dist/worker.js -i -1",
     "stop": "pm2 stop all",
     "start:dev": "tsnd --rs --cls src/index.ts",
     "workers:dev": "tsnd --rs --cls src/worker.ts"
