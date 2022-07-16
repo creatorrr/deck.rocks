@@ -1,6 +1,7 @@
 // index.ts
 
 import "dotenv/config";
+import "cross-fetch/polyfill";
 
 import app from "./app";
 import { port } from "./env";
