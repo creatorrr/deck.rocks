@@ -1,6 +1,7 @@
 // openai/moderate.ts
 
 import _ from "lodash";
+import fetch from "cross-fetch";
 
 import { memoize } from "../clients/cache";
 import { apiKey } from "../env";
