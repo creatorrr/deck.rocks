@@ -2,7 +2,7 @@
 
 import { sample } from "lodash";
 import { revealThemes } from "../../data/lists";
-import { frontendConfig } from "../../env";
+import { frontendConfig, googleAnalyticsId } from "../../env";
 
 export interface HeadProps {
   format: "site" | "deck";
@@ -63,5 +63,21 @@ export default ({
     <script src="/js/form.js"></script>
     <script src="/js/control.js"></script>
     <script src="/js/video-autoplay.js"></script>
+
+    <script
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
+    ></script>
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-88P3G4KMHX');
+      `,
+      }}
+    ></script>
   </head>
 );

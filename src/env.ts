@@ -13,10 +13,12 @@ export let {
   MAX_JOBS_PER_WORKER: _maxJobsPerWorker,
   PORT: _port,
   HIGH_ACCURACY: _highAccuracy,
+  GOOGLE_ANALYTICS_ID: googleAnalyticsId,
 } = process.env;
 
-const highAccuracy = !_.isUndefined(_highAccuracy);
+googleAnalyticsId = googleAnalyticsId || "G-88P3G4KMHX";
 
+export const highAccuracy = !_.isUndefined(_highAccuracy);
 export const maxJobsPerWorker = parseInt(_maxJobsPerWorker) || 50;
 export const port = parseInt(_port) || 3000;
 
