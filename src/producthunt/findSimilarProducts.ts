@@ -22,8 +22,6 @@ export const findSimilarProducts = async (
     _.map(products, "tagline")
   );
 
-  console.log(idea, similarities);
-
   return _(products)
     .zip(similarities)
     .sortBy([1])
