@@ -43,7 +43,9 @@ export const MIN_INPUT_LENGTH = 30;
 export const MAX_INPUT_LENGTH = (5 + 1) * 120; // 120 words with an average of 5 chars each and spaces
 
 export const openaiModels = {
-  embedding: "text-similarity-ada-001",
+  embedding: highAccuracy
+    ? "text-similarity-curie-001"
+    : "text-similarity-ada-001",
   complete: highAccuracy ? "text-davinci-002" : "text-curie-001",
   edited: "text-davinci-edit-001",
   safety: "content-filter-alpha",
