@@ -23,7 +23,9 @@ export default ({
 }: HeadProps) => (
   <head>
     <meta charSet="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {format !== "deck" && (
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    )}
     <title>{tagline ? name + ": " + tagline : name}</title>
 
     {redirectTo && redirectIn && (
