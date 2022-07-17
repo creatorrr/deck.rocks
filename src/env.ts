@@ -1,6 +1,6 @@
 // env.ts
 
-import { isUndefined } from "lodash";
+import _ from "lodash";
 import path from "path";
 
 export let {
@@ -15,7 +15,7 @@ export let {
   HIGH_ACCURACY: _highAccuracy,
 } = process.env;
 
-const highAccuracy = !isUndefined(_highAccuracy);
+const highAccuracy = !_.isUndefined(_highAccuracy);
 
 export const maxJobsPerWorker = parseInt(_maxJobsPerWorker) || 50;
 export const port = parseInt(_port) || 3000;
@@ -60,3 +60,11 @@ export const SAFETY_MAP = {
 export const frontendConfig: { [key: string]: any } = {
   contentSelector: "#content",
 };
+
+// Log important info
+console.log(`
+Config:
+- models: ${_(openaiModels).values().join(", ")}
+- redis url: ${redisUrl}
+- high accuracy: ${highAccuracy}
+`);
