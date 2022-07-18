@@ -11,4 +11,10 @@ a particular content for their customer who owns copyright to it.
   .trim()
   .replace(/\n+/, " ");
 
-export default makeBusinessModel(name, description);
+export const examples: string[] = [
+  "Microsoft Office, or simply Office, is a family of client software, server software, and services developed by Microsoft.",
+  "TimescaleDB is a time-series SQL database providing fast analytics.",
+  "The Pokémon Company is responsible for brand management, production, and marketing of the Pokémon franchise.",
+];
+
+export default makeBusinessModel(name, description, examples);

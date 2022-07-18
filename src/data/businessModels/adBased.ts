@@ -11,4 +11,10 @@ another product, and placing them on strategic, high-traffic channels.
   .trim()
   .replace(/\n+/, " ");
 
-export default makeBusinessModel(name, description);
+export const examples: string[] = [
+  "Instagram is a free of cost photo and video sharing social networking service.",
+  "TechCrunch is an online newspaper focusing on high tech and startup companies.",
+  "Craigslist is a classifieds website with sections devoted to jobs, housing, for sale, etc.",
+];
+
+export default makeBusinessModel(name, description, examples);

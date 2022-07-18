@@ -10,4 +10,10 @@ In a manufacturer model, the company sources raw material and creates useful pro
   .trim()
   .replace(/\n+/, " ");
 
-export default makeBusinessModel(name, description);
+export const examples: string[] = [
+  "Samsung Electronics is a manufacturer of mobile phones and smartphones.",
+  "Tesla designs and manufactures electric vehicles, battery energy storage.",
+  "Coke, is a carbonated soft drink manufactured.",
+];
+
+export default makeBusinessModel(name, description, examples);

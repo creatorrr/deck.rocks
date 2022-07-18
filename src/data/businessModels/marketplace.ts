@@ -11,4 +11,10 @@ The goal is to help sellers discover buyers and vice versa.
   .trim()
   .replace(/\n+/, " ");
 
-export default makeBusinessModel(name, description);
+export const examples: string[] = [
+  "Housing.com is a real estate search portal which allows customers to search for housing.",
+  "Alibaba.com is a wholesale mobile marketplace for global trade.",
+  "Binance operates a cryptocurrency exchange platform where users can transact with one another.",
+];
+
+export default makeBusinessModel(name, description, examples);

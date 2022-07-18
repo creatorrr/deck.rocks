@@ -13,4 +13,10 @@ insurance costs and other usual expenses.
   .trim()
   .replace(/\n+/, " ");
 
-export default makeBusinessModel(name, description);
+export const examples: string[] = [
+  "Zipcar provides automobile reservations to its members, billable by the minute.",
+  "The Clothing Rental rents out haute couture apparel at reasonable rates.",
+  "Fabrento is a furniture for rent at affordable prices with free delivery, setup, and installation.",
+];
+
+export default makeBusinessModel(name, description, examples);

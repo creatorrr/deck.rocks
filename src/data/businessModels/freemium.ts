@@ -12,4 +12,10 @@ The additional features entice customers to purchase the premium package.
   .trim()
   .replace(/\n+/, " ");
 
-export default makeBusinessModel(name, description);
+export const examples: string[] = [
+  "Spotify is an music streaming provider.",
+  "LinkedIn is a platform for professional networking and career development.",
+  "Dropbox provides file sharing and collaboration products.",
+];
+
+export default makeBusinessModel(name, description, examples);

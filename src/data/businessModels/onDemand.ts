@@ -12,4 +12,10 @@ Uber is a top example of this model.
   .trim()
   .replace(/\n+/, " ");
 
-export default makeBusinessModel(name, description);
+export const examples: string[] = [
+  "Airbnb is a platform for finding vacation rentals, and tourism activities.",
+  "Uber is a mobility as a service provider, allowing users to book a cab anywhere.",
+  "Doordash is an online food ordering and food delivery platform.",
+];
+
+export default makeBusinessModel(name, description, examples);

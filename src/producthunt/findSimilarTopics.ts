@@ -17,7 +17,7 @@ export const findSimilarTopics = async (query, top = 3) => {
   const similarTopics = _(topicEmbeddings)
     .map(({ slug, embedding }) => ({
       slug,
-      similarity: VectorMath.CosineSimilarity(queryEmbedding, embedding),
+      similarity: VectorMath.AngularSimilarity(queryEmbedding, embedding),
     }))
     .sortBy("similarity")
     .takeRight(top)
