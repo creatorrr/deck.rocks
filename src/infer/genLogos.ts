@@ -10,7 +10,7 @@ import {
   replicateEndpoint,
 } from "../env";
 
-async function genLogos(keywords, n = 1) {
+async function genLogos(keywords: string, n: number = 1) {
   const headers = {
     accept: "application/json",
     "content-type": "application/json",
@@ -27,18 +27,25 @@ async function genLogos(keywords, n = 1) {
     version: replicateModelVersion,
   };
 
-  const response = await fetch(replicateEndpoint, {
-    headers,
-    body: JSON.stringify(body),
-    method: "POST",
-  });
+  try {
+    const response = await fetch(replicateEndpoint, {
+      headers,
+      body: JSON.stringify(body),
+      method: "POST",
+    });
 
-  const {
-    urls: { get: url },
-  } = await response.json();
+    const {
+      urls: { get: url },
+    } = await response.json();
 
-  // Need to poll replicate endpoint until the results are ready
-  return (await pollReplicate(url)).map(({ image }) => image);
+    // Need to poll replicate endpoint until the results are ready
+    return (await pollReplicate(url)).map(({ image }) => image);
+  } catch (e) {
+    console.error(e);
+    return [
+      "https://replicate.com/api/models/borisdayma/dalle-mini/files/2c5b61dd-6bcd-400d-8abf-1712a915c432/output_0.png",
+    ];
+  }
 }
 
 export default memoize(genLogos);
