@@ -11,6 +11,6 @@ export default async (ctx) => {
     prefill,
     errors: error && [error],
     idea:
-      idea || "Picnic box for familiies that want to spend time out in nature",
+      idea || "Picnic box for families that want to spend time out in nature",
   });
 };

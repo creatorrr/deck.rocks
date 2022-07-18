@@ -18,6 +18,7 @@ export const connectRedis = async () => {
   return promise;
 };
 
-export const redisPromise = connectRedis().then((client) => {
+export const redisPromise: Promise<Redis> = connectRedis().then((client) => {
   redis = client;
+  return client;
 });

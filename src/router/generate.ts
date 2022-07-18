@@ -3,7 +3,7 @@
 import cyrb53 from "cyrb53";
 
 import queue from "../clients/queue";
-import { MIN_INPUT_LENGTH, MAX_INPUT_LENGTH } from "../env";
+import { minInputLength, maxInputLength } from "../env";
 import moderate, { ContentPolicyError } from "../openai/moderate";
 import { isProfane } from "../utils/text";
 
@@ -25,10 +25,10 @@ export default async (ctx) => {
 
   if (!idea) {
     error = "Idea input missing";
-  } else if (idea.length < MIN_INPUT_LENGTH) {
-    error = `Input should be longer than ${MIN_INPUT_LENGTH} characters`;
-  } else if (idea.length > MAX_INPUT_LENGTH) {
-    error = `Input should be shorter than ${MAX_INPUT_LENGTH} characters`;
+  } else if (idea.length < minInputLength) {
+    error = `Input should be longer than ${minInputLength} characters`;
+  } else if (idea.length > maxInputLength) {
+    error = `Input should be shorter than ${maxInputLength} characters`;
   }
 
   if (error)
