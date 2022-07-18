@@ -14,8 +14,10 @@ export let {
   PORT: _port,
   HIGH_ACCURACY: _highAccuracy,
   GOOGLE_ANALYTICS_ID: googleAnalyticsId,
+  DEBUG: _debug,
 } = process.env;
 
+export const debug = !_.isUndefined(_debug);
 googleAnalyticsId = googleAnalyticsId || "G-88P3G4KMHX";
 
 export const highAccuracy = !_.isUndefined(_highAccuracy);
@@ -41,13 +43,14 @@ export const PRODUCT_HUNT_ENDPOINT =
 export const OWEN_ENDPOINT =
   "https://owen-wilson-wow-api.herokuapp.com/wows/random";
 export const QUOTES_ENDPOINT = "https://quotes.rest/qod";
-export const MIN_INPUT_LENGTH = 30;
-export const MAX_INPUT_LENGTH = (5 + 1) * 120; // 120 words with an average of 5 chars each and spaces
+export const minInputLength: number = 30;
+export const maxInputLength: number = (5 + 1) * 120; // 120 words with an average of 5 chars each and spaces
+export const maxPromptLength: number = maxInputLength + (5 + 1) * 640; // 640 words with an average of 5 chars each and spaces
 
 export const openaiModels = {
   embedding: highAccuracy
-    ? "text-similarity-curie-001"
-    : "text-similarity-ada-001",
+    ? "text-similarity-davinci-001"
+    : "text-similarity-curie-001",
   complete: highAccuracy ? "text-davinci-002" : "text-curie-001",
   edited: "text-davinci-edit-001",
   safety: "content-filter-alpha",

@@ -1,22 +1,59 @@
 // utils/createPrompt.ts
 
-import { map, isArray } from "lodash";
+import assert from "node:assert/strict";
+import _ from "lodash";
 
-import { MAX_INPUT_LENGTH } from "../env";
+import { debug, maxInputLength, maxPromptLength } from "../env";
+
+export interface PromptConfig {
+  query: string | string[];
+  examples?: string[][];
+  instruction?: string;
+  labels?: string[];
+}
 
 export const createPrompt = (
-  { instruction, labels, examples, query },
-  maxLength = MAX_INPUT_LENGTH
-) =>
-  `
-${instruction || ""}
+  { query, instruction = "", labels = ["Q", "A"], examples = [] }: PromptConfig,
+  maxLength: number = maxInputLength
+) => {
+  if (_.isString(query)) query = [query];
+  query.push("");
 
-${map(
-  examples, // Need to join examples
-  (ex) => ex.map((el, i) => labels[i] + ": " + el).join("\n")
-).join("\n---\n")}${isArray(examples) ? "\n---" : ""}
-${labels[0]}: ${query.slice(0, maxLength)}
-${labels[1]}:
+  assert(query.join("").length <= maxLength, "Input too long");
+
+  assert(
+    examples.every((example) => example.length === labels.length),
+    "Examples need to follow the same structure as labels"
+  );
+
+  assert(
+    labels.length === query.length,
+    "Query should follow the same structure as labels"
+  );
+
+  const combined = [
+    ...examples.map((example) => _.zip(labels, example)),
+    _.zip(labels, query),
+  ]
+    .map((group) =>
+      group.map(([label, text]) => `${label}: ${text}`).join("\n")
+    )
+    .join("\n---\n");
+
+  assert(
+    combined.length < maxPromptLength,
+    `Input (${combined.length} chars) is too long. Should be less than ${maxPromptLength} chars`
+  );
+
+  const prompt: string = `
+${instruction}
+
+${combined}
 `.trim();
+
+  debug && console.debug("prompt", prompt);
+
+  return prompt;
+};
 
 export default createPrompt;
