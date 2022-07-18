@@ -1,16 +1,14 @@
 // views/deck/Quote.tsx
 
 export interface QuoteProps {
-  quote: {
-    quote: string;
-    author: string;
-  };
+  text: string;
+  author: string;
 }
 
-export default ({ quote: { quote, author } }: QuoteProps) => (
+export default ({ text, author }: QuoteProps) => (
   <section>
     <h4 className="align-center">
-      <pre className="align-center">{quote}</pre>
+      <pre className="align-center">{text}</pre>
       <br />~ {author}
     </h4>
   </section>

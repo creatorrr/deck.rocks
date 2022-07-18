@@ -8,9 +8,9 @@
     "build": "tsc",
     "build:watch": "tsc --watch",
     "postinstall": "npm run build",
-    "start": "node .",
+    "start": "pm2-runtime start . -i -1",
     "workers": "pm2-runtime start ./dist/worker.js -i -1",
-    "stop": "pm2 stop all",
+    "stop": "pm2-runtime stop all",
     "start:dev": "tsnd --rs --cls src/index.ts",
     "workers:dev": "tsnd --rs --cls src/worker.ts"
   },
@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/creatorrr/deck.rocks#readme",
   "devDependencies": {
+    "@mapbox/node-pre-gyp": "^1.0.9",
     "@types/bull": "^3.15.8",
     "@types/classnames": "^2.3.1",
     "@types/dotenv": "^8.2.0",
@@ -57,6 +58,7 @@
     "funnies": "github:creatorrr/funnies",
     "glob": "^8.0.3",
     "grammarify": "^2.0.1",
+    "inspirational-quotes": "^2.0.1",
     "ioredis": "^5.1.0",
     "koa": "^2.13.4",
     "koa-ratelimit": "^5.0.1",
