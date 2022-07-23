@@ -14,7 +14,11 @@ interface GeneratedDeckProps extends HeadProps, FormProps, DeckProps {
 
 export default ({ nocontrols, prefill, ...props }: GeneratedDeckProps) => (
   <html>
-    <Head {...props} appData={{ prefill, format: "deck" }} />
+    <Head
+      {...props}
+      appData={{ prefill, format: "deck" }}
+      supportsMobile={false}
+    />
     <body className="format-deck">
       {nocontrols || <Controls {...props} prefill={prefill} />}
       <Deck {...props} />

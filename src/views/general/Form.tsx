@@ -37,7 +37,7 @@ export default ({ errors, tips, prefill = "", format = "site" }: FormProps) => (
           value="site"
           defaultChecked={format === "site"}
         />
-        Site
+        Exec Summary
       </label>
 
       <label>

@@ -8,6 +8,7 @@ export interface HeadProps {
   format: "site" | "deck";
   tagline: string;
   name: string;
+  supportsMobile?: boolean;
   redirectTo?: string;
   redirectIn?: number;
   appData?: { [key: string]: any };
@@ -18,12 +19,13 @@ export default ({
   name = "decks rock!",
   tagline = "",
   appData = {},
+  supportsMobile = true,
   redirectIn,
   redirectTo,
 }: HeadProps) => (
   <head>
     <meta charSet="UTF-8" />
-    {format !== "deck" && (
+    {supportsMobile && (
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     )}
     <title>{tagline ? name + ": " + tagline : name}</title>
