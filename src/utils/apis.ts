@@ -27,18 +27,3 @@ export async function getOwenWow() {
     };
   }
 }
-
-// Deprecated
-export async function getQuote() {
-  const categories = ["inspire", "funny", "students"];
-  const response = await fetch(
-    `${QUOTES_ENDPOINT}?category=${sample(categories)}&language=en`
-  );
-
-  const {
-    contents: {
-      quotes: [quote],
-    },
-  } = await response.json();
-  return quote;
-}

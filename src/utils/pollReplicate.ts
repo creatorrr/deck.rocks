@@ -6,15 +6,15 @@ import { replicateApiKey } from "../env";
 import { wait } from "./misc";
 
 export const pollReplicate = async (
-  url,
+  url: string,
   count = 1,
   maxRetries = 20,
   waitSeconds = 3
-) => {
+): Promise<{ image: string }[]> => {
   if (count >= maxRetries)
     throw new Error(`Max retries limit (${maxRetries}) reached`);
 
-  const response = await fetch(url, {
+  const response: Response = await fetch(url, {
     method: "GET",
     headers: { Authorization: `Token ${replicateApiKey}` },
   });

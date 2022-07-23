@@ -24,15 +24,27 @@ Please see ${policyUrl} for more info.
   }
 }
 
-export async function moderate(input: string) {
-  const response = await fetch("https://api.openai.com/v1/moderations", {
-    body: JSON.stringify({ input }),
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    method: "POST",
-  });
+export interface ModerateResult {
+  categories: string[];
+  flagged: boolean;
+}
+
+export async function moderate(input: string): Promise<ModerateResult> {
+  let response: Response;
+
+  try {
+    response = await fetch("https://api.openai.com/v1/moderations", {
+      body: JSON.stringify({ input }),
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+  } catch (e) {
+    console.error(e.stack);
+    return { categories: [], flagged: false };
+  }
 
   const { results } = await response.json();
 

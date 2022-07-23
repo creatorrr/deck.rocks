@@ -10,7 +10,7 @@ import {
   replicateEndpoint,
 } from "../env";
 
-async function genLogos(keywords: string, n: number = 1) {
+async function genLogos(keywords: string, n: number = 1): Promise<string[]> {
   const headers = {
     accept: "application/json",
     "content-type": "application/json",
