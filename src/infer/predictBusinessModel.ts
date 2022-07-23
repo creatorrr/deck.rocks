@@ -19,22 +19,22 @@ export const predictBusinessModel = async (
 
   // Get pairwise emebeddings
   const [exampleEmbeds, descriptionEmbeds] = _(modelData)
-    .flatMap(({ examplesEmbeddings, descriptionEmbedding }) =>
-      examplesEmbeddings.map((e) => [e, descriptionEmbedding])
+    .flatMap(({ examplesEmbeddings, descriptionEmbedding }, i) =>
+      examplesEmbeddings.map((e) => [
+        [i + "", e],
+        [i + "", descriptionEmbedding],
+      ])
     )
     .unzip()
     .value();
 
-  // const exampleEmbeds: number[][] = _.map(modelData, "examplesEmbeddings");
-  // const descriptionEmbeds: number[] = _.map(modelData, "descriptionEmbedding");
-
-  const bestIndex: number = selectByAnalogy(
-    exampleEmbeds,
-    descriptionEmbeds,
+  const bestIndex: string = selectByAnalogy(
+    _.fromPairs(exampleEmbeds),
+    _.fromPairs(descriptionEmbeds),
     ideaEmbedding
   );
 
-  return modelData[bestIndex];
+  return modelData[parseInt(bestIndex)];
 };
 
 export default predictBusinessModel;

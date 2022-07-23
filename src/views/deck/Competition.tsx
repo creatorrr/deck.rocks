@@ -14,11 +14,6 @@ export interface CompetitionProps {
 }
 
 export default ({ competition }: CompetitionProps) => {
-  // let cc: any = competition;
-  // cc = cc.map(([val]) => val);
-  // console.log("COMPETITION");
-  // console.log(cc);
-
   return (
     <section>
       <h2>Competition</h2>

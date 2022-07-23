@@ -8,8 +8,8 @@
     "build": "tsc",
     "build:watch": "tsc --watch",
     "postinstall": "npm run build",
-    "start": "pm2-runtime start . -i -3",
-    "workers": "pm2-runtime start ./dist/worker.js -i -3",
+    "start": "pm2-runtime start . -i -4",
+    "workers": "pm2-runtime start ./dist/worker.js -i -4",
     "stop": "pm2-runtime stop all",
     "start:dev": "tsnd --rs --cls src/index.ts",
     "workers:dev": "tsnd --rs --cls src/worker.ts"

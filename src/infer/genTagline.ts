@@ -31,13 +31,13 @@ const taglineExamples = [
   ],
 ];
 
-export const genTagline = async (query) =>
+export const genTagline = async (query: string) =>
   (
     await complete(
       createPrompt({
         instruction: taglineInstruction,
         examples: taglineExamples,
-        labels: ["Startup description", "Tagline"],
+        labels: ["Description", "Tagline"],
         query,
       }),
       { max_tokens: 12, best_of: 10, temperature: 1.0 }

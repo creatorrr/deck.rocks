@@ -34,19 +34,26 @@ export const calculateSimilarity = async (src: string, targets: string[]) => {
 
 // Returns index
 export const selectByAnalogy = (
-  As: number[][],
-  Bs: number[][],
+  As: { [key: string]: number[] },
+  Bs: { [key: string]: number[] },
   C: number[],
   op: string = "sub"
-): number => {
-  const DCs: number[][] = Bs.map((D) => VectorMath[op](D, C));
+): string => {
+  const DCs: { [key: string]: number[] } = _(Bs)
+    .entries()
+    .map(([k, D]) => [k, VectorMath[op](D, C)])
+    .fromPairs()
+    .value();
 
-  const BAs: number[][] = Bs.map((B, i) => VectorMath[op](B, As[i]));
+  const BAs: { [key: string]: number[] } = _(Bs)
+    .entries()
+    .map(([k, B]) => [k, VectorMath[op](B, As[k])])
+    .fromPairs()
+    .value();
 
   const [mostSimilarIndex] = _(BAs)
-    .zip(DCs)
-    .map(([BA, DC]) => VectorMath.AngularSimilarity(BA, DC))
-    .map((sim, i) => [i, sim])
+    .entries()
+    .map(([k, BA]) => [k, VectorMath.AngularSimilarity(BA, DCs[k])])
     .sortBy([1])
     .last();
 
