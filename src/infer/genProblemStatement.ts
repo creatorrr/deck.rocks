@@ -36,7 +36,7 @@ const problemStatementExamples = [
   ],
 ];
 
-export const genProblemStatement = async (query) =>
+export const genProblemStatement = async (query: string) =>
   (
     await complete(
       createPrompt({
@@ -45,7 +45,7 @@ export const genProblemStatement = async (query) =>
         examples: problemStatementExamples,
         query,
       }),
-      { max_tokens: 36, temperature: 1, best_of: 3 }
+      { max_tokens: 36, temperature: 1, best_of: 2 }
     )
   )[0].text;
 

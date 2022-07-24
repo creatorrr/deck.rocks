@@ -28,7 +28,7 @@ export const genJargonExplanation = async (query) =>
       {
         max_tokens: 96,
         temperature: 1,
-        best_of: 5,
+        best_of: 2,
         presence_penalty: 2.0,
         frequency_penalty: 2.0,
       }

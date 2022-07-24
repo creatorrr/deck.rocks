@@ -27,7 +27,13 @@ export const genTopics = async (query) =>
         examples: topicsExamples,
         query,
       }),
-      { max_tokens: 12, top_p: 0.25, presence_penalty: 1 }
+      {
+        max_tokens: 12,
+        top_p: 0.25,
+        temperature: 0.5,
+        presence_penalty: 1,
+        best_of: 2,
+      }
     )
   )[0].text;
 

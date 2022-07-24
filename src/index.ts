@@ -10,7 +10,7 @@ import { ready } from "./clients";
 // Wait for all clients to become ready before starting the server
 console.log("Starting up...");
 
-process.on("unhandledRejection", (err: Error) => console.error(err.stack));
+process.on("unhandledRejection", console.error);
 
 ready.then(() => {
   console.log(`Listening on port: ${port}`);

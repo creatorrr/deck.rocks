@@ -40,7 +40,7 @@ export const genTagline = async (query: string) =>
         labels: ["Description", "Tagline"],
         query,
       }),
-      { max_tokens: 12, best_of: 10, temperature: 1.0 }
+      { max_tokens: 16, best_of: 3, temperature: 1.0 }
     )
   )[0].text;
 

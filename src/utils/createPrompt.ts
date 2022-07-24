@@ -7,13 +7,14 @@ import { debug, maxInputLength, maxPromptLength } from "../env";
 
 export interface PromptConfig {
   query: string | string[];
-  examples?: string[][];
+  examples?: (string | number)[][];
   instruction?: string;
   labels?: string[];
 }
 
 export const createPrompt = (
   { query, instruction = "", labels = ["Q", "A"], examples = [] }: PromptConfig,
+  sampleSeparator: string = "\n---\n",
   maxLength: number = maxInputLength
 ) => {
   if (_.isString(query)) query = [query];
@@ -38,7 +39,7 @@ export const createPrompt = (
     .map((group) =>
       group.map(([label, text]) => `${label}: ${text}`).join("\n")
     )
-    .join("\n---\n");
+    .join(sampleSeparator);
 
   assert(
     combined.length < maxPromptLength,

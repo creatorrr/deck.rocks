@@ -42,7 +42,7 @@ export async function moderate(input: string): Promise<ModerateResult> {
       method: "POST",
     });
   } catch (e) {
-    console.error(e.stack);
+    console.error(e);
     return { categories: [], flagged: false };
   }
 
