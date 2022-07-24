@@ -56,7 +56,7 @@ const yoBeRealExamples = [
   ],
 ];
 
-export const genYoBeReal = async (query) =>
+export const genYoBeReal = async (query: string) =>
   (
     await complete(
       createPrompt({
@@ -65,7 +65,7 @@ export const genYoBeReal = async (query) =>
         examples: yoBeRealExamples,
         query,
       }),
-      { max_tokens: 24, temperature: 1, best_of: 3 }
+      { max_tokens: 24, temperature: 1, best_of: 1 }
     )
   )[0].text;
 
