@@ -36,8 +36,10 @@ async function magic({ idea }) {
     _editedIdea,
     quote,
     owenWow,
-    businessModel,
     competition,
+    howWillWeMakeMoney,
+    marketSize,
+    logos,
   ] = await Promise.all([
     genStartupName(idea),
     genTagline(idea),
@@ -48,8 +50,10 @@ async function magic({ idea }) {
     edited(idea),
     Quote.getQuote(),
     getOwenWow(),
-    predictBusinessModel(idea),
     findSimilarProducts(idea, 1, 3),
+    genHowWillWeMakeMoney(idea),
+    calcMarketSize(idea),
+    genLogos(idea, 1),
   ]);
 
   debug && console.debug("phase 1");
@@ -58,13 +62,11 @@ async function magic({ idea }) {
   const editedIdea = _editedIdea ? _editedIdea[0].text : idea;
 
   console.time("phase2");
-  const [logos, stockImages, marketSize, howWillWeMakeMoney] =
-    await Promise.all([
-      genLogos(tagline, 1),
-      searchImages(keywords),
-      calcMarketSize(keywords),
-      genHowWillWeMakeMoney(idea, businessModel),
-    ]);
+
+  const [stockImages, businessModel] = await Promise.all([
+    searchImages(keywords),
+    predictBusinessModel(howWillWeMakeMoney),
+  ]);
 
   debug && console.debug("phase 2");
   console.timeEnd("phase2");

@@ -10,7 +10,7 @@ import marketplace from "./marketplace";
 import rental from "./rental";
 import retail from "./retail";
 
-export default Promise.all([
+export default {
   adBased,
   manufacturer,
   onDemand,
@@ -20,26 +20,4 @@ export default Promise.all([
   marketplace,
   rental,
   retail,
-]).then(
-  ([
-    adBased,
-    manufacturer,
-    onDemand,
-    subscription,
-    freemium,
-    licensing,
-    marketplace,
-    rental,
-    retail,
-  ]) => ({
-    adBased,
-    manufacturer,
-    onDemand,
-    subscription,
-    freemium,
-    licensing,
-    marketplace,
-    rental,
-    retail,
-  })
-);
+};
