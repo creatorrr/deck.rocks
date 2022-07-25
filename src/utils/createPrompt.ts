@@ -10,11 +10,17 @@ export interface PromptConfig {
   examples?: (string | number)[][];
   instruction?: string;
   labels?: string[];
+  sampleSeparator?: string;
 }
 
 export const createPrompt = (
-  { query, instruction = "", labels = ["Q", "A"], examples = [] }: PromptConfig,
-  sampleSeparator: string = "\n---\n",
+  {
+    query,
+    instruction = "",
+    labels = ["Q", "A"],
+    sampleSeparator = "\n---\n\n",
+    examples = [],
+  }: PromptConfig,
   maxLength: number = maxInputLength
 ) => {
   if (_.isString(query)) query = [query];

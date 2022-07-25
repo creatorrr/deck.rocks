@@ -1,7 +1,8 @@
 // magic.ts
 
-import { startCase } from "lodash";
+import grammarify from "grammarify";
 import Quote from "inspirational-quotes";
+import { startCase } from "lodash";
 
 import { memoize } from "./clients/cache";
 import searchImages from "./clients/pexels";
@@ -74,14 +75,14 @@ async function magic({ idea }) {
   const result = {
     editedIdea,
     idea,
-    businessModel,
+    businessModel: grammarify.clean(businessModel),
     name,
     tagline: startCase(tagline),
-    problem,
+    problem: grammarify.clean(problem),
     keywords,
     verdict,
-    rationale,
-    howWillWeMakeMoney,
+    rationale: grammarify.clean(rationale),
+    howWillWeMakeMoney: grammarify.clean(howWillWeMakeMoney),
     marketSize,
     marketSizeDenomination: "billion",
     logos,

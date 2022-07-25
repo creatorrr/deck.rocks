@@ -13,8 +13,6 @@ const defaultEditOpts = {
 };
 
 async function edited(input: string, opts = {}) {
-  input = grammarify.clean(input);
-
   const {
     data: { choices },
   } = await openai.createEdit({
@@ -23,7 +21,7 @@ async function edited(input: string, opts = {}) {
     input,
   });
 
-  return choices;
+  return choices.map((c) => ((c.text = grammarify.clean(c.text.trim())), c));
 }
 
 export default edited;

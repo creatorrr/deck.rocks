@@ -1,10 +1,11 @@
 // openai/complete.ts
 
-import grammarify from "grammarify";
+import type { PromptConfig } from "../utils/createPrompt";
 
 import { memoize } from "../clients/cache";
 import openai from "../clients/openai";
 import { openaiModels } from "../env";
+import createPrompt from "../utils/createPrompt";
 
 const defaultCompleteOpts = {
   model: openaiModels.complete,
@@ -14,8 +15,13 @@ const defaultCompleteOpts = {
   n: 1,
 };
 
-async function complete(prompt: string, opts = {}) {
-  prompt = grammarify.clean(prompt);
+async function complete(promptConfig: PromptConfig, opts = {}) {
+  const sampleSeparator: string = (promptConfig.sampleSeparator =
+    promptConfig.sampleSeparator || "\n---\n\n");
+
+  const separatorJunk = sampleSeparator.trim();
+
+  const prompt: string = createPrompt(promptConfig);
 
   const {
     data: { choices },
@@ -25,7 +31,9 @@ async function complete(prompt: string, opts = {}) {
     prompt,
   });
 
-  return choices.map((c) => ((c.text = grammarify.clean(c.text.trim())), c));
+  return choices.map(
+    (c) => ((c.text = c.text.replaceAll(separatorJunk, "")), c)
+  );
 }
 
 export default memoize(complete);

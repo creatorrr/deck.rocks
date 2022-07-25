@@ -1,7 +1,6 @@
 // generate/genProblemStatement.ts
 
 import complete from "../openai/complete";
-import createPrompt from "../utils/createPrompt";
 
 const problemStatementInstruction = `Describe the problem which the solution is trying to solve.`;
 
@@ -39,12 +38,12 @@ const problemStatementExamples = [
 export const genProblemStatement = async (query: string) =>
   (
     await complete(
-      createPrompt({
+      {
         instruction: problemStatementInstruction,
         labels: ["Startup Idea", "Problem Statement"],
         examples: problemStatementExamples,
         query,
-      }),
+      },
       { max_tokens: 36, temperature: 1, best_of: 2 }
     )
   )[0].text;

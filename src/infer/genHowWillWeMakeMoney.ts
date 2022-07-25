@@ -10,7 +10,6 @@ import * as onDemand from "../data/businessModels/onDemand";
 import * as adBased from "../data/businessModels/adBased";
 
 import complete from "../openai/complete";
-import createPrompt from "../utils/createPrompt";
 
 const howWillWeMakeMoneyInstruction = `Given a description of what a company does, describe how it makes money.`;
 
@@ -50,7 +49,7 @@ const howWillWeMakeMoneyExamples = [
 export const genHowWillWeMakeMoney = async (query: string) =>
   (
     await complete(
-      createPrompt({
+      {
         instruction: howWillWeMakeMoneyInstruction,
         labels: ["Idea", "How it makes money"],
         examples: _.map(howWillWeMakeMoneyExamples, ([desc, __, howMoney]) => [
@@ -58,7 +57,7 @@ export const genHowWillWeMakeMoney = async (query: string) =>
           howMoney,
         ]),
         query,
-      }),
+      },
       { temperature: 0.8, max_tokens: 36, best_of: 1, frequency_penalty: 0.3 }
     )
   )[0].text;

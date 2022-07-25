@@ -1,7 +1,6 @@
 // generate/genJargonExplanation.ts
 
 import complete from "../openai/complete";
-import createPrompt from "../utils/createPrompt";
 
 const jargonExplanationInstruction = `The human asks the AI to make a simple description more complicated. The AI responds by writing a verbose response full of jargon to explain a simple concept.`;
 
@@ -19,12 +18,12 @@ const jargonExplanationExamples = [
 export const genJargonExplanation = async (query) =>
   (
     await complete(
-      createPrompt({
+      {
         instruction: jargonExplanationInstruction,
         labels: ["Concept", "Complicated Explanation"],
         examples: jargonExplanationExamples,
         query,
-      }),
+      },
       {
         max_tokens: 96,
         temperature: 1,

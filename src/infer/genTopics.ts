@@ -1,7 +1,6 @@
 // generate/genTopics.ts
 
 import complete from "../openai/complete";
-import createPrompt from "../utils/createPrompt";
 
 const topicsExamples = [
   [
@@ -21,12 +20,12 @@ const topicsExamples = [
 export const genTopics = async (query) =>
   (
     await complete(
-      createPrompt({
+      {
         instruction: "What are the important topics of the following passages?",
         labels: ["Passage", "Topics"],
         examples: topicsExamples,
         query,
-      }),
+      },
       {
         max_tokens: 12,
         top_p: 0.25,

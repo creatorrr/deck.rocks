@@ -1,7 +1,6 @@
 // generate/genStartupName.ts
 
 import complete from "../openai/complete";
-import createPrompt from "../utils/createPrompt";
 
 const startupNameInstruction = `Suggest a "catchy" name for the startup idea based on what it does.`;
 
@@ -34,12 +33,13 @@ const startupNameExamples = [
 export const genStartupName = async (query: string) =>
   (
     await complete(
-      createPrompt({
+      {
         instruction: startupNameInstruction,
         labels: ["Idea", "Catchy Name"],
         examples: startupNameExamples,
+        sampleSeparator: "\n\n\n",
         query,
-      }),
+      },
       { max_tokens: 3, temperature: 1, best_of: 3 }
     )
   )[0].text;

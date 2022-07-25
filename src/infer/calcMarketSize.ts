@@ -4,7 +4,6 @@ import _ from "lodash";
 import nlp from "compromise";
 
 import complete from "../openai/complete";
-import createPrompt from "../utils/createPrompt";
 
 const marketSizeInstruction = `Provide the market size of the given industry.`;
 
@@ -35,20 +34,20 @@ const marketSizeExamples = [
 
 export const calcMarketSize = async (query: string) => {
   const [result] = await complete(
-    createPrompt({
+    {
       instruction: marketSizeInstruction,
       labels: ["Industry", "Market size"],
       examples: marketSizeExamples,
+      sampleSeparator: "\n\n\n",
       query,
-    }),
+    },
     {
       max_tokens: 3,
       temperature: 0.2,
       best_of: 3,
       presence_penalty: 2.0,
       frequency_penalty: 2.0,
-    },
-    "\n\n\n"
+    }
   );
 
   const doc = nlp(result.text);

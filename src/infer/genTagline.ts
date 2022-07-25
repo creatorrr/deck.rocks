@@ -1,7 +1,6 @@
 // generate/genTagline.ts
 
 import complete from "../openai/complete";
-import createPrompt from "../utils/createPrompt";
 
 const taglineInstruction = `Generate a catchy and impactful tagline for the startup described.`;
 const taglineExamples = [
@@ -34,12 +33,12 @@ const taglineExamples = [
 export const genTagline = async (query: string) =>
   (
     await complete(
-      createPrompt({
+      {
         instruction: taglineInstruction,
         examples: taglineExamples,
         labels: ["Description", "Tagline"],
         query,
-      }),
+      },
       { max_tokens: 16, best_of: 3, temperature: 1.0 }
     )
   )[0].text;

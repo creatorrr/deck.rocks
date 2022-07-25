@@ -5,7 +5,6 @@ import _ from "lodash";
 
 import businessModels from "../data/businessModels";
 import complete from "../openai/complete";
-import createPrompt from "../utils/createPrompt";
 
 const predictBusinessModelInstruction = `Given a business idea, suggest the most suitable business model for that business. It can be one of the following: "${_(
   businessModels
@@ -46,12 +45,12 @@ const predictBusinessModelExamples = [
 export const predictBusinessModel = async (query) =>
   (
     await complete(
-      createPrompt({
+      {
         instruction: predictBusinessModelInstruction,
         labels: ["Idea", "Business Model"],
         examples: predictBusinessModelExamples,
         query,
-      }),
+      },
       { temperature: 0.1, max_tokens: 3, best_of: 1 }
     )
   )[0].text;

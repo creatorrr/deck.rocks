@@ -1,7 +1,6 @@
 // generate/genYoBeReal.ts
 
 import complete from "../openai/complete";
-import createPrompt from "../utils/createPrompt";
 
 const yoBeRealInstruction = `This is a conversation between a human and a brilliant AI. If a startup idea is "good" and "sensible" the AI replies whether it will work. If the idea is "dumb" or "nonsense" the AI says "yo be real... -_-"`;
 
@@ -59,12 +58,12 @@ const yoBeRealExamples = [
 export const genYoBeReal = async (query: string) =>
   (
     await complete(
-      createPrompt({
+      {
         instruction: yoBeRealInstruction,
         labels: ["Idea", "Review"],
         examples: yoBeRealExamples,
         query,
-      }),
+      },
       { max_tokens: 24, temperature: 1, best_of: 1 }
     )
   )[0].text;
