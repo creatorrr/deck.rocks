@@ -3,7 +3,7 @@
 import _ from "lodash";
 
 import * as hf from "../clients/huggingface";
-import { HF_TASK } from "../env";
+import { huggingfaceQnAModel } from "../env";
 import { AtoZ } from "../utils/misc";
 
 export interface MCQ {
@@ -36,8 +36,10 @@ export async function answerQuestion(mcq: MCQ, opts = {}) {
   const inputs: string = makeMCInput(mcq);
   const data = { ...opts, inputs };
 
-  const results = await hf.queryApi(data, HF_TASK.QNA);
-  return results.map(({ generated_text }) =>
+  const results = await hf.queryApi(data, huggingfaceQnAModel);
+  if ("error" in results) throw new Error(results.error);
+
+  return (results as any).map(({ generated_text }) =>
     generated_text.replace("$answer$ =", "").trim()
   );
 }

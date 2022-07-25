@@ -48,14 +48,18 @@ export const minInputLength: number = 30;
 export const maxInputLength: number = (5 + 1) * 120; // 120 words with an average of 5 chars each and spaces
 export const maxPromptLength: number = maxInputLength + (5 + 1) * 640; // 640 words with an average of 5 chars each and spaces
 
-export enum HF_TASK {
-  QNA = "qna",
-}
+export const huggingfaceQnAModel: string = "allenai/macaw-large";
+// highAccuracy ? "allenai/macaw-3b" : "allenai/macaw-large",
 
-export const huggingfaceModels: { [key in HF_TASK]: string } = {
-  [HF_TASK.QNA]: "allenai/macaw-large",
-  // [HF_TASK.QNA]: highAccuracy ? "allenai/macaw-3b" : "allenai/macaw-large",
-};
+export const huggingtweetModels: string[] = [
+  "wallstreetbets",
+  "realdonaldtrump",
+  "funnyordie",
+  "billgates",
+  "arstechnica",
+  "barackobama",
+  "elonmusk",
+];
 
 export const openaiModels = {
   embedding: highAccuracy

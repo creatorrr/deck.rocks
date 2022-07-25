@@ -1,6 +1,5 @@
 // utils/apis.ts
 
-import { sample } from "lodash";
 import fetch from "cross-fetch";
 
 import { OWEN_ENDPOINT, QUOTES_ENDPOINT } from "../env";

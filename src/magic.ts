@@ -13,7 +13,7 @@ import genHowWillWeMakeMoney from "./infer/genHowWillWeMakeMoney";
 import genTagline from "./infer/genTagline";
 import genProblemStatement from "./infer/genProblemStatement";
 import genTopics from "./infer/genTopics";
-import genYoBeReal from "./infer/genYoBeReal";
+import genVerdicts from "./infer/genVerdicts";
 import genJargonExplanation from "./infer/genJargonExplanation";
 import predictBusinessModel from "./infer/predictBusinessModel";
 import edited from "./openai/edited";
@@ -32,7 +32,7 @@ async function magic({ idea }) {
     tagline,
     problem,
     keywords,
-    verdict,
+    verdicts,
     rationale,
     _editedIdea,
     quote,
@@ -46,7 +46,7 @@ async function magic({ idea }) {
     genTagline(idea),
     genProblemStatement(idea),
     genTopics(idea),
-    genYoBeReal(idea),
+    genVerdicts(idea),
     genJargonExplanation(idea),
     edited(idea),
     Quote.getQuote(),
@@ -80,7 +80,7 @@ async function magic({ idea }) {
     tagline: startCase(tagline),
     problem: grammarify.clean(problem),
     keywords,
-    verdict,
+    verdicts,
     rationale: grammarify.clean(rationale),
     howWillWeMakeMoney: grammarify.clean(howWillWeMakeMoney),
     marketSize,

@@ -3,8 +3,21 @@
   margin-right: auto !important;
 }
 
+.inline-block {
+  display: inline-block !important;
+}
+
+.tiny {
+  width: 7.5%;
+}
+
 .std-padding-sm {
   padding: 0.2em 0.4em;
+}
+
+a > sup {
+  text-decoration: none;
+  color: gray;
 }
 
 .std-padding-md {
@@ -109,7 +122,6 @@
 .round {
   border-radius: 50%;
   display: block;
-  width: auto;
 }
 
 .grayed-out {

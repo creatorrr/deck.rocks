@@ -1,21 +1,24 @@
 // clients/huggingface.ts
 
-import { debug, huggingfaceToken, HF_TASK, huggingfaceModels } from "../env";
+import { debug, huggingfaceToken } from "../env";
+
+export interface HasError {
+  error?: string;
+}
 
 export interface HFResponse {
   generated_text?: string;
 }
 
 const defaultOptions = {
-  use_gpu: true,
-  wait_for_model: true,
+  use_gpu: false,
+  wait_for_model: false,
 };
 
 export async function queryApi(
   data: Record<string, any>,
-  task: HF_TASK
-): Promise<HFResponse[]> {
-  const model: string = huggingfaceModels[task];
+  model: string
+): Promise<HasError | HFResponse[]> {
   data = Object.assign({ options: defaultOptions }, data);
 
   const response = await fetch(
