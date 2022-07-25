@@ -65,6 +65,7 @@
     "koa-ratelimit": "^5.0.1",
     "koa-static-cache": "^5.1.4",
     "lodash": "^4.17.21",
+    "millify": "^5.0.0",
     "node-memoize": "^1.0.5",
     "object-hash": "^3.0.0",
     "openai": "^3.0.0",

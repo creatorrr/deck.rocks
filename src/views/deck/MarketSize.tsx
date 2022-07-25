@@ -1,21 +1,17 @@
 // views/deck/MarketSize.tsx
 
-import { sample } from "lodash";
 import type { StockImage } from "./Opening";
+
+import { sample } from "lodash";
+import millify from "millify";
 
 export interface MarketSizeProps {
   stockImages: StockImage[];
-  marketSize: string;
+  marketSize: number;
   keywords: string;
-  marketSizeDenomination?: string;
 }
 
-export default ({
-  stockImages,
-  marketSize,
-  keywords,
-  marketSizeDenomination = "billion",
-}: MarketSizeProps) => (
+export default ({ stockImages, marketSize, keywords }: MarketSizeProps) => (
   <section id="market-size">
     <h2>Market Size</h2>
 
@@ -25,14 +21,16 @@ export default ({
         backgroundImage: `url(${sample(stockImages).src.large})`,
       }}
     >
-      {marketSize}
-      {marketSizeDenomination[0].toUpperCase()}
+      $
+      {millify(marketSize, {
+        precision: 2,
+      })}
     </h3>
 
     <p className="small-60">
-      According to Gartner, this is how big the market for
+      According to Gartner, this is how big the market for{" "}
       <b>
-        <u>{keywords}, etc</u>
+        <u>{keywords}</u>
       </b>{" "}
       is at the moment!
       <br />

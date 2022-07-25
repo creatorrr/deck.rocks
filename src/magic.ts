@@ -38,7 +38,7 @@ async function magic({ idea }) {
     quote,
     owenWow,
     competition,
-    howWillWeMakeMoney,
+    businessModel,
     marketSize,
     logos,
   ] = await Promise.all([
@@ -52,7 +52,7 @@ async function magic({ idea }) {
     Quote.getQuote(),
     getOwenWow(),
     findSimilarProducts(idea, 1, 3),
-    genHowWillWeMakeMoney(idea),
+    predictBusinessModel(idea),
     calcMarketSize(idea),
     genLogos(idea, 1),
   ]);
@@ -64,9 +64,9 @@ async function magic({ idea }) {
 
   console.time("phase2");
 
-  const [stockImages, businessModel] = await Promise.all([
+  const [stockImages, howWillWeMakeMoney] = await Promise.all([
     searchImages(keywords),
-    predictBusinessModel(howWillWeMakeMoney),
+    genHowWillWeMakeMoney(idea, businessModel),
   ]);
 
   debug && console.debug("phase 2");
@@ -75,7 +75,7 @@ async function magic({ idea }) {
   const result = {
     editedIdea,
     idea,
-    businessModel: grammarify.clean(businessModel),
+    businessModel,
     name,
     tagline: startCase(tagline),
     problem: grammarify.clean(problem),
@@ -84,7 +84,6 @@ async function magic({ idea }) {
     rationale: grammarify.clean(rationale),
     howWillWeMakeMoney: grammarify.clean(howWillWeMakeMoney),
     marketSize,
-    marketSizeDenomination: "billion",
     logos,
     stockImages,
     quote,
