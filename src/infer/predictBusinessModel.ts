@@ -5,21 +5,31 @@ import type { BusinessModel } from "../utils/businessModel";
 import _ from "lodash";
 
 import businessModels from "../data/businessModels";
-import { calculateSimilarity } from "../utils/similarity";
+import { answerMC } from "../huggingface/qna";
 
 export const predictBusinessModel = async (
-  howWillWeMakeMoney: string
+  idea: string
 ): Promise<BusinessModel> => {
-  const [keys, descriptions] = _(businessModels)
-    .mapValues("description")
-    .entries()
-    .unzip()
-    .value();
+  const modelNames: string[] = _.map(businessModels, "name");
+  const [answer] = await answerMC({
+    context: idea,
+    choices: modelNames,
+    question: "What is the company's business model?",
+  });
 
-  const scores = await calculateSimilarity(howWillWeMakeMoney, descriptions);
-  const [winner] = _(keys).zip(scores).sortBy([1]).last();
+  let modelFound: BusinessModel = _.find(
+    businessModels,
+    ({ name }) => name === answer
+  );
 
-  return businessModels[winner];
+  if (!modelFound) {
+    console.error(
+      `Predicted business model name: ${answer} does not match known models`
+    );
+    modelFound = _.sample(businessModels);
+  }
+
+  return modelFound;
 };
 
 export default predictBusinessModel;

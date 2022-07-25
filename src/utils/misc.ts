@@ -1,6 +1,6 @@
 // utils/misc.ts
 
-import { snakeCase } from "lodash";
+import { range, snakeCase } from "lodash";
 import Funnies from "funnies";
 
 // Util that takes first N elements from a generator
@@ -14,6 +14,8 @@ export function* generateFunnies() {
     yield funnies.message();
   }
 }
+
+export const AtoZ = range(65, 91).map((i) => String.fromCharCode(i));
 
 // Convert a business model string to a slug
 export const normalizeBusinessModelName = (name) =>

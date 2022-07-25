@@ -5,6 +5,7 @@ import path from "path";
 
 export let {
   OPENAI_API_SECRET: apiKey,
+  HUGGINGFACE_API_TOKEN: huggingfaceToken,
   REPLICATE_API_KEY: replicateApiKey,
   REPLICATE_MODEL_VERSION: replicateModelVersion,
   REDIS_URL: redisUrl,
@@ -46,6 +47,15 @@ export const QUOTES_ENDPOINT = "https://quotes.rest/qod";
 export const minInputLength: number = 30;
 export const maxInputLength: number = (5 + 1) * 120; // 120 words with an average of 5 chars each and spaces
 export const maxPromptLength: number = maxInputLength + (5 + 1) * 640; // 640 words with an average of 5 chars each and spaces
+
+export enum HF_TASK {
+  QNA = "qna",
+}
+
+export const huggingfaceModels: { [key in HF_TASK]: string } = {
+  [HF_TASK.QNA]: "allenai/macaw-large",
+  // [HF_TASK.QNA]: highAccuracy ? "allenai/macaw-3b" : "allenai/macaw-large",
+};
 
 export const openaiModels = {
   embedding: highAccuracy
