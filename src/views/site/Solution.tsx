@@ -12,7 +12,7 @@ export interface SolutionProps {
 export default ({ stockImages, rationale }: SolutionProps) => (
   <article
     style={{
-      background: `url(${sample(stockImages).src.large2x})`,
+      background: `url(${sample(stockImages)?.src.large2x})`,
     }}
   >
     <h2 className="lh2 inverted-color">Solution</h2>

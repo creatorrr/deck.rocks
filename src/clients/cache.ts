@@ -28,8 +28,8 @@ class RedisCache {
 
   async get(key: string) {
     const redis = await redisPromise;
-    const encoded: Buffer = await redis.getBuffer(key);
-    const value = decode(encoded);
+    const encoded: Buffer | null = await redis.getBuffer(key);
+    const value = encoded && decode(encoded);
 
     return value;
   }

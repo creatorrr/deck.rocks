@@ -11,7 +11,7 @@ export class ContentPolicyError extends Error {
   title: string;
   categories: string[];
 
-  constructor({ categories, title = "This shit ain't okay." }) {
+  constructor(categories: string[] = [], title = "This shit ain't okay.") {
     const policyUrl: string =
       "https://beta.openai.com/docs/usage-guidelines/content-policy";
     super(`
@@ -61,7 +61,7 @@ export async function moderate(input: string): Promise<ModerateResult> {
       .map("categories")
       .reduce((c1, c2) => _.assignWith(c1, c2, (v1 = 0, v2 = 0) => v1 + v2), {})
   )
-    .filter(([name, value]) => value > 0)
+    .filter(([_name, value]) => ((value as any) || 0) > 0)
     .map(([name]) => name);
 
   return {

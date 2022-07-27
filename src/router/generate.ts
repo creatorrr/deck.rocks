@@ -1,25 +1,26 @@
 // router/generate.ts
 
 import cyrb53 from "cyrb53";
+import * as Koa from "koa";
 
 import queue from "../clients/queue";
 import { minInputLength, maxInputLength } from "../env";
 import moderate, { ContentPolicyError } from "../openai/moderate";
 import { isProfane } from "../utils/text";
 
-export default async (ctx) => {
+export default async (ctx: Koa.Context) => {
   let { idea, format } = ctx.query;
   idea = idea || "";
-  idea = idea.trim();
+  idea = idea.toString().trim();
   format = format || "deck";
 
   // Reject profane stuff
   const profane = await isProfane(idea);
-  if (profane) throw new ContentPolicyError({ categories: ["profanity"] });
+  if (profane) throw new ContentPolicyError(["profanity"]);
 
   // Moderate input for compliance with OpenAI
   const { flagged, categories } = await moderate(idea);
-  if (flagged) throw new ContentPolicyError({ categories });
+  if (flagged) throw new ContentPolicyError(categories);
 
   let error;
 

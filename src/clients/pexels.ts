@@ -5,9 +5,12 @@ import { createClient as createPexelsClient } from "pexels";
 import { memoize } from "../clients/cache";
 import { pexelsApiKey } from "../env";
 
-const pexels = createPexelsClient(pexelsApiKey);
+const pexels = createPexelsClient(pexelsApiKey || "");
 
-async function searchImages(query, opts = { orientation: "landscape" }) {
+async function searchImages(
+  query: string,
+  opts = { orientation: "landscape" }
+) {
   const response = await pexels.photos.search({
     query,
     locale: "en-US",

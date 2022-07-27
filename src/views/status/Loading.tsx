@@ -21,9 +21,9 @@ export default ({ status }: LoadingProps) => (
 
     <img src={getRandomLoadingGif()} className="margin-center" />
     <cite className="align-center funny">Initializing awesomeness...</cite>
-    {take(generateFunnies(), 20).map((fun, i) => (
+    {take(generateFunnies(), 20).map((fun, i: number) => (
       <cite className="align-center funny hidden" key={i}>
-        {fun}
+        {fun + ""}
       </cite>
     ))}
 

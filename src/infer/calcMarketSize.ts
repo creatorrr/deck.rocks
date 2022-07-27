@@ -15,7 +15,7 @@ export const calcMarketSize = async (keywords: string): Promise<number> => {
   const doc = nlp(answers.join("\n"));
 
   const numbers = doc.numbers().get();
-  let top: number = _.max(numbers);
+  let top: number = _.max(numbers) || 0;
 
   if (!top) {
     console.error(`${top} is not a valid market size.`);

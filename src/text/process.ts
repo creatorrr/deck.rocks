@@ -1,6 +1,6 @@
 // text/process.js
 
-let _pipeline;
+let _pipeline: any;
 
 const createPipline = async () => {
   if (_pipeline) return _pipeline;
@@ -32,7 +32,7 @@ const createPipline = async () => {
   return _pipeline;
 };
 
-export const process = async (input) => {
+export const process = async (input: string) => {
   const pipeline = await createPipline();
   return await pipeline.process(input);
 };

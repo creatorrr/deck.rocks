@@ -3,9 +3,17 @@
 import { memoize } from "../clients/cache";
 import { productHuntToken, PRODUCT_HUNT_ENDPOINT } from "../env";
 
+export interface Topic {
+  slug: string;
+  description: string;
+}
+
 // This is a recursive function that follows all cursors until the list of topics is exhausted,
 // then returns the topics concated in a list
-async function getTopics(prevNodes = [], after = "") {
+async function getTopics(
+  prevNodes: Topic[] = [],
+  after = ""
+): Promise<Topic[]> {
   const query = `{
     topics(order: FOLLOWERS_COUNT, after: "${after}") {
       nodes {

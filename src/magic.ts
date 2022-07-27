@@ -24,7 +24,8 @@ import { awaitAll, withTimeout } from "./utils/async";
 
 import { debug, defaultTaskTimeout } from "./env";
 
-const all = (...procs) => withTimeout(defaultTaskTimeout, awaitAll, ...procs);
+const all = (...procs: any[]) =>
+  withTimeout(defaultTaskTimeout, awaitAll, ...procs);
 
 async function magic(idea: string) {
   const hash = cyrb53(idea);

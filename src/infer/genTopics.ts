@@ -17,7 +17,7 @@ const topicsExamples = [
   ],
 ];
 
-export const genTopics = async (query) =>
+export const genTopics = async (query: string) =>
   (
     await complete(
       {

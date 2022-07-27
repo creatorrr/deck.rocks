@@ -26,7 +26,11 @@ async function edited(input: string, opts = {}) {
     input,
   });
 
-  return choices.map((c) => ((c.text = grammarify.clean(c.text.trim())), c));
+  choices?.forEach((c) => {
+    c.text = grammarify.clean(c?.text?.trim());
+  });
+
+  return choices;
 }
 
 // export default edited;

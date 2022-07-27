@@ -51,11 +51,11 @@ export const selectByAnalogy = (
     .fromPairs()
     .value();
 
-  const [mostSimilarIndex] = _(BAs)
+  const mostSimilarIndices = _(BAs)
     .entries()
     .map(([k, BA]) => [k, VectorMath.AngularSimilarity(BA, DCs[k])])
     .sortBy([1])
     .last();
 
-  return mostSimilarIndex;
+  return mostSimilarIndices![0];
 };

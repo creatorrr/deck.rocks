@@ -1,9 +1,9 @@
 // utils/pollReplicate.ts
 
+import { setTimeout } from "node:timers/promises";
 import fetch from "cross-fetch";
 
 import { replicateApiKey } from "../env";
-import { wait } from "./misc";
 
 export const pollReplicate = async (
   url: string,
@@ -29,7 +29,7 @@ export const pollReplicate = async (
     case "starting":
       console.log("Generating a logo. Can take up to 30 seconds...");
     case "processing":
-      await wait(waitSeconds * 1000); // wait for x seconds
+      await setTimeout(waitSeconds * 1000); // wait for x seconds
       return await pollReplicate(url, count + 1);
     default:
       return output;

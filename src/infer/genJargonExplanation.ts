@@ -15,7 +15,7 @@ const jargonExplanationExamples = [
   ],
 ];
 
-export const genJargonExplanation = async (query) =>
+export const genJargonExplanation = async (query: string) =>
   (
     await complete(
       {

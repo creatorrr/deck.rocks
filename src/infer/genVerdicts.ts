@@ -21,7 +21,7 @@ export default async function genVerdicts(idea: string, n: number = 3) {
   let i = 0;
 
   for await (const verdict of asDone(verdictPromises)) {
-    verdicts.push(verdict);
+    verdicts.push(verdict as any);
     i += 1;
 
     if (i >= n) break;

@@ -6,7 +6,7 @@ export type AsyncFunction<O> = (...args: any[]) => Promise<O>;
 
 const FAILURE = Symbol.for("FAILURE");
 
-export async function* asDone<T>(promises: Promise<any>[]) {
+export async function* asDone<T>(promises: Promise<any>[]): AsyncGenerator<T> {
   const store: Map<
     Promise<T>,
     Promise<[Promise<T>, T | typeof FAILURE]>
@@ -56,6 +56,6 @@ export async function withTimeout<T>(
   else return result;
 }
 
-export async function awaitAll(...procs) {
+export async function awaitAll(...procs: Promise<any>[]): Promise<any[]> {
   return await Promise.all(procs);
 }

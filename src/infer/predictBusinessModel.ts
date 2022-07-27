@@ -17,7 +17,7 @@ export const predictBusinessModel = async (
     question: "What is the company's business model?",
   });
 
-  let modelFound: BusinessModel = _.find(
+  let modelFound: BusinessModel | undefined = _.find(
     businessModels,
     ({ name }) => name === answer
   );
@@ -29,7 +29,7 @@ export const predictBusinessModel = async (
     modelFound = _.sample(businessModels);
   }
 
-  return modelFound;
+  return modelFound as any;
 };
 
 export default predictBusinessModel;

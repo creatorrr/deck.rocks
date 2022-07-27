@@ -3,10 +3,12 @@
 import type { JobWithStatus } from "../utils/jobs";
 
 import { isUndefined } from "lodash";
+import * as Koa from "koa";
+
 import { JobError, getJobDetails } from "../utils/jobs";
 import Status from "../views/Status";
 
-export default async (ctx) => {
+export default async (ctx: Koa.Context) => {
   let { job_id, hash, format } = ctx.query;
   format = format || "deck";
 
@@ -17,7 +19,7 @@ export default async (ctx) => {
 
   let job: JobWithStatus;
   try {
-    job = await getJobDetails(job_id, hash);
+    job = await getJobDetails(job_id.toString(), hash.toString());
   } catch (e) {
     if (!(e instanceof JobError)) throw e;
 

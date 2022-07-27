@@ -22,7 +22,7 @@ export class HashMismatchError extends JobError {}
 
 export async function getJobDetails(
   job_id: string | number,
-  hash: number | string = null,
+  hash: number | string | null = null,
   queue = generateQueue
 ): Promise<JobWithStatus> {
   // Get job

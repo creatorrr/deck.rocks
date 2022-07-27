@@ -4,15 +4,16 @@ import type { JobWithStatus } from "../utils/jobs";
 import type { Magic } from "../magic";
 
 import { isUndefined } from "lodash";
+import * as Koa from "koa";
 
 import processText from "../text/process";
 import GeneratedDeck from "../views/GeneratedDeck";
 import GeneratedSite from "../views/GeneratedSite";
 import { JobStatus, JobError, getJobDetails } from "../utils/jobs";
 
-export default async (ctx) => {
+export default async (ctx: Koa.Context) => {
   let { job_id, hash, format, nocontrols } = ctx.query;
-  nocontrols = !isUndefined(nocontrols);
+  const _nocontrols = !isUndefined(nocontrols);
 
   if (isUndefined(job_id) || isUndefined(hash)) {
     ctx.body = "Both job_id and hash are required.";
@@ -21,7 +22,7 @@ export default async (ctx) => {
 
   let job: JobWithStatus;
   try {
-    job = await getJobDetails(job_id, hash);
+    job = await getJobDetails(job_id.toString(), hash.toString());
   } catch (e) {
     if (!(e instanceof JobError)) throw e;
 
@@ -40,9 +41,11 @@ export default async (ctx) => {
 
   await ctx.render(Component, {
     ...result,
-    tips: tips.map(({ reason }) => reason).filter((x) => !!x),
+    tips: tips
+      .map(({ reason }: { reason: string }) => reason)
+      .filter((x: string) => !!x),
     format,
-    nocontrols,
+    nocontrols: _nocontrols,
     prefill: result.idea,
   });
 };

@@ -23,7 +23,7 @@ export interface OpeningProps {
 export default ({ name, tagline, logos, stockImages }: OpeningProps) => (
   <section
     id="opening"
-    data-background-image={sample(stockImages).src.large2x}
+    data-background-image={sample(stockImages)?.src.large2x}
     data-background-size="cover"
     data-background-repeat="no-repeat"
   >

@@ -37,9 +37,11 @@ async function complete(promptConfig: PromptConfig, opts = {}) {
     prompt,
   });
 
-  return choices.map(
-    (c) => ((c.text = c.text.replaceAll(separatorJunk, "")), c)
-  );
+  choices?.forEach((c) => {
+    c.text = c?.text?.replaceAll(separatorJunk, "");
+  });
+
+  return choices;
 }
 
 export default memoize(complete);
