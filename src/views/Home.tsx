@@ -14,6 +14,6 @@ export default ({ idea, ...props }: HomeProps) => (
   <html>
     <Head {...props} />
     <Controls {...props} />
-    <Intro idea={idea} />
+    <Intro idea={idea} {...props} />
   </html>
 );

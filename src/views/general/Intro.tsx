@@ -1,7 +1,5 @@
 // views/general/Intro.tsx
 
-import classnames from "classnames";
-import coolFace from "cool-ascii-faces";
 import { random as randomSuperb } from "superb";
 
 import Giphy from "../utils/Giphy";
@@ -9,9 +7,10 @@ import Thanks from "../utils/Thanks";
 
 export interface IntroProps {
   idea: string;
+  numIdeas?: number;
 }
 
-export default ({ idea }: IntroProps) => (
+export default ({ numIdeas = 0, idea }: IntroProps) => (
   <section id="intro">
     <p>
       hi there! <br />
@@ -33,30 +32,26 @@ export default ({ idea }: IntroProps) => (
         </i>{" "}
         in 1-2 sentences
       </li>
-      <li>get a deck tailor-made just for you </li>
-      <li>et voila! 😉 </li>
+      <li>get a deck tailor-made just for you. et voila! 😉 </li>
+      <li>
+        ...here's an{" "}
+        <a
+          href={`/generate?idea=${encodeURIComponent(
+            idea || ""
+          )}&amp;format=deck`}
+        >
+          example
+        </a>
+        .{" "}
+        {numIdeas > 3 && (
+          <span>
+            you can also browse the <a href="/gallery">gallery</a>.
+          </span>
+        )}
+      </li>
     </ol>
     <p className="align-right margin-1 lh2">
       — <a href="https://diwank.name">Diwank</a> <br />
-      {coolFace()}
-    </p>
-    <p
-      className={classnames({
-        ellipsis: true,
-        example: true,
-        hidden: !idea,
-        block: !!idea,
-        "small-80": true,
-      })}
-    >
-      example:{" "}
-      <a
-        href={`/generate?idea=${encodeURIComponent(
-          idea || ""
-        )}&amp;format=deck`}
-      >
-        {idea || ""}
-      </a>
     </p>
     <p className="small-80">
       p.s. you can check out the source code{" "}

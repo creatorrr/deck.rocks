@@ -82,6 +82,8 @@ export const frontendConfig: { [key: string]: any } = {
   contentSelector: "#content",
 };
 
+export const maxGalleryItems: number = 48;
+
 // Log important info
 console.log(`
 Config:

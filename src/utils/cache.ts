@@ -5,8 +5,11 @@ import { decode } from "messagepack";
 
 import { redis } from "../clients/redis";
 
+export const keysFromCache = async (namespace: string) =>
+  await redis.keys(`${namespace}:*`);
+
 export const getRandomFromCache = async (namespace: string) => {
-  const key = _(await redis.keys(`${namespace}:*`))
+  const key = _(await keysFromCache(namespace))
     .shuffle()
     .first();
 
