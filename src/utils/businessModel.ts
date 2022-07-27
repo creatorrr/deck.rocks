@@ -2,11 +2,14 @@
 
 import { snakeCase } from "lodash";
 
+import { localEmbed } from "../utils/similarity";
+
 export interface BusinessModel {
   name: string;
   slug: string;
   description: string;
   examples: string[];
+  embedding: Promise<number[][]>;
 }
 
 export const makeBusinessModel = (
@@ -18,4 +21,5 @@ export const makeBusinessModel = (
   description: description.trim(),
   slug: snakeCase(name),
   examples,
+  embedding: localEmbed(name),
 });

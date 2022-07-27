@@ -22,7 +22,10 @@ export const localEmbed = async (
   return await embeddings.array();
 };
 
-export const calculateSimilarity = async (src: string, targets: string[]) => {
+export const calculateSimilarity = async (
+  src: string,
+  targets: string[]
+): Promise<number[]> => {
   // Calc embeddings
   const [srcE, ...targetsE] = await localEmbed([src, ...targets]);
 

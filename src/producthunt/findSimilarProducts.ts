@@ -26,7 +26,7 @@ export const findSimilarProducts = async (
   const ranked = _(products).zip(similarities).sortBy([1]).reverse().value();
 
   return _(ranked)
-    .filter(([_product, similarity]) => similarity > threshold)
+    .filter(([_product, similarity = 0]) => similarity > threshold)
     .take(each)
     .map(0)
     .value();
