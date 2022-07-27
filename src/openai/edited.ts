@@ -10,8 +10,8 @@ import { openaiModels } from "../env";
 
 const defaultEditOpts = {
   model: openaiModels.edited,
-  instruction: "Fix spelling and grammatical mistakes in the text",
-  temperature: 0.3,
+  instruction: "Edit the text to make it optimistic and more engaging.",
+  temperature: 0.2,
 };
 
 async function edited(input: string, opts = {}) {

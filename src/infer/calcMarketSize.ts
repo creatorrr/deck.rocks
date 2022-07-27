@@ -7,23 +7,22 @@ import { debug, huggingfaceFinanceModel } from "../env";
 import complete from "../huggingface/complete";
 
 export const calcMarketSize = async (keywords: string): Promise<number> => {
-  const answers = await complete(
+  const answer = await complete(
     `The market size in US dollars for "${keywords}" industry is`,
     huggingfaceFinanceModel
   );
 
-  const doc = nlp(answers.join("\n"));
+  const doc = nlp(answer);
 
   const numbers = doc.numbers().get();
-  let top: number = _.max(numbers) || 0;
+  let lowest: number = _.min(numbers) || 0;
 
-  if (!top) {
+  if (!lowest) {
     console.error(`${top} is not a valid market size.`);
-    top = top || 100_000_000; // Default to 100 M
+    lowest = lowest || 100_000_000; // Default to 100 M
   }
 
-  debug && console.debug(answers, top);
-  return top;
+  return lowest;
 };
 
 export default calcMarketSize;

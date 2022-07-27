@@ -11,7 +11,7 @@ export const predictBusinessModel = async (
   idea: string
 ): Promise<BusinessModel> => {
   const modelNames: string[] = _.map(businessModels, "name");
-  const [answer] = await answerQuestion({
+  const answer = await answerQuestion({
     context: idea,
     choices: modelNames,
     question: "What is the company's business model?",

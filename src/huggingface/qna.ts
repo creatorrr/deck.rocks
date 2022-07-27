@@ -36,7 +36,7 @@ export const makeMCInput = ({
 const defaultOpts = {
   options: {
     use_gpu: false,
-    wait_for_model: true,
+    wait_for_model: false,
   },
 };
 
