@@ -3,13 +3,14 @@
 import _ from "lodash";
 import nlp from "compromise";
 
-import { debug } from "../env";
-import { answerQuestion } from "../huggingface/qna";
+import { debug, huggingfaceFinanceModel } from "../env";
+import complete from "../huggingface/complete";
 
-export const calcMarketSize = async (idea: string): Promise<number> => {
-  const answers = await answerQuestion({
-    question: `What is the market size in dollars for "${idea}"?`,
-  });
+export const calcMarketSize = async (keywords: string): Promise<number> => {
+  const answers = await complete(
+    `The market size in US dollars for "${keywords}" industry is`,
+    huggingfaceFinanceModel
+  );
 
   const doc = nlp(answers.join("\n"));
 

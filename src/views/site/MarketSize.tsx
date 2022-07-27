@@ -11,7 +11,7 @@ export default ({ stockImages, marketSize, keywords }: MarketSizeProps) => (
     <h3
       className="lh1 align-right bg-cover inverted-color"
       style={{
-        backgroundImage: `url(${sample(stockImages).src.large})`,
+        backgroundImage: `url(${sample(stockImages).src.large2x})`,
       }}
     >
       $

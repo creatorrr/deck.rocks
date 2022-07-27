@@ -15,7 +15,7 @@ export default ({ stockImages, verdicts }: ExpertsSayProps) => (
     {verdicts.map(({ content, handle }) => (
       <section
         id="experts-say"
-        data-background-image={sample(stockImages).src.large}
+        data-background-image={sample(stockImages).src.large2x}
         data-background-size="cover"
         data-background-repeat="no-repeat"
       >

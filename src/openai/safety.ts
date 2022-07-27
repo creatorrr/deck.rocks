@@ -1,10 +1,16 @@
 // openai/safety.ts
 
-// import { memoize } from "../clients/cache";
+import { setTimeout } from "node:timers/promises";
+import _ from "lodash";
+
+import { memoize } from "../clients/cache";
 import openai from "../clients/openai";
 import { openaiModels, SAFETY_MAP } from "../env";
 
-async function safety(content) {
+async function safety(content: string) {
+  // Stagger requests so rate limit is not triggered
+  await setTimeout(_.random(1, 3) * 50);
+
   const {
     data: { choices },
   } = await openai.createCompletion({
@@ -23,5 +29,5 @@ Label:`,
   return SAFETY_MAP[result];
 }
 
-export default safety;
-// export default memoize(safety);
+// export default safety;
+export default memoize(safety);

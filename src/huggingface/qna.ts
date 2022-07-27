@@ -2,7 +2,8 @@
 
 import _ from "lodash";
 
-import * as hf from "../clients/huggingface";
+import complete from "./complete";
+
 import { huggingfaceQnAModel } from "../env";
 import { AtoZ } from "../utils/misc";
 
@@ -32,14 +33,16 @@ export const makeMCInput = ({
     .filter((x) => !!x)
     .join(" ; ");
 
+const defaultOpts = {
+  options: {
+    use_gpu: false,
+    wait_for_model: true,
+  },
+};
+
 export async function answerQuestion(mcq: MCQ, opts = {}) {
   const inputs: string = makeMCInput(mcq);
-  const data = { ...opts, inputs };
+  const _opts = { ...defaultOpts, ...opts };
 
-  const results = await hf.queryApi(data, huggingfaceQnAModel);
-  if ("error" in results) throw new Error(results.error);
-
-  return (results as any).map(({ generated_text }) =>
-    generated_text.replace("$answer$ =", "").trim()
-  );
+  return await complete(inputs, huggingfaceQnAModel, "$answer$ =", _opts);
 }

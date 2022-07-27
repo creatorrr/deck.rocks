@@ -1,5 +1,6 @@
 // magic.ts
 
+import cyrb53 from "cyrb53";
 import grammarify from "grammarify";
 import Quote from "inspirational-quotes";
 import { startCase } from "lodash";
@@ -19,14 +20,18 @@ import predictBusinessModel from "./infer/predictBusinessModel";
 import edited from "./openai/edited";
 import findSimilarProducts from "./producthunt/findSimilarProducts";
 import { getOwenWow } from "./utils/apis";
+import { awaitAll, withTimeout } from "./utils/async";
 
-import { debug } from "./env";
+import { debug, defaultTaskTimeout } from "./env";
 
-async function magic({ idea }) {
-  console.time("magic");
+const all = (...procs) => withTimeout(defaultTaskTimeout, awaitAll, ...procs);
+
+async function magic(idea: string) {
+  const hash = cyrb53(idea);
+  console.time(`magic-${hash}`);
   debug && console.debug("starting magic");
 
-  console.time("phase1");
+  console.time(`magic-${hash}:phase1`);
   const [
     name,
     tagline,
@@ -39,9 +44,8 @@ async function magic({ idea }) {
     owenWow,
     competition,
     businessModel,
-    marketSize,
     logos,
-  ] = await Promise.all([
+  ] = await all(
     genStartupName(idea),
     genTagline(idea),
     genProblemStatement(idea),
@@ -53,24 +57,24 @@ async function magic({ idea }) {
     getOwenWow(),
     findSimilarProducts(idea, 1, 3),
     predictBusinessModel(idea),
-    calcMarketSize(idea),
-    genLogos(idea, 1),
-  ]);
+    genLogos(idea, 1)
+  );
 
   debug && console.debug("phase 1");
-  console.timeEnd("phase1");
+  console.timeEnd(`magic-${hash}:phase1`);
 
   const editedIdea = _editedIdea ? _editedIdea[0].text : idea;
 
-  console.time("phase2");
+  console.time(`magic-${hash}:phase2`);
 
-  const [stockImages, howWillWeMakeMoney] = await Promise.all([
+  const [stockImages, marketSize, howWillWeMakeMoney] = await all(
     searchImages(keywords),
-    genHowWillWeMakeMoney(idea, businessModel),
-  ]);
+    calcMarketSize(keywords),
+    genHowWillWeMakeMoney(idea, businessModel)
+  );
 
   debug && console.debug("phase 2");
-  console.timeEnd("phase2");
+  console.timeEnd(`magic-${hash}:phase2`);
 
   const result = {
     editedIdea,
@@ -92,10 +96,10 @@ async function magic({ idea }) {
   };
 
   debug && console.debug("magic", result);
-  console.timeEnd("magic");
+  console.timeEnd(`magic-${hash}`);
 
   return result;
 }
 
 export type Magic = Awaited<ReturnType<typeof magic>>;
-export default memoize(magic);
+export default memoize(magic, false); // Dont evict

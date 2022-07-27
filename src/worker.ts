@@ -12,8 +12,10 @@ import { maxJobsPerWorker } from "./env";
 loadUSE().then(() => console.log("USE Model loaded"), console.error);
 
 generateQueue.process(maxJobsPerWorker, async (job) => {
-  const { data } = job;
-  return await magic(data);
+  const { data, id } = job;
+
+  console.log(`Starting job id: ${id}`);
+  return await magic(data.idea);
 });
 
 console.log("Listening for jobs");

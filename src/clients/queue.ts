@@ -3,7 +3,8 @@
 import Queue from "bull";
 import { parseURL } from "ioredis/built/utils";
 
-import { redisUrl, redisSettings } from "../env";
+import { redisUrl } from "../env";
+import { redisSettings } from "./redis";
 
 const redisOpts = parseURL(redisUrl || "0.0.0.0:6379");
 

@@ -14,7 +14,9 @@ export interface CompetitionProps {
 }
 
 export default ({ competition }: CompetitionProps) => {
-  return (
+  return competition.length === 0 ? (
+    <></>
+  ) : (
     <section>
       <h2>Competition</h2>
 

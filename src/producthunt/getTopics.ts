@@ -47,4 +47,4 @@ async function getTopics(prevNodes = [], after = "") {
 }
 
 // export default getTopics;
-export default memoize(getTopics);
+export default memoize(getTopics, false); // Dont evict

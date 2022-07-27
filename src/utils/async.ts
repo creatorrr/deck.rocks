@@ -1,5 +1,9 @@
 // utils/async.ts
 
+import { setTimeout } from "node:timers/promises";
+
+export type AsyncFunction<O> = (...args: any[]) => Promise<O>;
+
 const FAILURE = Symbol.for("FAILURE");
 
 export async function* asDone<T>(promises: Promise<any>[]) {
@@ -30,4 +34,28 @@ export async function* asDone<T>(promises: Promise<any>[]) {
   if (value !== FAILURE) yield value;
 
   yield* asDone([...store.keys()]);
+}
+
+export async function withTimeout<T>(
+  ms: number,
+  fn: AsyncFunction<T>,
+  ...args: any[]
+): Promise<T> {
+  if (1 === 1) return fn(...args);
+
+  const { name } = fn;
+  const timer = setTimeout(
+    ms,
+    new Error(`${name}() function timed out after ${ms}ms`)
+  );
+
+  const promise = Promise.resolve(fn(...args)); // Convert to promise just in case
+  const result = await Promise.race([timer, promise]);
+
+  if (result instanceof Error) throw result;
+  else return result;
+}
+
+export async function awaitAll(...procs) {
+  return await Promise.all(procs);
 }

@@ -1,8 +1,10 @@
 // openai/edited.ts
 
+import { setTimeout } from "node:timers/promises";
 import grammarify from "grammarify";
+import _ from "lodash";
 
-// import { memoize } from "../clients/cache";
+import { memoize } from "../clients/cache";
 import openai from "../clients/openai";
 import { openaiModels } from "../env";
 
@@ -13,6 +15,9 @@ const defaultEditOpts = {
 };
 
 async function edited(input: string, opts = {}) {
+  // Stagger requests so rate limit is not triggered
+  await setTimeout(_.random(1, 3) * 50);
+
   const {
     data: { choices },
   } = await openai.createEdit({
@@ -24,5 +29,5 @@ async function edited(input: string, opts = {}) {
   return choices.map((c) => ((c.text = grammarify.clean(c.text.trim())), c));
 }
 
-export default edited;
-// export default memoize(edited);
+// export default edited;
+export default memoize(edited);

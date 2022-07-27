@@ -2,7 +2,7 @@
 
 import fetch from "cross-fetch";
 
-// import { memoize } from "../clients/cache";
+import { memoize } from "../clients/cache";
 import { productHuntToken, PRODUCT_HUNT_ENDPOINT } from "../env";
 
 async function getProducts(topicSlug: string, featured = false) {
@@ -40,5 +40,5 @@ async function getProducts(topicSlug: string, featured = false) {
   return nodes;
 }
 
-export default getProducts;
-// export default memoize(getProducts);
+// export default getProducts;
+export default memoize(getProducts);

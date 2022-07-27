@@ -9,7 +9,8 @@ import getProducts from "./getProducts";
 export const findSimilarProducts = async (
   idea: string,
   numTopics = 1,
-  each = 3
+  each = 3,
+  threshold: number = 0.65
 ) => {
   const topics = await findSimilarTopics(idea, numTopics);
 
@@ -22,11 +23,12 @@ export const findSimilarProducts = async (
     _.map(products, "tagline")
   );
 
-  return _(products)
-    .zip(similarities)
-    .sortBy([1])
-    .takeRight(each)
-    .map(([val]) => val)
+  const ranked = _(products).zip(similarities).sortBy([1]).reverse().value();
+
+  return _(ranked)
+    .filter(([_product, similarity]) => similarity > threshold)
+    .take(each)
+    .map(0)
     .value();
 };
 

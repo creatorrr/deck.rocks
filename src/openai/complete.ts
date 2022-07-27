@@ -2,6 +2,9 @@
 
 import type { PromptConfig } from "../utils/createPrompt";
 
+import { setTimeout } from "node:timers/promises";
+import _ from "lodash";
+
 import { memoize } from "../clients/cache";
 import openai from "../clients/openai";
 import { openaiModels } from "../env";
@@ -16,6 +19,9 @@ const defaultCompleteOpts = {
 };
 
 async function complete(promptConfig: PromptConfig, opts = {}) {
+  // Stagger requests so rate limit is not triggered
+  await setTimeout(_.random(1, 3) * 50);
+
   const sampleSeparator: string = (promptConfig.sampleSeparator =
     promptConfig.sampleSeparator || "\n---\n\n");
 

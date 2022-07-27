@@ -3,13 +3,13 @@
 import _ from "lodash";
 import VectorMath from "@seregpie/vector-math";
 
-import embedding from "../openai/embedding";
+import embed from "../huggingface/embed";
 import getTopicsWithEmbeddings from "./getTopicsWithEmbeddings";
 
 const preloadedTopicEmbeddings = getTopicsWithEmbeddings();
 
-export const findSimilarTopics = async (query, top = 3) => {
-  const queryEmbedding = await embedding(query);
+export const findSimilarTopics = async (query: string, top = 3) => {
+  const queryEmbedding = await embed(query);
   const topicEmbeddings = await preloadedTopicEmbeddings;
 
   // Calculate cosine similarities between topic embeddings and the query embedding

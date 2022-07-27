@@ -36,10 +36,16 @@ export const genTagline = async (query: string) =>
       {
         instruction: taglineInstruction,
         examples: taglineExamples,
-        labels: ["Description", "Tagline"],
+        labels: ["Idea", "Tagline"],
         query,
       },
-      { max_tokens: 16, best_of: 3, temperature: 1.0 }
+      {
+        max_tokens: 24,
+        best_of: 3,
+        frequency_penalty: 2.0,
+        presence_penalty: 2.0,
+        temperature: 1.0,
+      }
     )
   )[0].text;
 

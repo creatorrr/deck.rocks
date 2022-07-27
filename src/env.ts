@@ -16,6 +16,8 @@ export let {
   HIGH_ACCURACY: _highAccuracy,
   GOOGLE_ANALYTICS_ID: googleAnalyticsId,
   DEBUG: _debug,
+  DEFAULT_REDIS_TTL: _defaultRedisTtl,
+  DEFAULT_TASK_TIMEOUT: _defaultTaskTimeout,
 } = process.env;
 
 export const debug = !_.isUndefined(_debug);
@@ -26,6 +28,8 @@ export const maxJobsPerWorker = parseInt(_maxJobsPerWorker) || 50;
 export const port = parseInt(_port) || 3000;
 
 redisUrl = redisUrl || "0.0.0.0:6379";
+export const defaultRedisTtl = parseInt(_defaultRedisTtl) || 48 * 3600; // 48 hours
+export const defaultTaskTimeout = parseInt(_defaultTaskTimeout) || 40 * 1000; // 40 seconds
 
 export const assetsPath = path.join(__dirname, "../assets");
 export const viewsPath = path.join(__dirname, "./views");
@@ -43,6 +47,8 @@ export const maxPromptLength: number = maxInputLength + (5 + 1) * 640; // 640 wo
 
 export const huggingfaceQnAModel: string = "allenai/macaw-large";
 // highAccuracy ? "allenai/macaw-3b" : "allenai/macaw-large",
+
+export const huggingfaceFinanceModel: string = "nbasatish/financial-BART"; // "diwank/bartner"
 
 export const huggingtweetModels: string[] = [
   "wallstreetbets",
