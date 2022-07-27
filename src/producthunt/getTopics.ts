@@ -1,6 +1,6 @@
 // producthunt/getTopics.ts
 
-// import { memoize } from "../clients/cache";
+import { memoize } from "../clients/cache";
 import { productHuntToken, PRODUCT_HUNT_ENDPOINT } from "../env";
 
 // This is a recursive function that follows all cursors until the list of topics is exhausted,
@@ -46,5 +46,5 @@ async function getTopics(prevNodes = [], after = "") {
   return !hasNextPage ? nodesSoFar : getTopics(nodesSoFar, endCursor);
 }
 
-export default getTopics;
-// export default memoize(getTopics);
+// export default getTopics;
+export default memoize(getTopics);

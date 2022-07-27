@@ -1,9 +1,18 @@
 // clients/redis.ts
 
+import type { RedisOptions } from "ioredis";
+
 import Redis from "ioredis";
 
 import { makePromise } from "../utils/misc";
-import { redisUrl, redisSettings } from "../env";
+import { redisUrl } from "../env";
+
+export const redisSettings: RedisOptions = {};
+if (!redisUrl.includes("0.0.0.0")) {
+  redisSettings.tls = {
+    rejectUnauthorized: false,
+  };
+}
 
 export let redis: Redis;
 

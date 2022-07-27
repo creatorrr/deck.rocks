@@ -26,13 +26,6 @@ export const maxJobsPerWorker = parseInt(_maxJobsPerWorker) || 50;
 export const port = parseInt(_port) || 3000;
 
 redisUrl = redisUrl || "0.0.0.0:6379";
-export const redisSettings = redisUrl.includes("0.0.0.0")
-  ? {}
-  : {
-      tls: {
-        rejectUnauthorized: false,
-      },
-    };
 
 export const assetsPath = path.join(__dirname, "../assets");
 export const viewsPath = path.join(__dirname, "./views");
