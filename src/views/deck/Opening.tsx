@@ -3,14 +3,12 @@
 import { sample } from "lodash";
 
 export interface StockImage {
-  src: {
-    tiny: string;
-    small: string;
-    medium: string;
-    large: string;
-    large2x: string;
-    original: string;
-  };
+  tiny: string;
+  small: string;
+  medium: string;
+  large: string;
+  large2x: string;
+  original: string;
 }
 
 export interface OpeningProps {
@@ -23,7 +21,7 @@ export interface OpeningProps {
 export default ({ name, tagline, logos, stockImages }: OpeningProps) => (
   <section
     id="opening"
-    data-background-image={sample(stockImages)?.src.large2x}
+    data-background-image={sample(stockImages)?.large2x}
     data-background-size="cover"
     data-background-repeat="no-repeat"
   >

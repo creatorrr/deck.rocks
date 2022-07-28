@@ -11,7 +11,7 @@ export interface SolutionProps {
 export default ({ stockImages, rationale }: SolutionProps) => (
   <section
     className="solution"
-    data-background-image={sample(stockImages)?.src.large2x}
+    data-background-image={sample(stockImages)?.large2x}
     data-background-size="cover"
     data-background-repeat="no-repeat"
   >

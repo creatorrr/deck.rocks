@@ -6,7 +6,7 @@ import type { OpeningProps } from "../deck/Opening";
 export default ({ name, tagline, logos, stockImages }: OpeningProps) => (
   <header
     style={{
-      backgroundImage: `url(${sample(stockImages)?.src.large2x})`,
+      backgroundImage: `url(${sample(stockImages)?.large2x})`,
     }}
   >
     <img src={sample(logos)} className="round logo margin-center" />
