@@ -14,6 +14,9 @@
     "start:dev": "tsnd --rs --cls src/index.ts",
     "workers:dev": "tsnd --rs --cls src/worker.ts"
   },
+  "engines": {
+    "node": "18.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/creatorrr/deck.rocks.git"
