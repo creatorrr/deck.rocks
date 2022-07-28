@@ -14,9 +14,12 @@ export const calcMarketSize = async (keywords: string): Promise<number> => {
 
   const doc = nlp(answer);
 
-  const numbers = doc.numbers().get();
-  let lowest: number = _.min(numbers) || 0;
-  lowest = _.max([lowest, 100_000_000]); // Default to min 100 M
+  const numbers = doc.money().get();
+
+  const hundred_mil = 100_000_000;
+  let lowest: number =
+    _.min(numbers.filter((x: number) => x > hundred_mil)) || 0;
+  lowest = _.max([lowest, hundred_mil]); // Default to min 100 M
 
   return lowest;
 };
