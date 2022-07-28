@@ -5,7 +5,7 @@ import type { PromptConfig } from "../utils/createPrompt";
 import { setTimeout } from "node:timers/promises";
 import _ from "lodash";
 
-import { memoize } from "../clients/cache";
+// import { memoize } from "../clients/cache";
 import openai from "../clients/openai";
 import { openaiModels } from "../env";
 import createPrompt from "../utils/createPrompt";
@@ -44,4 +44,5 @@ async function complete(promptConfig: PromptConfig, opts = {}) {
   return choices;
 }
 
-export default memoize(complete);
+export default complete;
+// export default memoize(complete);

@@ -3,7 +3,7 @@
 import _ from "lodash";
 import nlp from "compromise";
 
-import { debug, huggingfaceFinanceModel } from "../env";
+import { huggingfaceFinanceModel } from "../env";
 import complete from "../huggingface/complete";
 
 export const calcMarketSize = async (keywords: string): Promise<number> => {
@@ -15,14 +15,10 @@ export const calcMarketSize = async (keywords: string): Promise<number> => {
   const doc = nlp(answer);
 
   const numbers = doc.numbers().get();
-  let avg: number = _.mean(numbers) || 0;
+  let lowest: number = _.min(numbers) || 0;
+  lowest = _.max([lowest, 100_000_000]); // Default to min 100 M
 
-  if (!avg) {
-    console.error(`${top} is not a valid market size.`);
-    avg = avg || 100_000_000; // Default to 100 M
-  }
-
-  return avg;
+  return lowest;
 };
 
 export default calcMarketSize;

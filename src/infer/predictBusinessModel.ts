@@ -37,7 +37,7 @@ export const predictBusinessModel = async (
     modelFound = _.sample(businessModels);
   }
 
-  return modelFound as any;
+  return _.pick(modelFound, ["name", "description", "examples"]) as any;
 };
 
 export default predictBusinessModel;

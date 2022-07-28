@@ -33,7 +33,7 @@ async function magic(idea: string) {
   debug && console.debug("starting magic");
 
   console.time(`magic-${hash}:phase1`);
-  const [
+  let [
     name,
     tagline,
     problem,
@@ -60,6 +60,9 @@ async function magic(idea: string) {
     predictBusinessModel(idea),
     genLogos(idea, 1)
   );
+
+  name = name.trim();
+  keywords = keywords.trim();
 
   debug && console.debug("phase 1");
   console.timeEnd(`magic-${hash}:phase1`);

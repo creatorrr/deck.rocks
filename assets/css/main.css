@@ -166,8 +166,8 @@ body.format-site > header {
 }
 
 body.format-site > header > img.logo {
-  border: 12px solid white;
-  height: 8em;
+  border: 10px solid white;
+  height: 6em;
   margin: 1.2em auto;
 }
 
@@ -206,8 +206,9 @@ body.format-deck div.reveal.custom {
 }
 
 body.format-deck #opening img.logo {
+  height: 6em;
   padding: 0.1em;
-  border: 0.3em solid white;
+  border: 0.2em solid white;
 }
 
 body.format-deck #opening h2 {

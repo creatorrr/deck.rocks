@@ -1,8 +1,9 @@
 // clients/pexels.ts
 
+import _ from "lodash";
 import { createClient as createPexelsClient } from "pexels";
 
-import { memoize } from "../clients/cache";
+// import { memoize } from "../clients/cache";
 import { pexelsApiKey } from "../env";
 
 const pexels = createPexelsClient(pexelsApiKey || "");
@@ -20,8 +21,8 @@ async function searchImages(
   if ("error" in response) throw new Error(response.error);
 
   const { photos } = response;
-  return photos;
+  return _.map(photos, "src");
 }
 
-// export default searchImages;
-export default memoize(searchImages);
+export default searchImages;
+// export default memoize(searchImages);

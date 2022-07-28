@@ -4,14 +4,16 @@ import { setTimeout } from "node:timers/promises";
 import grammarify from "grammarify";
 import _ from "lodash";
 
-import { memoize } from "../clients/cache";
+// import { memoize } from "../clients/cache";
 import openai from "../clients/openai";
 import { openaiModels } from "../env";
 
 const defaultEditOpts = {
   model: openaiModels.edited,
-  instruction: "Edit the text to make it optimistic and more engaging.",
+  instruction:
+    "Edit the text to remove grammatical mistakes and make it sound more positive.",
   temperature: 0.2,
+  n: 2,
 };
 
 async function edited(input: string, opts = {}) {
@@ -33,5 +35,5 @@ async function edited(input: string, opts = {}) {
   return choices;
 }
 
-// export default edited;
-export default memoize(edited);
+export default edited;
+// export default memoize(edited);

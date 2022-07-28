@@ -4,7 +4,7 @@ import { setTimeout } from "node:timers/promises";
 import fetch from "cross-fetch";
 import _ from "lodash";
 
-import { memoize } from "../clients/cache";
+// import { memoize } from "../clients/cache";
 import { apiKey } from "../env";
 
 export class ContentPolicyError extends Error {
@@ -70,4 +70,5 @@ export async function moderate(input: string): Promise<ModerateResult> {
   };
 }
 
-export default memoize(moderate);
+export default moderate;
+// export default memoize(moderate);

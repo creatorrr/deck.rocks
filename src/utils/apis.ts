@@ -1,6 +1,7 @@
 // utils/apis.ts
 
 import fetch from "cross-fetch";
+import _ from "lodash";
 
 import { OWEN_ENDPOINT, QUOTES_ENDPOINT } from "../env";
 
@@ -8,7 +9,8 @@ export async function getOwenWow() {
   try {
     const response = await fetch(OWEN_ENDPOINT);
     const [wow] = await response.json();
-    return wow;
+
+    return _.pick(wow, ["video"]);
   } catch (e) {
     console.error(e);
 
