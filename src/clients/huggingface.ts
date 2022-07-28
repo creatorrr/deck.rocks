@@ -30,7 +30,7 @@ export async function queryApi(
 
   const results = await response.json();
 
-  debug && console.debug(results);
+  if (debug && pipeline !== "feature-extraction") console.debug(results);
 
   return results;
 }

@@ -3,7 +3,6 @@
 import cyrb53 from "cyrb53";
 import grammarify from "grammarify";
 import Quote from "inspirational-quotes";
-import { startCase } from "lodash";
 
 import { memoize } from "./clients/cache";
 import searchImages from "./clients/pexels";
@@ -17,7 +16,6 @@ import genTopics from "./infer/genTopics";
 import genVerdicts from "./infer/genVerdicts";
 import genJargonExplanation from "./infer/genJargonExplanation";
 import predictBusinessModel from "./infer/predictBusinessModel";
-import edited from "./openai/edited";
 import findSimilarProducts from "./producthunt/findSimilarProducts";
 import { getOwenWow } from "./utils/apis";
 import { awaitAll, withTimeout } from "./utils/async";
@@ -40,7 +38,6 @@ async function magic(idea: string) {
     keywords,
     verdicts,
     rationale,
-    _editedIdea,
     quote,
     owenWow,
     competition,
@@ -53,7 +50,6 @@ async function magic(idea: string) {
     genTopics(idea),
     genVerdicts(idea),
     genJargonExplanation(idea),
-    edited(idea),
     Quote.getQuote(),
     getOwenWow(),
     findSimilarProducts(idea, 1, 3),
@@ -61,21 +57,24 @@ async function magic(idea: string) {
     genLogos(idea, 1)
   );
 
-  name = name.trim();
-  keywords = keywords.trim();
-
   debug && console.debug("phase 1");
   console.timeEnd(`magic-${hash}:phase1`);
 
-  const editedIdea = _editedIdea ? _editedIdea[0].text : idea;
-
   console.time(`magic-${hash}:phase2`);
 
-  const [stockImages, marketSize, howWillWeMakeMoney] = await all(
+  let [stockImages, marketSize, howWillWeMakeMoney] = await all(
     searchImages(keywords),
     calcMarketSize(keywords),
     genHowWillWeMakeMoney(idea, businessModel)
   );
+
+  name = name.trim();
+  keywords = keywords.trim();
+
+  const editedIdea = grammarify.clean(idea);
+  problem = grammarify.clean(problem);
+  rationale = grammarify.clean(rationale);
+  howWillWeMakeMoney = grammarify.clean(howWillWeMakeMoney);
 
   debug && console.debug("phase 2");
   console.timeEnd(`magic-${hash}:phase2`);
@@ -85,12 +84,12 @@ async function magic(idea: string) {
     idea,
     businessModel,
     name,
-    tagline: startCase(tagline),
-    problem: grammarify.clean(problem),
+    tagline,
+    problem,
     keywords,
     verdicts,
-    rationale: grammarify.clean(rationale),
-    howWillWeMakeMoney: grammarify.clean(howWillWeMakeMoney),
+    rationale,
+    howWillWeMakeMoney,
     marketSize,
     logos,
     stockImages,
