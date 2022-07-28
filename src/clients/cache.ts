@@ -6,7 +6,7 @@ import { encode, decode } from "messagepack";
 import _memoize from "node-memoize";
 import hash from "object-hash";
 
-import { defaultRedisTtl } from "../env";
+import { debug, defaultRedisTtl } from "../env";
 import { redisPromise } from "./redis";
 
 // Cache for memoize
@@ -38,6 +38,11 @@ class RedisCache {
     const redis = await redisPromise;
     const encoded: Buffer = Buffer.from(encode(value));
     const { ttl } = this;
+
+    debug &&
+      console.debug(
+        `Storing value in redis with size: ${Buffer.byteLength(encoded)} bytes`
+      );
 
     if (ttl) return redis.set(key, encoded, "EX", ttl);
     else return redis.set(key, encoded);
