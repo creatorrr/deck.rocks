@@ -6,11 +6,18 @@ import FormTips from "../utils/FormTips";
 export interface FormProps {
   prefill: string;
   format: "site" | "deck";
+  idea: string;
   errors?: string[];
   tips?: string[];
 }
 
-export default ({ errors, tips, prefill = "", format = "site" }: FormProps) => (
+export default ({
+  idea = "Picnic box for families that want to spend time out in nature",
+  errors,
+  tips,
+  prefill = "",
+  format = "site",
+}: FormProps) => (
   <>
     <form id="input-form" action="/generate" method="GET">
       {errors && !!errors.length && <FormTips items={errors} type_="error" />}
@@ -18,7 +25,7 @@ export default ({ errors, tips, prefill = "", format = "site" }: FormProps) => (
 
       <textarea
         className="va-top no-border width-100"
-        placeholder={"💡 What's your new idea?"}
+        placeholder={`💡 What's your new idea? e.g. ${idea}`}
         autoFocus={!prefill}
         name="idea"
         minLength={minInputLength}

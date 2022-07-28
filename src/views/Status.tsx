@@ -17,7 +17,7 @@ interface StatusProps extends HeadProps {
 }
 
 export default ({ job_id, hash, job, ...props }: StatusProps) => {
-  let redirectTo, redirectIn;
+  let redirectTo: string, redirectIn: number;
 
   switch (job.status) {
     case JobStatus.READY:
@@ -40,7 +40,12 @@ export default ({ job_id, hash, job, ...props }: StatusProps) => {
     <html>
       <Head {...props} redirectTo={redirectTo} redirectIn={redirectIn} />
       <body>
-        <Controls showForm={false} format={props.format} prefill="" />
+        <Controls
+          idea="Picnic box for families that want to spend time out in nature"
+          showForm={false}
+          format={props.format}
+          prefill=""
+        />
 
         {job.status === JobStatus.FAILED ? (
           <Failed status={job.status} />

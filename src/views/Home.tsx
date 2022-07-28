@@ -13,7 +13,7 @@ interface HomeProps extends HeadProps, FormProps, IntroProps {}
 export default ({ idea, ...props }: HomeProps) => (
   <html>
     <Head {...props} />
-    <Controls {...props} />
+    <Controls idea={idea} {...props} />
     <Intro idea={idea} {...props} />
   </html>
 );

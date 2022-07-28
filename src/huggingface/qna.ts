@@ -33,16 +33,8 @@ export const makeMCInput = ({
     .filter((x) => !!x)
     .join(" ; ");
 
-const defaultOpts = {
-  options: {
-    use_gpu: false,
-    wait_for_model: false,
-  },
-};
-
 export async function answerQuestion(mcq: MCQ, opts = {}) {
   const inputs: string = makeMCInput(mcq);
-  const _opts = { ...defaultOpts, ...opts };
 
-  return await complete(inputs, huggingfaceQnAModel, "$answer$ =", _opts);
+  return await complete(inputs, huggingfaceQnAModel, "$answer$ =", opts);
 }

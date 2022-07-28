@@ -30,7 +30,7 @@ export const port = parseInt(_port || "") || 3000;
 redisUrl = redisUrl || "0.0.0.0:6379";
 export const defaultRedisTtl = parseInt(_defaultRedisTtl || "") || 48 * 3600; // 48 hours
 export const defaultTaskTimeout =
-  parseInt(_defaultTaskTimeout || "") || 40 * 1000; // 40 seconds
+  parseInt(_defaultTaskTimeout || "") || 60 * 1000; // 60 seconds
 
 export const assetsPath = path.join(__dirname, "../assets");
 export const viewsPath = path.join(__dirname, "./views");
@@ -80,6 +80,11 @@ export const SAFETY_MAP = {
 // Frontend config
 export const frontendConfig: { [key: string]: any } = {
   contentSelector: "#content",
+};
+
+export const defaultHuggingfaceOptions = {
+  use_gpu: false,
+  wait_for_model: true,
 };
 
 export const maxGalleryItems: number = 48;

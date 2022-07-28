@@ -1,6 +1,6 @@
 // clients/huggingface.ts
 
-import { debug, huggingfaceToken } from "../env";
+import { debug, defaultHuggingfaceOptions, huggingfaceToken } from "../env";
 
 export interface HasError {
   error?: string;
@@ -10,17 +10,12 @@ export interface HFResponse {
   generated_text?: string;
 }
 
-const defaultOptions = {
-  use_gpu: false,
-  wait_for_model: false,
-};
-
 export async function queryApi(
   data: Record<string, any>,
   model: string,
   pipeline: string | null = null
 ): Promise<HasError | HFResponse[] | number[][]> {
-  data = Object.assign({ options: defaultOptions }, data);
+  data = Object.assign({ options: defaultHuggingfaceOptions }, data);
 
   const endpoint: string =
     pipeline !== null
