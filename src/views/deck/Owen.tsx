@@ -18,7 +18,7 @@ export default ({ owenWow: { video } }: OwenProps) => (
     id="owen"
     data-background-video={video["720p"]}
     data-background-size="cover"
-    data-background-video-loop={true}
+    data-background-video-loop={false}
   >
     <h2 className="inverted-color">
       WOW

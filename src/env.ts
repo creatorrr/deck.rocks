@@ -54,7 +54,6 @@ export const huggingfaceFinanceModel: string = "diwank/bartner";
 export const huggingtweetModels: string[] = [
   "wallstreetbets",
   "realdonaldtrump",
-  "funnyordie",
   "billgates",
   "arstechnica",
   "barackobama",
