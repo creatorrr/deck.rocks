@@ -2,26 +2,41 @@
 
 import type { ExpertsSayProps } from "../deck/ExpertsSay";
 
-export default ({ verdicts }: ExpertsSayProps) => (
-  <>
+import { capitalCase } from "../../utils/text";
+
+export default ({ name, verdicts }: ExpertsSayProps) => (
+  <article id="experts-say">
+    <h2 className="lh2">
+      <img
+        className="small inline-block va-middle margin-rt-sm"
+        src="/img/twitter-blue.png"
+      />
+      People are saying
+    </h2>
     {verdicts.map(({ content, handle }) => (
-      <article id="experts-say" className="bg-cover">
-        <h2 className="lh2">Experts say</h2>
-        <h4>
-          <img
-            src={`https://unavatar.io/twitter/${handle}`}
-            className="tiny round inline-block"
-          />
-          <a
-            href={`https://huggingface.co/huggingtweets/${handle}`}
-            className="va-top std-padding-sm"
-          >
-            @{handle}
-            <sup>(fake)</sup>
-          </a>
-          <blockquote className="no-margin">{content}</blockquote>
-        </h4>
-      </article>
+      <p>
+        <blockquote className="no-margin">
+          <strong>
+            “... {content} #{capitalCase(name)}”
+          </strong>
+          <p>
+            <img
+              src={`https://unavatar.io/twitter/${handle}`}
+              className="tiny round inline-block"
+            />
+            <cite>
+              <a
+                href={`https://huggingface.co/huggingtweets/${handle}`}
+                className="va-top std-padding-sm"
+              >
+                @{handle}
+                <sup>🤖</sup>
+              </a>
+            </cite>
+          </p>
+        </blockquote>
+        <hr />
+      </p>
     ))}
-  </>
+  </article>
 );

@@ -4,12 +4,12 @@ import { sample } from "lodash";
 import { gradients } from "../../data/lists";
 
 export interface WhatWeDoProps {
-  editedIdea: string;
+  idea: string;
 }
 
-export default ({ editedIdea }: WhatWeDoProps) => (
+export default ({ idea }: WhatWeDoProps) => (
   <section data-background={sample(gradients)}>
     <h2>What we do</h2>
-    <h4>{editedIdea}</h4>
+    <h4>{idea}</h4>
   </section>
 );

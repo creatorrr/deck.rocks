@@ -8,6 +8,7 @@ import { sample } from "lodash";
 export interface ExpertsSayProps {
   verdicts: Verdict[];
   stockImages: StockImage[];
+  name: string;
 }
 
 export default ({ stockImages, verdicts }: ExpertsSayProps) => (

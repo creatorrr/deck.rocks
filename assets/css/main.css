@@ -11,6 +11,14 @@
   width: 7.5%;
 }
 
+.small {
+  width: 10%;
+}
+
+.margin-rt-sm {
+  margin-right: 0.25em;
+}
+
 .std-padding-sm {
   padding: 0.2em 0.4em;
 }
@@ -30,6 +38,35 @@ a > sup {
 
 .no-margin {
   margin: 0;
+}
+
+.chart {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(100, 1fr) 1.4rem;
+  grid-row-gap: 12px;
+}
+
+.chart .bar {
+  grid-column-start: 1;
+  grid-column-end: var(--value, 2);
+  background: var(--bg-color, blue);
+  padding: 0.5em 1em;
+  color: white;
+  line-height: 2.5;
+  font-size: 1.5em;
+}
+
+.chart .bar > label.value {
+  float: right;
+  font-weight: bold;
+}
+
+.chart .bar > strong {
+  font-size: 16px;
+  margin-right: -15em;
+  margin-top: 2.5em;
+  display: inline-block;
 }
 
 .margin-1 {
@@ -79,6 +116,10 @@ a > sup {
 
 .block {
   display: block;
+}
+
+.va-middle {
+  vertical-align: middle;
 }
 
 .va-top {
@@ -134,7 +175,7 @@ a > sup {
 
 .inverted-color {
   color: white !important;
-  text-shadow: 1px 2px 3px grey !important;
+  text-shadow: 1px 2px 3px black !important;
 }
 
 .item-grid {
@@ -167,7 +208,7 @@ body.format-site > header {
 
 body.format-site > header > img.logo {
   border: 10px solid white;
-  height: 6em;
+  height: 12em;
   margin: 1.2em auto;
 }
 

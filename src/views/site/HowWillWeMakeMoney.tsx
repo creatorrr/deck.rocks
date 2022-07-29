@@ -14,5 +14,22 @@ export default ({
     <p>{howWillWeMakeMoney}</p>
 
     <blockquote>{businessModel.description}</blockquote>
+    <hr />
+    <p>
+      <strong>Examples:</strong>{" "}
+      {businessModel.examples
+        .map((example) => example.split(" ")[0])
+        .map((exampleName) => (
+          <>
+            <a
+              href={`https://www.google.com/search?q=${encodeURIComponent(
+                exampleName + " business model"
+              )}`}
+            >
+              {exampleName}
+            </a>{" "}
+          </>
+        ))}
+    </p>
   </article>
 );

@@ -22,12 +22,12 @@ $(() => {
     video.addEventListener(
       "ended",
       () => {
-        console.log(`Video played: (${iterations[idx]}) times`);
-
-        if (iterations[idx] < 5) {
+        if (iterations[idx] < 3) {
           video.currentTime = 0;
           video.play();
+
           iterations[idx] += 1;
+          console.log(`Video played: (${iterations[idx]}) times`);
         }
       },
       false

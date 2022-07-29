@@ -8,6 +8,7 @@ export interface HowWillWeMakeMoneyProps {
   businessModel: {
     name?: string;
     description?: string;
+    examples?: string[];
   };
 }
 

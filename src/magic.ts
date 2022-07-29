@@ -71,7 +71,6 @@ async function magic(idea: string) {
   name = name.trim();
   keywords = keywords.trim();
 
-  const editedIdea = grammarify.clean(idea);
   problem = grammarify.clean(problem);
   rationale = grammarify.clean(rationale);
   howWillWeMakeMoney = grammarify.clean(howWillWeMakeMoney);
@@ -80,7 +79,6 @@ async function magic(idea: string) {
   console.timeEnd(`magic-${hash}:phase2`);
 
   const result = {
-    editedIdea,
     idea,
     businessModel,
     name,

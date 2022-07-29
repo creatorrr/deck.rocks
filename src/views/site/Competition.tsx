@@ -7,7 +7,7 @@ export default ({ competition }: CompetitionProps) =>
     <></>
   ) : (
     <section>
-      <h2>Competition</h2>
+      <h2>Similar companies</h2>
 
       <h4>
         <div className="align-center item-grid gap-6 small-80">
@@ -30,5 +30,13 @@ export default ({ competition }: CompetitionProps) =>
           ))}
         </div>
       </h4>
+      <hr />
+      <p>
+        <cite>
+          <em>Note: </em>
+          While, not all of these do exactly the same thing as us, they still
+          deserve mention here because they serve similar target users.
+        </cite>
+      </p>
     </section>
   );
