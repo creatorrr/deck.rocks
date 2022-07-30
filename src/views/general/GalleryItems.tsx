@@ -26,7 +26,9 @@ export default ({ ideas }: GalleryItemsProps) => (
           {example.name}
         </a>
         <p>
-          <small> {example.tagline} </small>
+          <abbr title={example.idea}>
+            <small> {example.tagline} </small>
+          </abbr>
         </p>
       </div>
     ))}
