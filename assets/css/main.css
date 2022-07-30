@@ -85,12 +85,12 @@ a > sup {
 }
 
 .bg-illustration {
-  background-image: linear-gradient(white, white), var(--illustration);
+  background-image: linear-gradient(var(--bg), var(--bg)), var(--illustration);
   background-size: 10em;
   background-repeat: no-repeat;
   background-position-x: 97%;
   background-position-y: 97%;
-  background-blend-mode: color;
+  background-blend-mode: multiply;
 }
 
 .no-margin {
