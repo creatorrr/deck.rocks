@@ -3,6 +3,7 @@
 import Head from "./general/Head";
 import Controls from "./Controls";
 import Site from "./site";
+import Footer from "./Footer";
 
 import type { FormProps } from "./general/Form";
 import type { HeadProps } from "./general/Head";
@@ -18,6 +19,7 @@ export default ({ nocontrols, prefill, ...props }: GeneratedSiteProps) => (
     <body className="format-site">
       {nocontrols || <Controls {...props} prefill={prefill} />}
       <Site {...props} />
+      <Footer />
     </body>
   </html>
 );

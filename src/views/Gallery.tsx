@@ -7,6 +7,7 @@ import type { GalleryItemsProps } from "./general/GalleryItems";
 import Head from "./general/Head";
 import GalleryItems from "./general/GalleryItems";
 import Controls from "./Controls";
+import Footer from "./Footer";
 
 interface GalleryProps extends HeadProps, FormProps, GalleryItemsProps {}
 
@@ -20,5 +21,6 @@ export default ({ ...props }: GalleryProps) => (
       <hr />
       <GalleryItems {...props} />
     </section>
+    <Footer />
   </html>
 );

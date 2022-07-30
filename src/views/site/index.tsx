@@ -12,7 +12,6 @@ import type { OwenProps } from "../deck/Owen";
 import type { SolutionProps } from "./Solution";
 
 import Header from "./Header";
-import Footer from "./Footer";
 import WhatWeDo from "./WhatWeDo";
 import Problem from "./Problem";
 import Solution from "./Solution";
@@ -49,7 +48,5 @@ export default (props: SiteProps) => (
       <Owen {...props} />
       <ThankYou {...props} />
     </main>
-
-    <Footer />
   </>
 );

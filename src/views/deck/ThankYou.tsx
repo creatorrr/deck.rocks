@@ -20,6 +20,7 @@ export default () => (
           href="https://github.com/creatorrr/deck.rocks"
           data-icon="octicon-star"
           data-show-count="true"
+          data-size="large"
         >
           Star
         </a>
@@ -30,12 +31,13 @@ export default () => (
           className="github-button"
           href="https://github.com/sponsors/creatorrr"
           data-icon="octicon-heart"
+          data-size="large"
         >
           Sponsor
         </a>
       </li>
     </ul>
     <hr />
-    <Illustration name="drink" size="small" />
+    <Illustration name="mention" size="small" />
   </section>
 );

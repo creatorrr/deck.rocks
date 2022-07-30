@@ -46,26 +46,28 @@ const revealOpts = {
 };
 
 export default (props: DeckProps) => (
-  <div className="reveal custom ingrid">
-    <div className="slides">
-      <Opening {...props} />
-      <WhatWeDo {...props} />
-      <Problem {...props} />
-      <Solution {...props} />
-      <MarketSize {...props} />
-      <HowWillWeMakeMoney {...props} />
-      <Competition {...props} />
-      <ExpertsSay {...props} />
-      <Owen {...props} />
-      <ThankYou {...props} />
-    </div>
+  <>
+    <div className="reveal custom ingrid">
+      <div className="slides">
+        <Opening {...props} />
+        <WhatWeDo {...props} />
+        <Problem {...props} />
+        <Solution {...props} />
+        <MarketSize {...props} />
+        <HowWillWeMakeMoney {...props} />
+        <Competition {...props} />
+        <ExpertsSay {...props} />
+        <Owen {...props} />
+        <ThankYou />
+      </div>
 
-    <script
-      dangerouslySetInnerHTML={{
-        __html: `typeof(Reveal) !== "undefined" && Reveal.initialize(${JSON.stringify(
-          revealOpts
-        )});`,
-      }}
-    ></script>
-  </div>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `typeof(Reveal) !== "undefined" && Reveal.initialize(${JSON.stringify(
+            revealOpts
+          )});`,
+        }}
+      ></script>
+    </div>
+  </>
 );

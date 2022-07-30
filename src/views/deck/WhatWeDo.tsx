@@ -14,8 +14,6 @@ export default ({ idea }: WhatWeDoProps) => (
   <section data-background={sample(gradients)}>
     <h2>What we do</h2>
     <h4>{idea}</h4>
-    <br />
-    <hr />
-    <Illustration name="welcome" />
+    <Illustration name="drink" size="small" />
   </section>
 );

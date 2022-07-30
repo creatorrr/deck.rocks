@@ -11,6 +11,6 @@ export default ({ problem }: ProblemProps) => (
     <h2>Problem</h2>
     <h4>{problem}</h4>
     <br />
-    <Illustration name="cat" />
+    <Illustration name="analytics" />
   </section>
 );

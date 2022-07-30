@@ -3,6 +3,7 @@
 import Head from "./general/Head";
 import Controls from "./Controls";
 import Deck from "./deck";
+import Footer from "./Footer";
 
 import type { FormProps } from "./general/Form";
 import type { HeadProps } from "./general/Head";
@@ -22,6 +23,8 @@ export default ({ nocontrols, prefill, ...props }: GeneratedDeckProps) => (
     <body className="format-deck">
       {nocontrols || <Controls {...props} prefill={prefill} />}
       <Deck {...props} />
+
+      <Footer slideInstructions={true} />
     </body>
   </html>
 );
