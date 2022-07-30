@@ -7,7 +7,7 @@ export interface ThankYouProps {
 }
 
 export default ({ idea }: ThankYouProps) => (
-  <article className="bg-illustration" style={illustration("space")}>
+  <section className="bg-illustration" style={illustration("space")}>
     <h2>Thank you!</h2>
     <p>
       I hope you enjoyed this project! If you liked{" "}
@@ -51,5 +51,5 @@ export default ({ idea }: ThankYouProps) => (
         as input.
       </small>
     </p>
-  </article>
+  </section>
 );
