@@ -45,7 +45,7 @@ export default (props: SiteProps) => (
       <HowWillWeMakeMoney {...props} />
       <Competition {...props} />
       <ExpertsSay {...props} />
-      <Owen {...props} />
+      {/* <Owen {...props} /> */}
       <ThankYou {...props} />
     </main>
   </>

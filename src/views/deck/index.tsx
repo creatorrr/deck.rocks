@@ -57,7 +57,7 @@ export default (props: DeckProps) => (
         <HowWillWeMakeMoney {...props} />
         <Competition {...props} />
         <ExpertsSay {...props} />
-        <Owen {...props} />
+        {/* <Owen {...props} /> */}
         <ThankYou />
       </div>
 

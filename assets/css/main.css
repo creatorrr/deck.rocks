@@ -93,6 +93,12 @@ a > sup {
   background-blend-mode: multiply;
 }
 
+@media (prefers-color-scheme: dark) {
+  .bg-illustration {
+    background-image: linear-gradient(#212121, #212121), var(--illustration) !important;
+  }
+}
+
 .no-margin {
   margin: 0 auto !important;
 }
