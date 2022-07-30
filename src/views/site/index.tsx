@@ -9,7 +9,6 @@ import type { HowWillWeMakeMoneyProps } from "../deck/HowWillWeMakeMoney";
 import type { ExpertsSayProps } from "../deck/ExpertsSay";
 import type { OwenProps } from "../deck/Owen";
 
-import type { FooterProps } from "./Footer";
 import type { SolutionProps } from "./Solution";
 
 import Header from "./Header";
@@ -52,6 +51,6 @@ export default (props: SiteProps) => (
       <ThankYou {...props} />
     </main>
 
-    <Footer {...props} />
+    <Footer />
   </>
 );
