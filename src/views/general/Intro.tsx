@@ -13,7 +13,7 @@ export interface IntroProps {
 export default ({ numIdeas = 0, idea }: IntroProps) => (
   <section id="intro">
     <p>
-      hi there! <br />
+      hi! <br />
       <br />
       this is a fun side project for generating pitch decks using GPT-3, (the{" "}
       <a
@@ -26,15 +26,11 @@ export default ({ numIdeas = 0, idea }: IntroProps) => (
     </p>
     <ol>
       <li>
-        describe your{" "}
-        <i>
-          {randomSuperb()} idea <sup>TM</sup>
-        </i>{" "}
-        in 1-2 sentences
+        describe your <i>{randomSuperb()}™</i> idea in 1-2 sentences
       </li>
-      <li>get a deck tailor-made just for you. et voila! 😉 </li>
+      <li>et voila! get a deck tailor-made for you. 😉 </li>
       <li>
-        ...here's an{" "}
+        here's an{" "}
         <a
           href={`/generate?idea=${encodeURIComponent(
             idea || ""
@@ -43,9 +39,9 @@ export default ({ numIdeas = 0, idea }: IntroProps) => (
           example
         </a>
         .{" "}
-        {numIdeas > 3 && (
+        {numIdeas > 0 && (
           <span>
-            you can also browse the <a href="/gallery">gallery</a>.
+            browse the gallery <a href="/gallery">here</a>.
           </span>
         )}
       </li>
@@ -54,13 +50,13 @@ export default ({ numIdeas = 0, idea }: IntroProps) => (
       — <a href="https://diwank.name">Diwank</a> <br />
     </p>
     <p className="small-80">
-      p.s. you can check out the source code{" "}
+      p.s. you can check out the{" "}
       <a href="https://github.com/creatorrr/deck.rocks" target="_blank">
-        here
+        github repo
       </a>{" "}
-      (original{" "}
+      (or the original{" "}
       <a href="https://runkit.com/diwank/startup-deck-gen" target="_blank">
-        notebook
+        runkit notebook
       </a>
       ).
     </p>

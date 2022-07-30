@@ -8,7 +8,7 @@ export default () => (
       src="https://giphy.com/embed/TejmLnMKgnmPInMQjV"
     ></iframe>
 
-    <code className="overlay block align-center inverted-color">
+    <code className="overlay block margin-center inverted-color">
       coz decks rock...
     </code>
   </>

@@ -4,7 +4,7 @@ import { thanku } from "../../data/lists";
 
 export default () => (
   <>
-    <blockquote> ♥ heartfelt thanks to ♥ </blockquote>
+    <blockquote> heartfelt thanks to: </blockquote>
 
     <ul className="item-grid-2">
       {thanku.map(([url, name], i) => (
