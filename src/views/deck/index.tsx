@@ -20,7 +20,7 @@ import Competition from "./Competition";
 import ExpertsSay from "./ExpertsSay";
 import Owen from "./Owen";
 import Opening from "./Opening";
-/* import Quote from "./Quote"; */
+import ThankYou from "./ThankYou";
 
 export interface DeckProps
   extends OpeningProps,
@@ -56,8 +56,8 @@ export default (props: DeckProps) => (
       <HowWillWeMakeMoney {...props} />
       <Competition {...props} />
       <ExpertsSay {...props} />
-      {/* <Quote {...props} /> */}
       <Owen {...props} />
+      <ThankYou {...props} />
     </div>
 
     <script

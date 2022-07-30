@@ -27,8 +27,8 @@ export default ({ name, tagline, logos, stockImages }: OpeningProps) => (
   >
     <img src={sample(logos)} className="round logo margin-center" />
 
-    <h2 className="inverted-color">{name}</h2>
+    <h2 className="inverted-color margin-center">{name}</h2>
 
-    <h4 className="inverted-color">{tagline}</h4>
+    <h4 className="inverted-color margin-center">{tagline}</h4>
   </section>
 );

@@ -18,6 +18,7 @@ export default ({ name, verdicts }: ExpertsSayProps) => (
       />
       People are saying
     </h2>
+
     {verdicts.map(({ content, handle }, idx: number) => (
       <p key={idx}>
         <blockquote className="no-margin">

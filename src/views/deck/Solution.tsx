@@ -15,8 +15,8 @@ export default ({ stockImages, rationale }: SolutionProps) => (
     data-background-size="cover"
     data-background-repeat="no-repeat"
   >
-    <h2 className="inverted-color">Solution</h2>
-    <hr />
+    <h2 className="inverted-color margin-center">Solution</h2>
+    <br />
     <aside className="small-60 bg-dark inverted-color">{rationale}</aside>
   </section>
 );

@@ -3,7 +3,7 @@
 import type { StockImage } from "./Opening";
 import type { Verdict } from "../../infer/genVerdicts";
 
-import { sample } from "lodash";
+import { capitalCase } from "../../utils/text";
 
 export interface ExpertsSayProps {
   verdicts: Verdict[];
@@ -11,33 +11,33 @@ export interface ExpertsSayProps {
   name: string;
 }
 
-export default ({ stockImages, verdicts }: ExpertsSayProps) => (
-  <>
-    {verdicts.map(({ content, handle }) => (
-      <section
-        id="experts-say"
-        data-background-image={sample(stockImages)?.large2x}
-        data-background-size="cover"
-        data-background-repeat="no-repeat"
-      >
-        <h2 className="lh2 inverted-color">Experts say</h2>
-        <p>
-          <aside className="no-margin inverted-color bg-dark small-80">
-            {content}
-          </aside>
-          <a
-            href={`https://huggingface.co/huggingtweets/${handle}`}
-            className="no-margin inverted-color bg-dark std-padding-sm small-60"
-          >
-            <img
-              src={`https://unavatar.io/twitter/${handle}`}
-              className="tiny round inline-block"
-            />
+export default ({ name, verdicts }: ExpertsSayProps) => (
+  <section id="experts-say">
+    <h2 className="lh2">
+      <img
+        className="tiny inline-block va-middle margin-rt-md illustration"
+        src="/img/twitter-blue.png"
+      />
+      People are saying
+    </h2>
+
+    {verdicts.map(({ content, handle }, idx: number) => (
+      <blockquote className="align-left std-padding-md" key={idx}>
+        <span className="small-40">
+          “... {content} <mark>#{capitalCase(name)}”</mark>
+        </span>
+        <br />
+        <a href={`https://huggingface.co/huggingtweets/${handle}`}>
+          <img
+            src={`https://unavatar.io/twitter/${handle}`}
+            className="x-tiny round inline-block va-middle"
+          />
+          <cite className="std-padding-sm">
             @{handle}
-            <sup>(fake)</sup>
-          </a>
-        </p>
-      </section>
+            <sup>🤖</sup>
+          </cite>
+        </a>
+      </blockquote>
     ))}
-  </>
+  </section>
 );

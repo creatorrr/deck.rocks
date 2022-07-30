@@ -32,9 +32,7 @@ export default ({ numIdeas = 0, idea }: IntroProps) => (
       <li>
         here's an{" "}
         <a
-          href={`/generate?idea=${encodeURIComponent(
-            idea || ""
-          )}&amp;format=site`}
+          href={`/generate?idea=${encodeURIComponent(idea || "")}&format=site`}
         >
           example
         </a>

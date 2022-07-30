@@ -15,7 +15,7 @@ export default ({ ideas }: GalleryItemsProps) => (
         <a
           href={`/generate?idea=${encodeURIComponent(
             example.idea || ""
-          )}&amp;format=site`}
+          )}&format=site`}
         >
           <img
             src={_.sample(example.logos)}

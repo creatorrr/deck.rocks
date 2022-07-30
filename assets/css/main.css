@@ -1,3 +1,4 @@
+*,
 p,
 h1,
 h2,
@@ -20,6 +21,10 @@ ol {
   display: inline-block !important;
 }
 
+.x-tiny {
+  width: 5%;
+}
+
 .tiny {
   width: 7.5%;
 }
@@ -28,12 +33,42 @@ ol {
   width: 10%;
 }
 
+.medium {
+  width: 20%;
+}
+
+.large {
+  width: 33%;
+}
+
+.illustration {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.img-grayscale {
+  filter: grayscale(1) opacity(0.66);
+}
+
+.img-grayscale-inverted {
+  filter: grayscale(1) opacity(0.75) invert(1);
+}
+
 .margin-rt-sm {
-  margin-right: 0.25em;
+  margin-right: 0.25em !important;
+}
+
+.margin-rt-md {
+  margin-right: 0.5em !important;
+}
+
+.margin-rt-lg {
+  margin-right: 1em !important;
 }
 
 .std-padding-sm {
-  padding: 0.2em 0.4em;
+  padding: 0.2em 0.4em !important;
 }
 
 a > sup {
@@ -42,11 +77,11 @@ a > sup {
 }
 
 .std-padding-md {
-  padding: 0.4em 0.8em;
+  padding: 0.4em 0.8em !important;
 }
 
 .std-padding-lg {
-  padding: 1em 2em;
+  padding: 1em 2em !important;
 }
 
 .bg-illustration {
@@ -59,7 +94,7 @@ a > sup {
 }
 
 .no-margin {
-  margin: 0;
+  margin: 0 auto !important;
 }
 
 .chart {
@@ -79,6 +114,16 @@ a > sup {
   font-size: 1.5em;
 }
 
+body.format-deck .chart .bar {
+  grid-column-start: 1;
+  grid-column-end: var(--value, 2);
+  background: var(--bg-color, blue);
+  padding: 0.25em 0.5em;
+  color: white;
+  line-height: 1.2;
+  font-size: 0.8em;
+}
+
 .chart .bar > label.value {
   float: right;
   font-weight: bold;
@@ -89,6 +134,14 @@ a > sup {
   margin-right: -15em;
   margin-top: 2.5em;
   display: inline-block;
+}
+
+body.format-deck .chart .bar > strong {
+  font-size: 16px;
+  margin-right: 0;
+  margin: 1em auto;
+  display: inline-block;
+  float: left;
 }
 
 .margin-1 {
@@ -160,6 +213,10 @@ a > sup {
   line-height: 2em;
 }
 
+.align-left {
+  text-align: left !important;
+}
+
 .align-center {
   text-align: center !important;
 }
@@ -227,6 +284,10 @@ a > sup {
   .gap-6 {
     gap: 3em;
   }
+}
+
+.small-40 {
+  font-size: 40%;
 }
 
 .small-60 {
@@ -306,8 +367,7 @@ body.format-deck #opening img.logo {
 }
 
 body.format-deck #opening h2 {
-  padding: 0.2em 0;
-  border: 4px solid white;
+  padding: 0 0.2em;
 }
 
 body.format-deck #market-size h3 {

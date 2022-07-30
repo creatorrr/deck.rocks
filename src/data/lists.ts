@@ -1,10 +1,7 @@
 // data/lists.ts
 
 export const revealThemes = [
-  ...["moon", "solarized"].map(
-    (name) =>
-      `https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/${name}.min.css`
-  ),
+  "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/solarized.min.css",
   "/css/metropolis.css",
   "https://cdn.jsdelivr.net/gh/puzzle/pitc-revealjs-theme/theme/puzzle.css",
 ];
@@ -12,7 +9,6 @@ export const revealThemes = [
 export const gradients = [
   `linear-gradient(to right top, #FDBB2D 0%, #22C1C3)`,
   `linear-gradient(to right top, #00C9FF 0%, #92FE9D 100%)`,
-  `linear-gradient(to left bottom, #d53369 0%, #daae51 100%)`,
 ];
 
 export const thanku = [

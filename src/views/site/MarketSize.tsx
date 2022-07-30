@@ -5,18 +5,9 @@ import type { MarketSizeProps } from "../deck/MarketSize";
 import _ from "lodash";
 import millify from "millify";
 
-import gdps from "../../data/gdps";
+import { getComparableGDP } from "../../utils/businessModel";
 import { illustration } from "../../utils/img";
 import BarChart from "../utils/BarChart";
-
-const one_mil: number = 1_000_000;
-
-const getComparableGDP = (marketSize: number): [string, number] =>
-  _(gdps)
-    .entries()
-    .map(([entity, gdp]) => [entity + "'s GDP", gdp * one_mil])
-    .filter(([_entity, gdp]) => gdp < marketSize)
-    .maxBy(1) as any;
 
 export default ({ marketSize, keywords }: MarketSizeProps) => (
   <section

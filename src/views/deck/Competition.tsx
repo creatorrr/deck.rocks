@@ -18,10 +18,10 @@ export default ({ competition }: CompetitionProps) => {
     <></>
   ) : (
     <section>
-      <h2>Competition</h2>
+      <h2>Similar Companies</h2>
 
       <h4>
-        <div className="align-center item-grid gap-6 small-80">
+        <div className="align-center item-grid gap-6 small-60">
           {competition.map((c, i) => (
             <div key={i}>
               <a href={c.url}>
