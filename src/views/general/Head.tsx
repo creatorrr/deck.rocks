@@ -53,6 +53,7 @@ export default ({
     )}
     <link rel="stylesheet" href="/css/main.css" />
 
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cash/8.1.1/cash.min.js"></script>
 
     <script

@@ -22,6 +22,7 @@ import HowWillWeMakeMoney from "./HowWillWeMakeMoney";
 import Competition from "./Competition";
 import ExpertsSay from "./ExpertsSay";
 import Owen from "./Owen";
+import ThankYou from "./ThankYou";
 
 export interface SiteProps
   extends OpeningProps,
@@ -48,6 +49,7 @@ export default (props: SiteProps) => (
       <Competition {...props} />
       <ExpertsSay {...props} />
       <Owen {...props} />
+      <ThankYou {...props} />
     </main>
 
     <Footer {...props} />

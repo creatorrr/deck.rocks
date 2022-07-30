@@ -14,6 +14,11 @@ export default ({ ...props }: GalleryProps) => (
   <html>
     <Head {...props} />
     <Controls {...props} />
-    <GalleryItems {...props} />
+    <section id="gallery">
+      <h2>Gallery</h2>
+      <p>Some of the ideas people generated so far</p>
+      <hr />
+      <GalleryItems {...props} />
+    </section>
   </html>
 );

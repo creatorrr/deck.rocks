@@ -12,8 +12,9 @@ export interface BarChartProps {
 
 export default ({ data, valueFormatter }: BarChartProps) => (
   <div className="chart">
-    {data.map(([label, value]: [string, number]) => (
+    {data.map(([label, value]: [string, number], idx: number) => (
       <div
+        key={idx}
         className="bar"
         style={
           {

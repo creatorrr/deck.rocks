@@ -17,5 +17,8 @@ export default ({ stockImages, problem }: SiteProblemProps) => (
   >
     <h2 className="inverted-color">Problem</h2>
     <h4 className="inverted-color">{problem}</h4>
+    <br />
+    <hr />
+    <br />
   </article>
 );

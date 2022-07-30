@@ -10,9 +10,7 @@ export default ({ name, tagline, logos, stockImages }: OpeningProps) => (
     }}
   >
     <img src={sample(logos)} className="round logo margin-center" />
-
-    <h1 className="lh2 bg-white">{name}</h1>
-
-    <h2 className="lh2 bg-white">{tagline}</h2>
+    <h1 className="lh2 inverted-color margin-center inline-block">{name}</h1>
+    <h2 className="lh2 inverted-color margin-center">{tagline}</h2>
   </header>
 );

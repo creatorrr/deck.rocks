@@ -5,6 +5,7 @@ import { gradients } from "../../data/lists";
 
 export interface WhatWeDoProps {
   idea: string;
+  name: string;
 }
 
 export default ({ idea }: WhatWeDoProps) => (

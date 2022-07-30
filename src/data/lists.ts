@@ -24,4 +24,5 @@ export const thanku = [
   ["http://owen-wilson-wow-api.herokuapp.com", "Owen Wilson WOW API"],
   ["https://simplecss.org/", "simple.css"],
   ["https://revealjs.com/", "reveal.js"],
+  ["https://undraw.co", "Katerina Limpitsouni for illustrations"],
 ];

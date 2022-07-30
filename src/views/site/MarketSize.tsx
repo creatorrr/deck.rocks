@@ -6,6 +6,7 @@ import _ from "lodash";
 import millify from "millify";
 
 import gdps from "../../data/gdps";
+import { illustration } from "../../utils/img";
 import BarChart from "../utils/BarChart";
 
 const one_mil: number = 1_000_000;
@@ -18,7 +19,11 @@ const getComparableGDP = (marketSize: number): [string, number] =>
     .maxBy(1) as any;
 
 export default ({ marketSize, keywords }: MarketSizeProps) => (
-  <section id="market-size">
+  <section
+    id="market-size"
+    className="bg-illustration"
+    style={illustration("growth")}
+  >
     <h2>Market Size</h2>
     <BarChart
       data={_([
@@ -30,6 +35,7 @@ export default ({ marketSize, keywords }: MarketSizeProps) => (
         .value()}
       valueFormatter={(val: number) => `$${millify(val, { precision: 2 })}`}
     />
+    <br />
     <br />
 
     <p>
@@ -43,6 +49,7 @@ export default ({ marketSize, keywords }: MarketSizeProps) => (
       </b>{" "}
       is at the moment!
     </p>
+    <br />
     <hr />
     <cite className="small">
       As opposed to{" "}

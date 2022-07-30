@@ -1,12 +1,13 @@
 // views/site/Competition.tsx
 
+import { illustration } from "../../utils/img";
 import { CompetitionProps } from "../deck/Competition";
 
 export default ({ competition }: CompetitionProps) =>
   competition.length === 0 ? (
     <></>
   ) : (
-    <section>
+    <section className="bg-illustration" style={illustration("number_one")}>
       <h2>Similar companies</h2>
 
       <h4>
@@ -31,7 +32,7 @@ export default ({ competition }: CompetitionProps) =>
         </div>
       </h4>
       <hr />
-      <p>
+      <p style={{ width: "80%" }}>
         <cite>
           <em>Note: </em>
           While, not all of these do exactly the same thing as us, they still

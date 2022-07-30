@@ -2,10 +2,15 @@
 
 import type { ExpertsSayProps } from "../deck/ExpertsSay";
 
+import { illustration } from "../../utils/img";
 import { capitalCase } from "../../utils/text";
 
 export default ({ name, verdicts }: ExpertsSayProps) => (
-  <article id="experts-say">
+  <article
+    id="experts-say"
+    className="bg-illustration"
+    style={illustration("bird")}
+  >
     <h2 className="lh2">
       <img
         className="small inline-block va-middle margin-rt-sm"
@@ -13,8 +18,8 @@ export default ({ name, verdicts }: ExpertsSayProps) => (
       />
       People are saying
     </h2>
-    {verdicts.map(({ content, handle }) => (
-      <p>
+    {verdicts.map(({ content, handle }, idx: number) => (
+      <p key={idx}>
         <blockquote className="no-margin">
           <strong>
             “... {content} #{capitalCase(name)}”
@@ -35,6 +40,7 @@ export default ({ name, verdicts }: ExpertsSayProps) => (
             </cite>
           </p>
         </blockquote>
+        <br />
         <hr />
       </p>
     ))}

@@ -22,7 +22,7 @@ $(() => {
     video.addEventListener(
       "ended",
       () => {
-        if (iterations[idx] < 3) {
+        if (iterations[idx] < 2) {
           video.currentTime = 0;
           video.play();
 
