@@ -25,7 +25,6 @@ import ThankYou from "./ThankYou";
 
 export interface SiteProps
   extends OpeningProps,
-    FooterProps,
     WhatWeDoProps,
     ProblemProps,
     SolutionProps,

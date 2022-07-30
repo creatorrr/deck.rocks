@@ -34,7 +34,7 @@ export default ({ numIdeas = 0, idea }: IntroProps) => (
         <a
           href={`/generate?idea=${encodeURIComponent(
             idea || ""
-          )}&amp;format=deck`}
+          )}&amp;format=site`}
         >
           example
         </a>

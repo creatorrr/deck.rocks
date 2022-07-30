@@ -34,9 +34,9 @@ export default ({ competition }: CompetitionProps) =>
       <hr />
       <p style={{ width: "80%" }}>
         <cite>
-          <em>Note: </em>
-          While, not all of these do exactly the same thing as us, they still
-          deserve mention here because they serve similar target users.
+          <em>Note</em>: While not all of these do exactly the same thing as us,
+          they still deserve mention here because they serve similar target
+          users.
         </cite>
       </p>
     </section>

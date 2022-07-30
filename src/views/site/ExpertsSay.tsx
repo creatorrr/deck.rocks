@@ -22,7 +22,7 @@ export default ({ name, verdicts }: ExpertsSayProps) => (
       <p key={idx}>
         <blockquote className="no-margin">
           <strong>
-            “... {content} #{capitalCase(name)}”
+            “... {content} <mark>#{capitalCase(name)}”</mark>
           </strong>
           <p>
             <img
