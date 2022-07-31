@@ -3,6 +3,7 @@
 import { random as randomSuperb } from "superb";
 
 import Giphy from "../utils/Giphy";
+import ProductHunt from "../utils/ProductHunt";
 import Thanks from "../utils/Thanks";
 
 export interface IntroProps {
@@ -12,6 +13,10 @@ export interface IntroProps {
 
 export default ({ numIdeas = 0, idea }: IntroProps) => (
   <section id="intro">
+    <p className="align-center">
+      <ProductHunt />
+    </p>
+
     <p>
       hi! <br />
       <br />

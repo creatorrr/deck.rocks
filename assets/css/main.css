@@ -435,6 +435,16 @@ article {
   list-style: none;
 }
 
+#gallery > h2 {
+  position: relative;
+  top: -1em;
+}
+
+#gallery > h2 + p {
+  position: relative;
+  top: -2em;
+}
+
 iframe#giphy {
   width: -webkit-fill-available;
   pointer-events: none;

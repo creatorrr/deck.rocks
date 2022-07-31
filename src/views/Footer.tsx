@@ -1,5 +1,7 @@
 // views/deck/Footer.tsx
 
+import ProductHunt from "./utils/ProductHunt";
+
 export interface FooterProps {
   slideInstructions?: boolean;
 }
@@ -19,6 +21,16 @@ export default ({ slideInstructions = false }: FooterProps) => (
       <a href="/">Home</a> <a href="/gallery">Gallery</a>{" "}
       <a href="//github.com/creatorrr/deck.rocks">Github</a>{" "}
       <a href="//diwank.name">Author</a>{" "}
+      <ProductHunt
+        theme="neutral"
+        imgStyle={{
+          width: "125px",
+          height: "27px",
+          verticalAlign: "bottom",
+          float: "right",
+          marginLeft: "-125px",
+        }}
+      />
     </nav>
   </footer>
 );
