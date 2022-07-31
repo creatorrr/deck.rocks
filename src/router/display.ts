@@ -9,7 +9,12 @@ import * as Koa from "koa";
 import processText from "../text/process";
 import GeneratedDeck from "../views/GeneratedDeck";
 import GeneratedSite from "../views/GeneratedSite";
-import { JobStatus, JobError, getJobDetails } from "../utils/jobs";
+import {
+  JobStatus,
+  JobError,
+  NotFoundError,
+  getJobDetails,
+} from "../utils/jobs";
 
 export default async (ctx: Koa.Context) => {
   let { job_id, hash, format, nocontrols } = ctx.query;
@@ -35,6 +40,8 @@ export default async (ctx: Koa.Context) => {
 
   const result: Magic = job.returnvalue as any;
   const Component = format === "deck" ? GeneratedDeck : GeneratedSite;
+
+  if (!result) throw new NotFoundError(`No job with ID: (${job_id})`);
 
   // Get tips to improve the idea
   const { messages: tips } = await processText(result.idea);

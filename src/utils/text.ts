@@ -11,6 +11,8 @@ export const isProfane = async (input: string) => {
 };
 
 export const capitalCase = (str: string): string => {
+  if (!str) return str;
+
   const s = _.camelCase(str);
   return `${s[0].toUpperCase()}${s.slice(1)}`;
 };

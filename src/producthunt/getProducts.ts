@@ -3,6 +3,7 @@
 import fetch from "@adobe/node-fetch-retry";
 
 import { memoize } from "../clients/cache";
+import Sentry from "../clients/sentry";
 import { productHuntToken, PRODUCT_HUNT_ENDPOINT } from "../env";
 
 async function getProducts(topicSlug: string, featured = false) {
@@ -31,7 +32,14 @@ async function getProducts(topicSlug: string, featured = false) {
   });
 
   const { data, errors } = await response.json();
-  if (errors) throw new Error(JSON.stringify(errors));
+
+  if (errors) {
+    console.error(errors);
+    const exn = new Error(errors);
+    Sentry.captureException(exn);
+
+    throw exn;
+  }
 
   const {
     posts: { nodes },

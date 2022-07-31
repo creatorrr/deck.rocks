@@ -28,7 +28,16 @@ export default () => (
       <br />
 
       <li>
-        It uses the{" "}
+        We use{" "}
+        <a href="https://huggingface.co/spaces/dalle-mini/dalle-mini">
+          Dall-E (mini)
+        </a>{" "}
+        for generating logos from the idea description.
+      </li>
+      <br />
+
+      <li>
+        We use the{" "}
         <a href="https://github.com/producthunt/producthunt-api">
           ProductHunt API
         </a>{" "}
@@ -46,6 +55,7 @@ export default () => (
         with the idea.
       </li>
     </ol>
+    <br />
 
     <p className="small-80">
       p.s. this is an open source project. you can check out its source code on
