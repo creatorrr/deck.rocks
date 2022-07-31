@@ -42,7 +42,7 @@ export default ({ examples, showGallery = false }: IntroProps) => (
 
     <br />
     <p>
-      Please do <a href="https://www.producthunt.com/posts/deck-rocks">share</a>{" "}
+      Browse the <a href="/gallery">gallery</a>, and please do <a href="https://www.producthunt.com/posts/deck-rocks">share</a>{" "}
       what you come up with! &nbsp; <kbd>^_^</kbd>
     </p>
 
