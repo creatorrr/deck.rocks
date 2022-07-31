@@ -10,9 +10,11 @@ import GalleryItems from "./general/GalleryItems";
 import Head from "./general/Head";
 import ProductHunt from "./utils/ProductHunt";
 
-interface GalleryProps extends HeadProps, FormProps, GalleryItemsProps {}
+interface GalleryProps extends HeadProps, FormProps, GalleryItemsProps {
+  total?: number;
+}
 
-export default ({ ...props }: GalleryProps) => (
+export default ({ total, ...props }: GalleryProps) => (
   <html>
     <Head {...props} />
     <Controls {...props} />
@@ -23,8 +25,12 @@ export default ({ ...props }: GalleryProps) => (
 
       <h2>Gallery</h2>
 
-      <p>Some of the ideas people generated so far</p>
+      <p>
+        Some of the ideas people generated so far.{" "}
+        {total && <mark>{`${total}+ and counting!`}</mark>}
+      </p>
       <hr />
+
       <GalleryItems {...props} />
     </section>
     <Footer />

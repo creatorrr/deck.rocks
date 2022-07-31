@@ -15,7 +15,7 @@ export default ({ idea, ...props }: HomeProps) => (
   <html>
     <Head {...props} />
     <Controls idea={idea} {...props} />
-    <Intro idea={idea} {...props} />
+    <Intro {...props} />
     <Footer />
   </html>
 );

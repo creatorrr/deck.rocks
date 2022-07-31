@@ -6,6 +6,25 @@ import { decode } from "messagepack";
 
 import { redis } from "../clients/redis";
 
+export const countCacheKeys = async (
+  namespace: string,
+  max: number = 100_000
+): Promise<number> => {
+  let count: number = 0;
+  const keysStream: Readable = redis.scanStream({
+    match: `${namespace}:*`,
+    count: _.max([max, 100]),
+  });
+
+  for await (const keys of keysStream) {
+    count += keys.length;
+    if (count >= max) break;
+  }
+
+  keysStream.destroyed || keysStream.destroy();
+  return count;
+};
+
 export const keysFromCache = async (
   namespace: string,
   count: number = 10
@@ -25,15 +44,20 @@ export const keysFromCache = async (
   return results;
 };
 
-export const getRandomFromCache = async (namespace: string) => {
-  const key = _(await keysFromCache(namespace))
+export const getRandomFromCache = async (
+  namespace: string,
+  n: number = 10
+): Promise<any[]> => {
+  const keys: string[] = _(await keysFromCache(namespace, n))
     .shuffle()
-    .first();
+    .value();
 
-  if (!key) return {};
+  const results = await Promise.all(
+    keys
+      .map((key) => redis.getBuffer(key))
+      .filter(async (x) => !!(await x))
+      .map(async (buf) => decode(await buf))
+  );
 
-  const encoded: Buffer | null = await redis.getBuffer(key);
-  const value = encoded && decode(encoded);
-
-  return value;
+  return results;
 };
