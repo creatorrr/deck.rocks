@@ -18,7 +18,10 @@ export let {
   DEBUG: _debug,
   DEFAULT_REDIS_TTL: _defaultRedisTtl,
   DEFAULT_TASK_TIMEOUT: _defaultTaskTimeout,
+  SENTRY_DSN: _sentryDsn,
 } = process.env;
+
+export const sentryDsn: string = _sentryDsn || "";
 
 export const debug = !_.isUndefined(_debug);
 googleAnalyticsId = googleAnalyticsId || "G-88P3G4KMHX";

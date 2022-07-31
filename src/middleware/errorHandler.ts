@@ -1,4 +1,4 @@
-// router/errorHandler.ts
+// middleware/errorHandler.ts
 
 import { AssertionError } from "node:assert/strict";
 import * as Koa from "koa";
