@@ -1,8 +1,6 @@
 // magic.ts
 
 import cyrb53 from "cyrb53";
-import grammarify from "grammarify";
-import Quote from "inspirational-quotes";
 
 import { memoize } from "./clients/cache";
 import searchImages from "./clients/pexels";
@@ -17,7 +15,6 @@ import genVerdicts from "./infer/genVerdicts";
 import genJargonExplanation from "./infer/genJargonExplanation";
 import predictBusinessModel from "./infer/predictBusinessModel";
 import findSimilarProducts from "./producthunt/findSimilarProducts";
-import { getOwenWow } from "./utils/apis";
 import { awaitAll, withTimeout } from "./utils/async";
 
 import { debug, defaultTaskTimeout } from "./env";
@@ -38,8 +35,6 @@ async function magic(idea: string) {
     keywords,
     verdicts,
     rationale,
-    quote,
-    owenWow,
     competition,
     businessModel,
     logos,
@@ -50,8 +45,6 @@ async function magic(idea: string) {
     genTopics(idea),
     genVerdicts(idea),
     genJargonExplanation(idea),
-    Quote.getQuote(),
-    getOwenWow(),
     findSimilarProducts(idea, 1, 3),
     predictBusinessModel(idea),
     genLogos(idea, 1)
@@ -71,10 +64,6 @@ async function magic(idea: string) {
   name = name.trim();
   keywords = keywords.trim();
 
-  problem = grammarify.clean(problem);
-  rationale = grammarify.clean(rationale);
-  howWillWeMakeMoney = grammarify.clean(howWillWeMakeMoney);
-
   debug && console.debug("phase 2");
   console.timeEnd(`magic-${hash}:phase2`);
 
@@ -91,8 +80,6 @@ async function magic(idea: string) {
     marketSize,
     logos,
     stockImages,
-    quote,
-    owenWow,
     competition,
   };
 
