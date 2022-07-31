@@ -13,8 +13,14 @@ export interface IntroProps {
 
 export default ({ numIdeas = 0, idea }: IntroProps) => (
   <section id="intro">
-    <p className="align-center">
-      <ProductHunt />
+    <p>
+      <ProductHunt
+        aStyle={{
+          float: "right",
+          position: "relative",
+          top: "-1em",
+        }}
+      />
     </p>
 
     <p>

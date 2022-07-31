@@ -12,14 +12,12 @@ export const gradients = [
 ];
 
 export const thanku = [
-  ["https://openai.com/blog/openai-api/", "The OpenAI team"],
-  ["https://github.com/borisdayma/dalle-mini", "The Dall-E mini team"],
+  ["https://openai.com/blog/openai-api/", "OpenAI team"],
+  ["https://github.com/borisdayma/dalle-mini", "Dall-E mini team"],
   ["https://api.producthunt.com/v2/docs", "ProductHunt API"],
   ["https://huggingface.co/diwank", "🤗 HuggingFace team"],
   ["https://www.pexels.com/api/", "Pexels API"],
-  ["http://owen-wilson-wow-api.herokuapp.com", "Owen Wilson WOW API"],
   ["https://simplecss.org/", "simple.css"],
   ["https://revealjs.com/", "reveal.js"],
   ["https://undraw.co", "undraw.co for illustrations"],
-  ["https://heroku.com", "Heroku"],
 ];

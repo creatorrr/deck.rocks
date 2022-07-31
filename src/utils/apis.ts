@@ -1,6 +1,6 @@
 // utils/apis.ts
 
-import fetch from "cross-fetch";
+import fetch from "@adobe/node-fetch-retry";
 import _ from "lodash";
 
 import { OWEN_ENDPOINT, QUOTES_ENDPOINT } from "../env";

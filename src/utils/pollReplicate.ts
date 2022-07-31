@@ -1,7 +1,7 @@
 // utils/pollReplicate.ts
 
 import { setTimeout } from "node:timers/promises";
-import fetch from "cross-fetch";
+import fetch from "@adobe/node-fetch-retry";
 
 import { replicateApiKey } from "../env";
 
@@ -14,7 +14,7 @@ export const pollReplicate = async (
   if (count >= maxRetries)
     throw new Error(`Max retries limit (${maxRetries}) reached`);
 
-  const response: Response = await fetch(url, {
+  const response = await fetch(url, {
     method: "GET",
     headers: { Authorization: `Token ${replicateApiKey}` },
   });

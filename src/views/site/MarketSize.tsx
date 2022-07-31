@@ -36,7 +36,7 @@ export default ({ marketSize, keywords }: MarketSizeProps) => (
       </a>
       , this is how big the market for{" "}
       <b>
-        <u>{keywords}</u>
+        <mark>{keywords}</mark>
       </b>{" "}
       is at the moment!
     </p>

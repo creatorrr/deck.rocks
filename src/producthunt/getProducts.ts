@@ -1,6 +1,6 @@
 // producthunt/getProducts.ts
 
-import fetch from "cross-fetch";
+import fetch from "@adobe/node-fetch-retry";
 
 import { memoize } from "../clients/cache";
 import { productHuntToken, PRODUCT_HUNT_ENDPOINT } from "../env";

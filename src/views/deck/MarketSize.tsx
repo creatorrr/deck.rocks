@@ -29,7 +29,11 @@ export default ({ marketSize, keywords }: MarketSizeProps) => (
     />
     <br />
     <small>
-      Size of <b>{keywords}</b> market according to{" "}
+      Size of{" "}
+      <mark>
+        <b>{keywords}</b>
+      </mark>{" "}
+      market according to{" "}
       <a href="https://huggingface.co/diwank/bartner" target="_blank">
         Gartner<sup>🤖</sup>.
       </a>

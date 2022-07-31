@@ -1,6 +1,6 @@
 // generate/genLogos.ts
 
-import fetch from "cross-fetch";
+import fetch from "@adobe/node-fetch-retry";
 
 import { memoize } from "../clients/cache";
 import pollReplicate from "../utils/pollReplicate";

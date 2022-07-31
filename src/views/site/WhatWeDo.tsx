@@ -8,7 +8,7 @@ export default ({ name, idea }: WhatWeDoProps) => (
   <section className="bg-illustration" style={illustration("welcome")}>
     <h2>What we do</h2>
     <h4>
-      {name}: {idea}
+      <mark>{name}</mark>: {idea}
     </h4>
     <br />
     <hr />

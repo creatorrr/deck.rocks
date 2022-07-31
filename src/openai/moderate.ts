@@ -1,7 +1,7 @@
 // openai/moderate.ts
 
 import { setTimeout } from "node:timers/promises";
-import fetch from "cross-fetch";
+import fetch from "@adobe/node-fetch-retry";
 import _ from "lodash";
 
 // import { memoize } from "../clients/cache";
@@ -34,7 +34,7 @@ export async function moderate(input: string): Promise<ModerateResult> {
   // Stagger requests so rate limit is not triggered
   await setTimeout(_.random(1, 3) * 50);
 
-  let response: Response;
+  let response;
 
   try {
     response = await fetch("https://api.openai.com/v1/moderations", {
