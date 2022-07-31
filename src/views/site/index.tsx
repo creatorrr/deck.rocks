@@ -7,9 +7,10 @@ import type { ProblemProps } from "../deck/Problem";
 import type { MarketSizeProps } from "../deck/MarketSize";
 import type { HowWillWeMakeMoneyProps } from "../deck/HowWillWeMakeMoney";
 import type { ExpertsSayProps } from "../deck/ExpertsSay";
-import type { OwenProps } from "../deck/Owen";
-
 import type { SolutionProps } from "./Solution";
+
+import { hostname } from "../../env";
+import Sharer from "../utils/Sharer";
 
 import Header from "./Header";
 import WhatWeDo from "./WhatWeDo";
@@ -19,7 +20,6 @@ import MarketSize from "./MarketSize";
 import HowWillWeMakeMoney from "./HowWillWeMakeMoney";
 import Competition from "./Competition";
 import ExpertsSay from "./ExpertsSay";
-import Owen from "./Owen";
 import ThankYou from "./ThankYou";
 
 export interface SiteProps
@@ -30,14 +30,26 @@ export interface SiteProps
     MarketSizeProps,
     CompetitionProps,
     ExpertsSayProps,
-    OwenProps,
-    HowWillWeMakeMoneyProps {}
+    HowWillWeMakeMoneyProps {
+  job_id: number;
+  hash: string;
+  format: "site" | "deck";
+}
 
-export default (props: SiteProps) => (
+export default ({ job_id, hash, format, ...props }: SiteProps) => (
   <>
     <Header {...props} />
 
     <main>
+      <Sharer
+        url={`${
+          hostname || "https://deck.rocks"
+        }/display?job_id=${job_id}&hash=${hash}&format=${format || "site"}`}
+        title={props.idea}
+        additionalParams={{ nocontrols: true }}
+        align="right"
+      />
+
       <WhatWeDo {...props} />
       <Problem {...props} />
       <Solution {...props} />
@@ -45,7 +57,6 @@ export default (props: SiteProps) => (
       <HowWillWeMakeMoney {...props} />
       <Competition {...props} />
       <ExpertsSay {...props} />
-      {/* <Owen {...props} /> */}
       <ThankYou {...props} />
     </main>
   </>

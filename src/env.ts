@@ -19,6 +19,7 @@ export let {
   DEFAULT_REDIS_TTL: _defaultRedisTtl,
   DEFAULT_TASK_TIMEOUT: _defaultTaskTimeout,
   SENTRY_DSN: _sentryDsn,
+  HOSTNAME: hostname,
 } = process.env;
 
 export const sentryDsn: string = _sentryDsn || "";

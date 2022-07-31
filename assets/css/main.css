@@ -158,6 +158,34 @@ body.format-deck .chart .bar > strong {
   margin: 1em;
 }
 
+nav#sharer > a img {
+  width: 2em;
+  padding: 0px 2px;
+  filter: grayscale(0.2);
+  cursor: pointer;
+}
+
+nav#sharer > a:hover img {
+  width: 2em;
+  padding: 0px 2px;
+  filter: brightness(1.2);
+  cursor: pointer;
+}
+
+nav#sharer > cite {
+  border-bottom: 2px solid var(--text-light);
+  vertical-align: super;
+  margin-right: 8px;
+}
+
+body.format-deck nav#sharer {
+  margin-bottom: 1em;
+}
+
+body.format-site nav#sharer {
+  margin-bottom: -1em;
+}
+
 .margin-2 {
   margin: 2em;
 }

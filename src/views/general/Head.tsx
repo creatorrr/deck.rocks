@@ -82,6 +82,8 @@ export default ({
     <script src="/js/control.js"></script>
     <script src="/js/video-autoplay.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
+
     <script
       async
       src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}

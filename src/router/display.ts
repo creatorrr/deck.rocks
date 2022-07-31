@@ -45,6 +45,8 @@ export default async (ctx: Koa.Context) => {
       .map(({ reason }: { reason: string }) => reason)
       .filter((x: string) => !!x),
     format,
+    job_id,
+    hash,
     nocontrols: _nocontrols,
     prefill: result.idea,
   });
