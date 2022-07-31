@@ -26,7 +26,7 @@ const createPipline = async () => {
     .use(retextProfanities, { sureness: 2 }) // See: https://github.com/words/cuss
     .use(retextSpell, dictionary)
     .use(retextDiacritics)
-    .use(retextUsage)
+    // .use(retextUsage)
     .use(retextStringify);
 
   return _pipeline;
