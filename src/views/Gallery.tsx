@@ -17,9 +17,9 @@ export default ({ ...props }: GalleryProps) => (
     <Head {...props} />
     <Controls {...props} />
     <section id="gallery">
-      <aside className="align-center">
-        <ProductHunt />
-      </aside>
+      <span className="inline-block float-right">
+        <ProductHunt size={2} />
+      </span>
 
       <h2>Gallery</h2>
 

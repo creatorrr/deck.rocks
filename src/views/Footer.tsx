@@ -23,9 +23,8 @@ export default ({ slideInstructions = false }: FooterProps) => (
       <a href="//diwank.name">Author</a>{" "}
       <ProductHunt
         theme="neutral"
+        size={1}
         imgStyle={{
-          width: "125px",
-          height: "27px",
           verticalAlign: "bottom",
           float: "right",
           marginLeft: "-125px",

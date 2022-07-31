@@ -12,6 +12,10 @@ ol {
   font-family: "Mulish", sans-serif;
 }
 
+.float-right {
+  float: right;
+}
+
 .margin-center {
   margin-left: auto !important;
   margin-right: auto !important;
