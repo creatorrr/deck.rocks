@@ -23,7 +23,7 @@ export default ({
     <a
       data-sharer={sharer}
       data-title={title || url}
-      data-hashtags="deck-rocks"
+      data-hashtags="deckrocks"
       data-via="diwanksingh"
       data-url={urlToShare}
       data-subject={`Check out: ${title || url}`}
