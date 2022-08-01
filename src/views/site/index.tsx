@@ -46,7 +46,7 @@ export default ({ job_id, hash, format, ...props }: SiteProps) => (
           hostname || "https://deck.rocks"
         }/display?job_id=${job_id}&hash=${hash}&format=${format || "site"}`}
         title={props.idea}
-        additionalParams={{ nocontrols: true }}
+        additionalParams={/*{ nocontrols: true }*/}
         align="right"
       />
 
