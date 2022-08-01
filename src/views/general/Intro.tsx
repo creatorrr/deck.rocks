@@ -5,7 +5,7 @@ import { random as randomSuperb } from "superb";
 import Examples from "../utils/Examples";
 import Giphy from "../utils/Giphy";
 import HowItWorks from "../utils/HowItWorks";
-import ProductHunt from "../utils/ProductHunt";
+import { ProductHuntProof } from "../utils/ProductHunt";
 import Thanks from "../utils/Thanks";
 
 export interface IntroProps {
@@ -16,7 +16,7 @@ export interface IntroProps {
 export default ({ examples, showGallery = false }: IntroProps) => (
   <section id="intro">
     <p className="inline-block float-right">
-      <ProductHunt />
+      <ProductHuntProof />
     </p>
 
     <h3>AI generated pitch decks!</h3>
