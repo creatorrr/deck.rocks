@@ -40,7 +40,7 @@ export default ({
           props.format || "site"
         }`}
         title={props.idea}
-        additionalParams={{ nocontrols: true }}
+        additionalParams={/*{ nocontrols: true }*/}
       />
 
       <Deck {...props} />
