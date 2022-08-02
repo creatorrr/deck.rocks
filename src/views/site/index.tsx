@@ -50,6 +50,7 @@ export default ({
     <main>
       {nocontrols && (
         <Sharer
+          showPrintBtn={true}
           showGeneratedUsing={nocontrols}
           url={`${
             hostname || "https://deck.rocks"
@@ -69,6 +70,7 @@ export default ({
       <ThankYou {...props} />
 
       <Sharer
+        showPrintBtn={true}
         showGeneratedUsing={nocontrols}
         url={`${
           hostname || "https://deck.rocks"

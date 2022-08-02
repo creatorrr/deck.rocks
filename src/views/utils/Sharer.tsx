@@ -1,16 +1,23 @@
-// views/utils/ShareBtn.tsx
+// views/utils/Sharer.tsx
 
 import ShareBtn from "./ShareBtn";
 
 export interface SharerProps {
   url: string;
+  showPrintBtn?: boolean;
   title?: string;
   additionalParams?: { [key: string]: any };
   showGeneratedUsing?: boolean;
+  className?: string;
 }
 
-export default ({ showGeneratedUsing = false, ...props }: SharerProps) => (
-  <nav id="sharer" className="align-center">
+export default ({
+  className = "",
+  showGeneratedUsing = false,
+  showPrintBtn = false,
+  ...props
+}: SharerProps) => (
+  <nav id="sharer" className={`align-center ${className}`}>
     {showGeneratedUsing && (
       <cite className="float-left lh3">
         Generated using{" "}
@@ -19,8 +26,13 @@ export default ({ showGeneratedUsing = false, ...props }: SharerProps) => (
         </mark>
       </cite>
     )}
-    <span className={showGeneratedUsing && "float-right"}>
-      <cite>Share</cite> &nbsp;
+    <span className={showGeneratedUsing ? "float-right" : ""}>
+      <cite>Share</cite>&nbsp;
+      {showPrintBtn && (
+        <a id="print">
+          <kbd>🖶</kbd>
+        </a>
+      )}
       <ShareBtn sharer="twitter" {...props} />
       <ShareBtn sharer="linkedin" {...props} />
       <ShareBtn sharer="hackernews" {...props} />

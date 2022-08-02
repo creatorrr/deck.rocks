@@ -1,6 +1,7 @@
 // views/general/Head.tsx
 
 import { sample } from "lodash";
+
 import { revealThemes } from "../../data/lists";
 import { frontendConfig, googleAnalyticsId } from "../../env";
 
@@ -95,7 +96,7 @@ export default ({
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-88P3G4KMHX');
+      gtag('config', '${googleAnalyticsId}');
       `,
       }}
     ></script>

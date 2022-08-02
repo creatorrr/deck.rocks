@@ -11,6 +11,7 @@ export interface ControlsProps extends FormProps {
   hash: string;
   format: "site" | "deck";
   idea: string;
+  shareUrl?: string;
   nocontrols?: boolean;
   showForm?: boolean;
 }
@@ -18,35 +19,31 @@ export interface ControlsProps extends FormProps {
 export default ({
   nocontrols = false,
   showForm = true,
+  shareUrl = "/",
   ...formProps
 }: ControlsProps) => (
   <>
-    <div id="controls">
-      <h3 id="home-button" className="p-absolute left-1">
+    <div id="controls" className="grid-span-full">
+      <h3 id="home-button" className="float-left std-padding-md no-margin">
         <a href="/">deck.rocks</a> 🤘
       </h3>
 
-      {formProps.prefill && (
-        <>
-          <a id="print" className="p-absolute top-1 right-1" href="#">
-            🖶 Print
-          </a>
-
-          {/* <Sharer
-              showGeneratedUsing={nocontrols}
-              url={
-              formProps.job_id
-              ? `${hostname || "https://deck.rocks"}/display?job_id=${
-              formProps.job_id
+      <Sharer
+        className="float-right"
+        showPrintBtn={!!formProps.prefill}
+        showGeneratedUsing={nocontrols}
+        url={
+          formProps.job_id
+            ? `${hostname || "https://deck.rocks"}/display?job_id=${
+                formProps.job_id
               }&hash=${formProps.hash}&format=${formProps.format || "site"}`
-              : "/"
-              }
-              title={formProps.idea || ""}
-              additionalParams={{ nocontrols: true }}
-              /> */}
-        </>
-      )}
+            : `${hostname || "https://deck.rocks"}${shareUrl}`
+        }
+        title={formProps.prefill || "Check out deck.rocks!"}
+        additionalParams={formProps.prefill ? { nocontrols: true } : {}}
+      />
     </div>
+    <div style={{ clear: "both" }} />
     {showForm && <Form {...formProps} />}
   </>
 );

@@ -40,9 +40,9 @@ $(() => {
   $(window).on("beforeprint", () => (form.hide(), controls.hide()));
   $(window).on("afterprint", () => (form.hide(), controls.show()));
 
-  const [permalinkBtn, printBtn] = ["permalink", "print"]
-    .map((id) => controls.find(`a#${id}`))
-    .map($);
+  const [permalinkBtn, printBtn] = ["permalink", "print"].map((id) =>
+    $(`a#${id}`)
+  );
 
   // If printing is set up, start print after a delay
   if (typeof Reveal !== "undefined" && Reveal.isPrintingPDF()) {
@@ -51,7 +51,7 @@ $(() => {
 
   // Only if form was prefilled
   if (prefill) {
-    permalinkBtn.on("click", handlePermalinkBtn);
+    // permalinkBtn.on("click", handlePermalinkBtn);
     printBtn.on("click", handlePrintBtn);
   }
 });

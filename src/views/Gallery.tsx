@@ -17,7 +17,13 @@ interface GalleryProps extends HeadProps, FormProps, GalleryItemsProps {
 export default ({ total, ...props }: GalleryProps) => (
   <html>
     <Head {...props} />
-    <Controls idea={null} job_id={null} hash={null} {...props} />
+    <Controls
+      idea={null}
+      job_id={null}
+      hash={null}
+      shareUrl="/gallery"
+      {...props}
+    />
     <section id="gallery">
       <span className="inline-block float-right">
         <ProductHunt size={2} />

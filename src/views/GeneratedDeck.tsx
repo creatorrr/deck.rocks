@@ -48,6 +48,7 @@ export default ({
 
       {nocontrols && (
         <Sharer
+          showPrintBtn={true}
           showGeneratedUsing={nocontrols}
           url={`${
             hostname || "https://deck.rocks"
@@ -62,6 +63,7 @@ export default ({
       <Deck {...props} />
 
       <Sharer
+        showPrintBtn={true}
         showGeneratedUsing={nocontrols}
         url={`${
           hostname || "https://deck.rocks"
