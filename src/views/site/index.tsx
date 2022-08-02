@@ -37,7 +37,13 @@ export interface SiteProps
   nocontrols?: boolean;
 }
 
-export default ({ job_id, hash, format, nocontrols = false, ...props }: SiteProps) => (
+export default ({
+  job_id,
+  hash,
+  format,
+  nocontrols = false,
+  ...props
+}: SiteProps) => (
   <>
     <Header {...props} />
 
@@ -60,7 +66,7 @@ export default ({ job_id, hash, format, nocontrols = false, ...props }: SiteProp
       <Competition {...props} />
       <ExpertsSay {...props} />
       <ThankYou {...props} />
-      
+
       <Sharer
         showGeneratedUsing={!!nocontrols}
         url={`${
@@ -70,7 +76,6 @@ export default ({ job_id, hash, format, nocontrols = false, ...props }: SiteProp
         additionalParams={{ nocontrols: true }}
         align="right"
       />
-
     </main>
   </>
 );

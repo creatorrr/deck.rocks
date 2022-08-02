@@ -11,7 +11,9 @@ import { calculateSimilarity } from "../utils/similarity";
 export const predictBusinessModel = async (
   idea: string
 ): Promise<BusinessModel> => {
-  const modelNames: string[] = _.map(businessModels, "name").filter(name => name !== "On-demand");
+  const modelNames: string[] = _.map(businessModels, "name").filter(
+    (name) => name !== "On-demand"
+  );
   const answer = await answerQuestion({
     context: idea,
     choices: modelNames,
