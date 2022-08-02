@@ -8,7 +8,7 @@ import { maxGalleryItems } from "../env";
 import { countCacheKeys, keysFromCache } from "../utils/cache";
 import Gallery from "../views/Gallery";
 
-const getSampleIdeas = _.memoize(async _ts => {
+const getSampleIdeas = _.memoize(async (_ts) => {
   // _ts is just for memoising by hour bucket
   const _1000keys = (await keysFromCache("magic", 1000)) as any;
   const keys = _.sampleSize(_1000keys, maxGalleryItems);
@@ -19,7 +19,7 @@ export default async (ctx: Koa.Context) => {
   const { prefill, error } = ctx.query;
 
   const total: number = await countCacheKeys("magic");
-  const ideas = await getSampleIdeas((new Date).getHours());
+  const ideas = await getSampleIdeas(new Date().getHours());
 
   await ctx.render(Gallery, {
     prefill,
