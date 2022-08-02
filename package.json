@@ -7,7 +7,6 @@
   "scripts": {
     "build": "prettier --write . && tsc",
     "build:watch": "tsc --watch",
-    "postinstall": "npm run build",
     "start": "pm2-runtime start . -i $WEB_CONCURRENCY",
     "workers": "pm2-runtime start ./dist/worker.js -i $WORKER_CONCURRENCY --max-memory-restart 1850M",
     "stop": "pm2-runtime stop all",
