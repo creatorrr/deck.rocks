@@ -10,6 +10,10 @@ import Gallery from "../views/Gallery";
 
 const getSampleIdeas = _.memoize(async (_ts) => {
   // _ts is just for memoising by hour bucket
+  // clear previous cache
+  getSampleIdeas.cache.clear();
+
+  // get ideas 
   const _1000keys = (await keysFromCache("magic", 1000)) as any;
   const keys = _.sampleSize(_1000keys, maxGalleryItems);
   return await Promise.all(keys.map((key: string) => cache.get(key)));
