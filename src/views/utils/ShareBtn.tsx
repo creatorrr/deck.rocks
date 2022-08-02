@@ -1,6 +1,7 @@
 // views/utils/ShareBtn.tsx
 
 import { stringify } from "node:querystring";
+import _ from "lodash";
 
 export interface ShareBtnProps {
   url: string;
@@ -15,7 +16,7 @@ export default ({
   title = "",
   additionalParams = {},
 }: ShareBtnProps) => {
-  const joiner: string = !!~url.indexOf("?") ? "&" : "?";
+  const joiner: string = _.includes(url, "?") ? "&" : "?";
   const additionalParamsString: string = stringify(additionalParams);
   const urlToShare: string = `${url}${joiner}${additionalParamsString}`;
 

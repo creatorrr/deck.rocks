@@ -7,16 +7,11 @@ import type { DeckProps } from "./deck";
 import { hostname } from "../env";
 import Controls from "./Controls";
 import Deck from "./deck";
-import Footer from "./Footer";
+import Footer from "./general/Footer";
 import Head from "./general/Head";
-import GeneratedUsing, { GeneratedUsingProps } from "./utils/GeneratedUsing";
 import Sharer from "./utils/Sharer";
 
-interface GeneratedDeckProps
-  extends HeadProps,
-    FormProps,
-    DeckProps,
-    GeneratedUsingProps {
+interface GeneratedDeckProps extends HeadProps, FormProps, DeckProps {
   nocontrols?: boolean;
   job_id: number;
   hash: string;
@@ -61,8 +56,17 @@ export default ({
       )}
 
       <Deck {...props} />
+      <hr style={{ width: "100%" }} />
+
+      <p>
+        <cite>
+          You can use arrow keys <kbd>←</kbd> <kbd>→</kbd> to navigate between
+          slides. On touch-screen devices, swipe left/right.
+        </cite>
+      </p>
 
       <Sharer
+        className="no-margin"
         showPrintBtn={true}
         showGeneratedUsing={nocontrols}
         url={`${
@@ -73,11 +77,8 @@ export default ({
         title={props.idea}
         additionalParams={{ nocontrols: true }}
       />
-      <hr />
 
-      <GeneratedUsing {...props} />
-
-      <Footer slideInstructions={true} />
+      <Footer {...props} />
     </body>
   </html>
 );

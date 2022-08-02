@@ -29,7 +29,7 @@ export default ({
       </h3>
 
       <Sharer
-        className="float-right"
+        className="float-right std-padding-md"
         showPrintBtn={!!formProps.prefill}
         showGeneratedUsing={nocontrols}
         url={

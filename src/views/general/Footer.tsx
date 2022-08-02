@@ -1,20 +1,17 @@
 // views/deck/Footer.tsx
 
-import ProductHunt from "./utils/ProductHunt";
+import GeneratedUsing, { GeneratedUsingProps } from "../utils/GeneratedUsing";
+import ProductHunt from "../utils/ProductHunt";
 
-export interface FooterProps {
-  slideInstructions?: boolean;
-}
+export interface FooterProps extends GeneratedUsingProps {}
 
-export default ({ slideInstructions = false }: FooterProps) => (
+export default (props: FooterProps) => (
   <footer>
-    {slideInstructions && (
-      <p>
-        <cite>
-          You can use arrow keys <kbd>←</kbd> <kbd>→</kbd> to navigate between
-          slides. On touch-screen devices, swiping left/right will also work.
-        </cite>
-      </p>
+    {props.idea && (
+      <>
+        <GeneratedUsing {...props} />
+        <br />
+      </>
     )}
 
     <nav>

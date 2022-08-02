@@ -5,7 +5,7 @@ import type { HeadProps } from "./general/Head";
 import type { GalleryItemsProps } from "./general/GalleryItems";
 
 import Controls from "./Controls";
-import Footer from "./Footer";
+import Footer from "./general/Footer";
 import GalleryItems from "./general/GalleryItems";
 import Head from "./general/Head";
 import ProductHunt from "./utils/ProductHunt";
@@ -39,6 +39,6 @@ export default ({ total, ...props }: GalleryProps) => (
 
       <GalleryItems {...props} />
     </section>
-    <Footer />
+    <Footer {...props} idea="" />
   </html>
 );

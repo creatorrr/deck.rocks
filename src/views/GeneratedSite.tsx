@@ -1,11 +1,11 @@
 // views/GeneratedSite.tsx
 
-import Head, { HeadProps } from "./general/Head";
-import Controls, { ControlsProps } from "./Controls";
-import Site, { SiteProps } from "./site";
-import Footer from "./Footer";
-
 import type { FormProps } from "./general/Form";
+
+import Controls, { ControlsProps } from "./Controls";
+import Head, { HeadProps } from "./general/Head";
+import Footer from "./general/Footer";
+import Site, { SiteProps } from "./site";
 
 interface GeneratedSiteProps
   extends ControlsProps,
@@ -23,7 +23,7 @@ export default ({ nocontrols, prefill, ...props }: GeneratedSiteProps) => (
         <Controls {...props} nocontrols={nocontrols} prefill={prefill} />
       )}
       <Site nocontrols={nocontrols} {...props} />
-      <Footer />
+      <Footer {...props} />
     </body>
   </html>
 );

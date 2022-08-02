@@ -1,4 +1,4 @@
-// views/site/MarketSize.tsx
+// views/utils/BarChart.tsx
 
 import * as React from "react";
 import _ from "lodash";

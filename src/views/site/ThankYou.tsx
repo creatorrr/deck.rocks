@@ -41,6 +41,6 @@ export default (props: ThankYouProps) => (
     </p>
     <br />
     <hr />
-    <GeneratedUsing short={true} {...props} />
+    <br />
   </section>
 );

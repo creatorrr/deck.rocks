@@ -5,13 +5,16 @@ export interface GeneratedUsingProps {
   short?: boolean;
 }
 
+const ellipsize = (input: string, maxLength: number = 160): string =>
+  input.length < maxLength ? input : input.substring(0, maxLength) + "...";
+
 export default ({ idea, short = false }: GeneratedUsingProps) => (
   <p style={{ width: short ? "75%" : "100%" }}>
     <small>
-      This <em>deck</em> was generated using some{" "}
-      <a href="https://deck.rocks">awesome tech</a> using just:
+      This deck was generated using <a href="https://deck.rocks">deck.rocks</a>{" "}
+      from just:
       <mark>
-        <cite>"{idea}"</cite>
+        <cite>"{ellipsize(idea)}"</cite>
       </mark>{" "}
       as input.
     </small>

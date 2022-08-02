@@ -1,5 +1,6 @@
 // views/utils/Sharer.tsx
 
+import PrintIcon from "./PrintIcon";
 import ShareBtn from "./ShareBtn";
 
 export interface SharerProps {
@@ -30,7 +31,9 @@ export default ({
       <cite>Share</cite>&nbsp;
       {showPrintBtn && (
         <a id="print">
-          <kbd>🖶</kbd>
+          <kbd>
+            <PrintIcon />
+          </kbd>
         </a>
       )}
       <ShareBtn sharer="twitter" {...props} />
