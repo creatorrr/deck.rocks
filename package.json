@@ -5,13 +5,15 @@
   "main": "./dist/index.js",
   "type": "node12",
   "scripts": {
-    "build": "prettier --write . && tsc",
+    "format": "prettier --write './{src,assets/js}/**/*'",
+    "build": "npm run format && tsc",
     "build:watch": "tsc --watch",
     "start": "pm2-runtime start . -i $WEB_CONCURRENCY",
     "workers": "pm2-runtime start ./dist/worker.js -i $WORKER_CONCURRENCY --max-memory-restart 1850M",
     "stop": "pm2-runtime stop all",
     "start:dev": "tsnd --rs --cls src/index.ts",
-    "workers:dev": "tsnd --rs --cls src/worker.ts"
+    "workers:dev": "tsnd --rs --cls src/worker.ts",
+    "prepare": "husky install"
   },
   "engines": {
     "node": "18.x"
@@ -41,6 +43,7 @@
     "@types/lodash": "^4.14.182",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "husky": "^8.0.1",
     "prettier": "^2.7.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.7.4"

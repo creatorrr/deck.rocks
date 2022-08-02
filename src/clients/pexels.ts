@@ -4,6 +4,8 @@ import _ from "lodash";
 import { createClient as createPexelsClient } from "pexels";
 
 // import { memoize } from "../clients/cache";
+import Sentry from "../clients/sentry";
+import pexelsDefault from "../data/pexelsDefault";
 import { pexelsApiKey } from "../env";
 
 const pexels = createPexelsClient(pexelsApiKey || "");
@@ -12,13 +14,22 @@ async function searchImages(
   query: string,
   opts = { orientation: "landscape" }
 ) {
-  const response = await pexels.photos.search({
-    query,
-    locale: "en-US",
-    ...opts,
-  });
+  let response: { photos?: { src: any }[]; error?: string };
 
-  if ("error" in response) throw new Error(response.error);
+  try {
+    response = (await pexels.photos.search({
+      query,
+      locale: "en-US",
+      ...opts,
+    })) as any;
+
+    if ("error" in response) throw new Error(response?.error);
+  } catch (e) {
+    response = pexelsDefault;
+
+    console.error(e);
+    Sentry.captureException(e);
+  }
 
   const { photos } = response;
   return _.map(photos, "src");
