@@ -1,12 +1,11 @@
-// views/site/GeneratedUsing.tsx
+// views/utils/GeneratedUsing.tsx
+
+import { ellipsize } from "../../utils/text";
 
 export interface GeneratedUsingProps {
   idea: string;
   short?: boolean;
 }
-
-const ellipsize = (input: string, maxLength: number = 160): string =>
-  input.length < maxLength ? input : input.substring(0, maxLength) + "...";
 
 export default ({ idea, short = false }: GeneratedUsingProps) => (
   <p style={{ width: short ? "75%" : "100%" }}>

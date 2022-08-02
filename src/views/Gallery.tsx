@@ -34,6 +34,8 @@ export default ({ total, ...props }: GalleryProps) => (
       <p>
         Some of the ideas people generated so far.{" "}
         {total && <mark>{`${total}+ and counting!`}</mark>}
+        <br />
+        <cite>(Hover over the taglines to see the original idea)</cite>
       </p>
       <hr />
 

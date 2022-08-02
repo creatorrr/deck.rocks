@@ -16,6 +16,7 @@ import genJargonExplanation from "./infer/genJargonExplanation";
 import predictBusinessModel from "./infer/predictBusinessModel";
 import findSimilarProducts from "./producthunt/findSimilarProducts";
 import { awaitAll, withTimeout } from "./utils/async";
+import { extractIdeaName } from "./utils/text";
 
 import { debug, defaultTaskTimeout } from "./env";
 
@@ -39,7 +40,7 @@ async function magic(idea: string) {
     businessModel,
     logos,
   ] = await all(
-    genStartupName(idea),
+    extractIdeaName(idea) || genStartupName(idea),
     genTagline(idea),
     genProblemStatement(idea),
     genTopics(idea),
