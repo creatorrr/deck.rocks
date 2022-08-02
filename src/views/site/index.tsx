@@ -34,15 +34,16 @@ export interface SiteProps
   job_id: number;
   hash: string;
   format: "site" | "deck";
+  nocontrols?: boolean;
 }
 
-export default ({ job_id, hash, format, ...props }: SiteProps) => (
+export default ({ job_id, hash, format, nocontrols = false, ...props }: SiteProps) => (
   <>
     <Header {...props} />
 
     <main>
       <Sharer
-        showGeneratedUsing={!!props.nocontrols}
+        showGeneratedUsing={!!nocontrols}
         url={`${
           hostname || "https://deck.rocks"
         }/display?job_id=${job_id}&hash=${hash}&format=${format || "site"}`}
@@ -61,7 +62,7 @@ export default ({ job_id, hash, format, ...props }: SiteProps) => (
       <ThankYou {...props} />
       
       <Sharer
-        showGeneratedUsing={!!props.nocontrols}
+        showGeneratedUsing={!!nocontrols}
         url={`${
           hostname || "https://deck.rocks"
         }/display?job_id=${job_id}&hash=${hash}&format=${format || "site"}`}
