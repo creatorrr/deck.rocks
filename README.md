@@ -1,14 +1,14 @@
+<a href="https://www.producthunt.com/products/deck-rocks?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-deck&#0045;rocks" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=354234&theme=light&period=daily" alt="deck&#0046;rocks - Generate&#0032;pitch&#0032;decks&#0032;using&#0032;GPT3&#0032;from&#0032;1&#0032;liner&#0032;ideas | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+[![deck.rocks - Generate pitch decks using GPT3 from 1 liner ideas | Product Hunt
+AI generated pitch decks!](https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=354234&theme=light)](https://www.producthunt.com/posts/deck-rocks?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-deck-rocks)
+
 <p align=center>
   <a href="https://github.com/sponsors/creatorrr"><img src="/assets/img/sponsor.gif" /></a>
 </p>
 
 # deck.rocks
 
-Let GPT3 make your pitch deck for you: [deck.rocks](https://deck.rocks)
-
-<a href="https://www.producthunt.com/products/deck-rocks?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-deck&#0045;rocks" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=354234&theme=light&period=daily" alt="deck&#0046;rocks - Generate&#0032;pitch&#0032;decks&#0032;using&#0032;GPT3&#0032;from&#0032;1&#0032;liner&#0032;ideas | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
-[![deck.rocks - Generate pitch decks using GPT3 from 1 liner ideas | Product Hunt
-AI generated pitch decks!](https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=354234&theme=light)](https://www.producthunt.com/posts/deck-rocks?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-deck-rocks)
+#### [deck.rocks](https://deck.rocks): Let GPT3 make your pitch deck for you!
 
 this is a fun side project for generating pitch decks using GPT-3, (the awesome AI model from OpenAI). here's how it works:
 
