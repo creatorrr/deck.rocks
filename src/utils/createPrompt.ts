@@ -18,7 +18,7 @@ export const createPrompt = (
     query,
     instruction = "",
     labels = ["Q", "A"],
-    sampleSeparator = "\n---\n\n",
+    sampleSeparator = "\n--\n\n",
     examples = [],
   }: PromptConfig,
   maxLength: number = maxInputLength

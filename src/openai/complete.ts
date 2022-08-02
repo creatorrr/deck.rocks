@@ -23,7 +23,7 @@ async function complete(promptConfig: PromptConfig, opts = {}) {
   await setTimeout(_.random(1, 3) * 50);
 
   const sampleSeparator: string = (promptConfig.sampleSeparator =
-    promptConfig.sampleSeparator || "\n---\n\n");
+    promptConfig.sampleSeparator || "\n--\n\n");
 
   const separatorJunk = sampleSeparator.trim();
 

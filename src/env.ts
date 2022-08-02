@@ -14,6 +14,7 @@ export let {
   MAX_JOBS_PER_WORKER: _maxJobsPerWorker,
   PORT: _port,
   HIGH_ACCURACY: _highAccuracy,
+  STRICT_FILTER_MODE: _strictFilterMode,
   GOOGLE_ANALYTICS_ID: googleAnalyticsId,
   DEBUG: _debug,
   DEFAULT_REDIS_TTL: _defaultRedisTtl,
@@ -28,6 +29,7 @@ export const debug = !_.isUndefined(_debug);
 googleAnalyticsId = googleAnalyticsId || "G-88P3G4KMHX";
 
 export const highAccuracy = !_.isUndefined(_highAccuracy);
+export const strictFilterMode = !_.isUndefined(_strictFilterMode);
 export const maxJobsPerWorker = parseInt(_maxJobsPerWorker || "") || 50;
 export const port = parseInt(_port || "") || 3000;
 
@@ -98,4 +100,5 @@ Config:
 - models: ${_(openaiModels).values().join(", ")}
 - redis url: ${redisUrl}
 - high accuracy: ${highAccuracy}
+- strict filter: ${strictFilterMode}
 `);

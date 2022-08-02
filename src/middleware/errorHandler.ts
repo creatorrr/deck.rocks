@@ -12,10 +12,9 @@ export default async (ctx: Koa.Context, next: Koa.Next) => {
     ctx.status = err?.status || 500;
     ctx.app.emit("error", err, ctx);
 
-    const error =
-      err instanceof AssertionError
-        ? err?.message
-        : `A "${err?.constructor.name}" error occurred`;
+    console.log(Object.keys(err));
+
+    const error = err?.message || `A "${err?.constructor.name}" error occurred`;
 
     await ctx.render(Error, {
       title: err?.title,

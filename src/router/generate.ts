@@ -5,7 +5,8 @@ import * as Koa from "koa";
 
 import queue from "../clients/queue";
 import { minInputLength, maxInputLength } from "../env";
-import moderate, { ContentPolicyError } from "../openai/moderate";
+import { ContentPolicyError } from "../openai/moderate";
+import contentFilter from "../openai/contentFilter";
 import { isProfane } from "../utils/text";
 
 export default async (ctx: Koa.Context) => {
@@ -14,15 +15,15 @@ export default async (ctx: Koa.Context) => {
   idea = idea.toString().trim();
   format = format || "deck";
 
-  // Reject profane stuff
+  // Reject obviously profane stuff
   const profane = await isProfane(idea);
   if (profane) throw new ContentPolicyError(["profanity"]);
 
-  // Moderate input for compliance with OpenAI
-  const { flagged, categories } = await moderate(idea);
-  if (flagged) throw new ContentPolicyError(categories);
+  // Filter through OpenAI CF=2
+  const safe: boolean = await contentFilter(idea);
+  if (!safe) throw new ContentPolicyError(["toxicity"]);
 
-  let error;
+  let error: string;
 
   if (!idea) {
     error = "Idea input missing";

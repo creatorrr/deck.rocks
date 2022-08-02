@@ -7,6 +7,8 @@ const profanitiesSource = "retext-profanities";
 
 export const isProfane = async (input: string) => {
   const { messages } = await processText(input);
+  console.log(messages);
+
   return _(messages).map("source").includes(profanitiesSource);
 };
 

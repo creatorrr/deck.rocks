@@ -20,7 +20,7 @@ export default ({
       <section>
         <h3> {title} </h3>
         <p> {error}</p>
-        <hr></hr>
+        <hr />
         <p className="small-60">
           Sorry for the trouble. This error has been recorded.
         </p>

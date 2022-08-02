@@ -10,18 +10,20 @@ import { apiKey } from "../env";
 export class ContentPolicyError extends Error {
   title: string;
   categories: string[];
+  message: string;
 
   constructor(categories: string[] = [], title = "This shit ain't okay.") {
     const policyUrl: string =
       "https://beta.openai.com/docs/usage-guidelines/content-policy";
-    super(`
+    const message = `
 Your input violates openai content policy and terms under the following categories:
 "${categories.join('", "')}".
 Please see ${policyUrl} for more info.
-`);
-
+`;
+    super(message);
     this.categories = categories;
     this.title = title;
+    this.message = message;
   }
 }
 
