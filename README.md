@@ -1,3 +1,7 @@
+<p align=center>
+  <a href="https://github.com/sponsors/creatorrr"><img src="/assets/img/sponsor.gif" /></a>
+</p>
+
 # deck.rocks
 
 Let GPT3 make your pitch deck for you: [deck.rocks](https://deck.rocks)
