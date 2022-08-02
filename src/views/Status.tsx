@@ -45,6 +45,9 @@ export default ({ job_id, hash, job, ...props }: StatusProps) => {
           showForm={false}
           format={props.format}
           prefill=""
+          job_id={null}
+          hash={null}
+          {...props}
         />
 
         {job.status === JobStatus.FAILED ? (

@@ -80,6 +80,14 @@ a > sup {
   color: gray;
 }
 
+.border-none {
+  border: none !important;
+}
+
+.float-left {
+  float: left;
+}
+
 .std-padding-md {
   padding: 0.4em 0.8em !important;
 }
@@ -158,21 +166,25 @@ body.format-deck .chart .bar > strong {
   margin: 1em;
 }
 
-nav#sharer > a img {
+nav#sharer {
+  margin-top: 0.5em;
+}
+
+nav#sharer a img {
   width: 2em;
   padding: 0px 2px;
   filter: grayscale(0.2);
   cursor: pointer;
 }
 
-nav#sharer > a:hover img {
+nav#sharer a:hover img {
   width: 2em;
   padding: 0px 2px;
   filter: brightness(1.2);
   cursor: pointer;
 }
 
-nav#sharer > cite {
+nav#sharer span > cite {
   border-bottom: 2px solid var(--text-light);
   vertical-align: super;
   margin-right: 8px;
@@ -249,6 +261,10 @@ body.format-site nav#sharer {
 
 .lh2 {
   line-height: 2em;
+}
+
+.lh3 {
+  line-height: 3em;
 }
 
 .align-left {
@@ -334,6 +350,10 @@ body.format-site nav#sharer {
 
 .small-80 {
   font-size: 80%;
+}
+
+mark.green {
+  background: greenyellow;
 }
 
 body.format-site > header {

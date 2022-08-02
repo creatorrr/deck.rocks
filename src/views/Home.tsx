@@ -14,7 +14,7 @@ interface HomeProps extends HeadProps, FormProps, IntroProps {}
 export default ({ idea, ...props }: HomeProps) => (
   <html>
     <Head {...props} />
-    <Controls idea={idea} {...props} />
+    <Controls idea={idea} job_id={null} hash={null} {...props} />
     <Intro {...props} />
     <Footer />
   </html>

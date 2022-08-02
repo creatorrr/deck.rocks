@@ -1,13 +1,25 @@
 // views/Controls.tsx
 
-import Form from "./general/Form";
 import type { FormProps } from "./general/Form";
 
+import { hostname } from "../env";
+import Form from "./general/Form";
+import Sharer from "./utils/Sharer";
+
 export interface ControlsProps extends FormProps {
+  job_id: number;
+  hash: string;
+  format: "site" | "deck";
+  idea: string;
+  nocontrols?: boolean;
   showForm?: boolean;
 }
 
-export default ({ showForm = true, ...formProps }: ControlsProps) => (
+export default ({
+  nocontrols = false,
+  showForm = true,
+  ...formProps
+}: ControlsProps) => (
   <>
     <div id="controls">
       <h3 id="home-button" className="p-absolute left-1">
@@ -16,13 +28,22 @@ export default ({ showForm = true, ...formProps }: ControlsProps) => (
 
       {formProps.prefill && (
         <>
-          <a id="permalink" className="p-absolute top-1 right-5" href="#">
-            ☆ Permalink
-          </a>
-
           <a id="print" className="p-absolute top-1 right-1" href="#">
             🖶 Print
           </a>
+
+          {/* <Sharer
+              showGeneratedUsing={nocontrols}
+              url={
+              formProps.job_id
+              ? `${hostname || "https://deck.rocks"}/display?job_id=${
+              formProps.job_id
+              }&hash=${formProps.hash}&format=${formProps.format || "site"}`
+              : "/"
+              }
+              title={formProps.idea || ""}
+              additionalParams={{ nocontrols: true }}
+              /> */}
         </>
       )}
     </div>

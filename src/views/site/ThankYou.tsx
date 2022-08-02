@@ -1,12 +1,11 @@
 // views/site/ThankYou.tsx
 
 import { illustration } from "../../utils/img";
+import GeneratedUsing, { GeneratedUsingProps } from "../utils/GeneratedUsing";
 
-export interface ThankYouProps {
-  idea: string;
-}
+export interface ThankYouProps extends GeneratedUsingProps {}
 
-export default ({ idea }: ThankYouProps) => (
+export default (props: ThankYouProps) => (
   <section className="bg-illustration" style={illustration("space")}>
     <h2>Thank you!</h2>
     <p>
@@ -42,14 +41,6 @@ export default ({ idea }: ThankYouProps) => (
     </p>
     <br />
     <hr />
-    <p style={{ width: "75%" }}>
-      <small>
-        This <em>deck</em> was generated using some awesome tech using just:
-        <mark>
-          <cite>"{idea}"</cite>
-        </mark>{" "}
-        as input.
-      </small>
-    </p>
+    <GeneratedUsing short={true} {...props} />
   </section>
 );

@@ -48,15 +48,16 @@ export default ({
     <Header {...props} />
 
     <main>
-      <Sharer
-        showGeneratedUsing={!!nocontrols}
-        url={`${
-          hostname || "https://deck.rocks"
-        }/display?job_id=${job_id}&hash=${hash}&format=${format || "site"}`}
-        title={props.idea}
-        additionalParams={{ nocontrols: true }}
-        align="right"
-      />
+      {nocontrols && (
+        <Sharer
+          showGeneratedUsing={nocontrols}
+          url={`${
+            hostname || "https://deck.rocks"
+          }/display?job_id=${job_id}&hash=${hash}&format=${format || "site"}`}
+          title={props.idea}
+          additionalParams={{ nocontrols: true }}
+        />
+      )}
 
       <WhatWeDo {...props} />
       <Problem {...props} />
@@ -68,13 +69,12 @@ export default ({
       <ThankYou {...props} />
 
       <Sharer
-        showGeneratedUsing={!!nocontrols}
+        showGeneratedUsing={nocontrols}
         url={`${
           hostname || "https://deck.rocks"
         }/display?job_id=${job_id}&hash=${hash}&format=${format || "site"}`}
         title={props.idea}
         additionalParams={{ nocontrols: true }}
-        align="right"
       />
     </main>
   </>
