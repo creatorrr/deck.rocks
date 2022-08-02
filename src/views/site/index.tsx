@@ -42,7 +42,7 @@ export default ({ job_id, hash, format, ...props }: SiteProps) => (
 
     <main>
       <Sharer
-        showGeneratedUsing={!!nocontrols}
+        showGeneratedUsing={!!props.nocontrols}
         url={`${
           hostname || "https://deck.rocks"
         }/display?job_id=${job_id}&hash=${hash}&format=${format || "site"}`}
@@ -61,7 +61,7 @@ export default ({ job_id, hash, format, ...props }: SiteProps) => (
       <ThankYou {...props} />
       
       <Sharer
-        showGeneratedUsing={!!nocontrols}
+        showGeneratedUsing={!!props.nocontrols}
         url={`${
           hostname || "https://deck.rocks"
         }/display?job_id=${job_id}&hash=${hash}&format=${format || "site"}`}
