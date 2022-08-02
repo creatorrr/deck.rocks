@@ -34,16 +34,28 @@ export default ({
       {nocontrols || <Controls {...props} prefill={prefill} />}
 
       <Sharer
+        showGeneratedUsing={!!nocontrols}
         url={`${
           hostname || "https://deck.rocks"
         }/display?job_id=${job_id}&hash=${hash}&format=${
-          props.format || "site"
+          props.format || "deck"
         }`}
         title={props.idea}
-        additionalParams={{/* nocontrols: true */}}
+        additionalParams={{ nocontrols: true }}
       />
 
       <Deck {...props} />
+
+      <Sharer
+        showGeneratedUsing={!!nocontrols}
+        url={`${
+          hostname || "https://deck.rocks"
+        }/display?job_id=${job_id}&hash=${hash}&format=${
+          props.format || "deck"
+        }`}
+        title={props.idea}
+        additionalParams={{ nocontrols: true }}
+      />
 
       <Footer slideInstructions={true} />
     </body>

@@ -7,11 +7,23 @@ export interface SharerProps {
   align?: "left" | "center" | "right";
   title?: string;
   additionalParams?: { [key: string]: any };
+  showGeneratedUsing?: boolean;
 }
 
-export default ({ align = "center", ...props }: SharerProps) => (
+export default ({
+  align = "center",
+  showGeneratedUsing = false,
+  ...props
+}: SharerProps) => (
   <nav id="sharer" className={`align-${align}`}>
-    <cite>Share</cite>
+    <cite>
+      {showGeneratedUsing && (
+        <span>
+          Generated using <a href="https://deck.rocks">deck.rocks</a>! |{" "}
+        </span>
+      )}
+      Share
+    </cite>
 
     <ShareBtn sharer="twitter" {...props} />
     <ShareBtn sharer="linkedin" {...props} />

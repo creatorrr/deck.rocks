@@ -34,19 +34,27 @@ export interface SiteProps
   job_id: number;
   hash: string;
   format: "site" | "deck";
+  nocontrols?: boolean;
 }
 
-export default ({ job_id, hash, format, ...props }: SiteProps) => (
+export default ({
+  job_id,
+  hash,
+  format,
+  nocontrols = false,
+  ...props
+}: SiteProps) => (
   <>
     <Header {...props} />
 
     <main>
       <Sharer
+        showGeneratedUsing={!!nocontrols}
         url={`${
           hostname || "https://deck.rocks"
         }/display?job_id=${job_id}&hash=${hash}&format=${format || "site"}`}
         title={props.idea}
-        additionalParams={{/* nocontrols: true */}}
+        additionalParams={{ nocontrols: true }}
         align="right"
       />
 
@@ -58,6 +66,16 @@ export default ({ job_id, hash, format, ...props }: SiteProps) => (
       <Competition {...props} />
       <ExpertsSay {...props} />
       <ThankYou {...props} />
+
+      <Sharer
+        showGeneratedUsing={!!nocontrols}
+        url={`${
+          hostname || "https://deck.rocks"
+        }/display?job_id=${job_id}&hash=${hash}&format=${format || "site"}`}
+        title={props.idea}
+        additionalParams={{ nocontrols: true }}
+        align="right"
+      />
     </main>
   </>
 );
