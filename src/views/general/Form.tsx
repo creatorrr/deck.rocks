@@ -21,7 +21,7 @@ export default ({
   <>
     <form id="input-form" action="/generate" method="GET">
       {errors && !!errors.length && <FormTips items={errors} type_="error" />}
-      {tips && !!tips.length && <FormTips items={tips} type_="tip" />}
+      {false && tips && !!tips.length && <FormTips items={tips} type_="tip" />}
 
       <textarea
         className="va-top no-border width-100"
