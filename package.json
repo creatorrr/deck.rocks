@@ -6,7 +6,7 @@
   "type": "node12",
   "scripts": {
     "format": "prettier --write './{src,assets/js}/**/*'",
-    "build": "npm run format && tsc",
+    "build": "tsc",
     "build:watch": "tsc --watch",
     "start": "pm2-runtime start . -i $WEB_CONCURRENCY",
     "workers": "pm2-runtime start ./dist/worker.js -i $WORKER_CONCURRENCY --max-memory-restart 1850M",
