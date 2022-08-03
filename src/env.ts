@@ -14,6 +14,7 @@ export let {
   MAX_JOBS_PER_WORKER: _maxJobsPerWorker,
   PORT: _port,
   HIGH_ACCURACY: _highAccuracy,
+  ENABLE_ADS: _enableAds,
   STRICT_FILTER_MODE: _strictFilterMode,
   GOOGLE_ANALYTICS_ID: googleAnalyticsId,
   DEBUG: _debug,
@@ -28,6 +29,9 @@ export const sentryDsn: string = _sentryDsn || "";
 export const debug = !_.isUndefined(_debug);
 googleAnalyticsId = googleAnalyticsId || "G-88P3G4KMHX";
 
+export const googleAdsClientId: string = "ca-pub-9216734241053665";
+
+export const enableAds = !_.isUndefined(_enableAds);
 export const highAccuracy = !_.isUndefined(_highAccuracy);
 export const strictFilterMode = !_.isUndefined(_strictFilterMode);
 export const maxJobsPerWorker = parseInt(_maxJobsPerWorker || "") || 50;

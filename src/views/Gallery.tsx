@@ -8,6 +8,7 @@ import Controls from "./Controls";
 import Footer from "./general/Footer";
 import GalleryItems from "./general/GalleryItems";
 import Head from "./general/Head";
+import AdInsert from "./utils/AdInsert";
 import ProductHunt from "./utils/ProductHunt";
 
 interface GalleryProps extends HeadProps, FormProps, GalleryItemsProps {
@@ -38,6 +39,7 @@ export default ({ total, ...props }: GalleryProps) => (
         <cite>(Hover over the taglines to see the original idea)</cite>
       </p>
       <hr />
+      <AdInsert />
 
       <GalleryItems {...props} />
     </section>

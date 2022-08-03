@@ -3,7 +3,11 @@
 import { sample } from "lodash";
 
 import { revealThemes } from "../../data/lists";
-import { frontendConfig, googleAnalyticsId } from "../../env";
+import {
+  frontendConfig,
+  googleAdsClientId,
+  googleAnalyticsId,
+} from "../../env";
 
 export interface HeadProps {
   format: "site" | "deck";
@@ -103,8 +107,14 @@ export default ({
 
     <script
       async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9216734241053665"
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${googleAdsClientId}`}
       crossOrigin="anonymous"
+    ></script>
+
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `(adsbygoogle = window.adsbygoogle || []).push({});`,
+      }}
     ></script>
   </head>
 );

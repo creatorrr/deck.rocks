@@ -1,5 +1,6 @@
-// views/deck/Footer.tsx
+// views/general/Footer.tsx
 
+import AdInsert from "../utils/AdInsert";
 import GeneratedUsing, { GeneratedUsingProps } from "../utils/GeneratedUsing";
 import ProductHunt from "../utils/ProductHunt";
 
@@ -13,6 +14,8 @@ export default (props: FooterProps) => (
         <br />
       </>
     )}
+
+    <AdInsert />
 
     <nav>
       <a href="/">Home</a> <a href="/gallery">Gallery</a>{" "}

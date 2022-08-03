@@ -2,6 +2,7 @@
 
 import { random as randomSuperb } from "superb";
 
+import AdInsert from "../utils/AdInsert";
 import Examples from "../utils/Examples";
 import Giphy from "../utils/Giphy";
 import HowItWorks from "../utils/HowItWorks";
@@ -55,6 +56,7 @@ export default ({ examples, showGallery = false }: IntroProps) => (
     <Examples examples={examples} showGallery={showGallery} />
 
     <hr />
+    <AdInsert />
     <HowItWorks />
 
     <hr />
