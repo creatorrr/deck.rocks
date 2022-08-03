@@ -20,7 +20,7 @@ export default (props: FooterProps) => (
     <nav>
       <a href="/">Home</a> <a href="/gallery">Gallery</a>{" "}
       <a href="//github.com/creatorrr/deck.rocks">Github</a>{" "}
-      <a href="//diwank.name">Author</a>{" "}
+      <a href="//diwank.name">Author</a> <a href="/privacy.html">Privacy</a>{" "}
       <ProductHunt
         theme="neutral"
         size={1}
