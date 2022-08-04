@@ -20,7 +20,7 @@ export default ({ examples, showGallery = false }: IntroProps) => (
       <ProductHuntProof />
     </p>
 
-    <h3>AI generated pitch decks!</h3>
+    <h3 className="inline-block clear-right">AI generated pitch decks!</h3>
 
     <p>
       this is a fun side project for generating pitch decks using GPT-3, (the{" "}

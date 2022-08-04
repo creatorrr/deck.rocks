@@ -111,9 +111,30 @@ a > sup {
 }
 
 @media (prefers-color-scheme: dark) {
+  body.format-site main h1,
+  body.format-site main h2,
+  body.format-site main h3,
+  body.format-site main h4,
+  body.format-site main p,
+  body.format-site main blockquote {
+    backdrop-filter: none !important;
+  }
+
   .bg-illustration {
     background-image: linear-gradient(#212121, #212121), var(--illustration) !important;
   }
+
+  #print kbd svg {
+    filter: invert(1);
+  }
+
+  textarea {
+    color: black;
+  }
+}
+
+.clear-right {
+  clear: right;
 }
 
 .no-margin {

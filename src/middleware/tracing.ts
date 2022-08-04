@@ -10,40 +10,43 @@ import Sentry from "../clients/sentry";
 
 // From: https://docs.sentry.io/platforms/node/guides/koa/
 
-export default async (ctx: Koa.Context, next: Koa.Next) => {
-  const reqMethod = (ctx.method || "").toUpperCase();
-  const reqUrl = ctx.url && stripUrlQueryAndFragment(ctx.url);
+export default ({ match }: { match: (ctx: Koa.Context) => boolean }) =>
+  async (ctx: Koa.Context, next: Koa.Next) => {
+    if (!match(ctx)) return await next();
 
-  // connect to trace of upstream app
-  const traceparentData = ctx.request.get("sentry-trace")
-    ? extractTraceparentData(ctx.request.get("sentry-trace"))
-    : {};
+    const reqMethod = (ctx.method || "").toUpperCase();
+    const reqUrl = ctx.url && stripUrlQueryAndFragment(ctx.url);
 
-  const transaction = Sentry.startTransaction({
-    name: `${reqMethod} ${reqUrl}`,
-    op: "http.server",
-    ...traceparentData,
-  });
+    // connect to trace of upstream app
+    const traceparentData = ctx.request.get("sentry-trace")
+      ? extractTraceparentData(ctx.request.get("sentry-trace"))
+      : {};
 
-  ctx.__sentry_transaction = transaction;
-
-  // We put the transaction on the scope so users can attach children to it
-  Sentry.getCurrentHub().configureScope((scope) => {
-    scope.setSpan(transaction);
-  });
-
-  ctx.res.on("finish", () => {
-    // Push `transaction.finish` to the next event loop so open spans have a chance to finish before the transaction closes
-    setImmediate(() => {
-      // if using koa router, a nicer way to capture transaction using the matched route
-      if (ctx._matchedRoute) {
-        const mountPath = ctx.mountPath || "";
-        transaction.setName(`${reqMethod} ${mountPath}${ctx._matchedRoute}`);
-      }
-      transaction.setHttpStatus(ctx.status);
-      transaction.finish();
+    const transaction = Sentry.startTransaction({
+      name: `${reqMethod} ${reqUrl}`,
+      op: "http.server",
+      ...traceparentData,
     });
-  });
 
-  await next();
-};
+    ctx.__sentry_transaction = transaction;
+
+    // We put the transaction on the scope so users can attach children to it
+    Sentry.getCurrentHub().configureScope((scope) => {
+      scope.setSpan(transaction);
+    });
+
+    ctx.res.on("finish", () => {
+      // Push `transaction.finish` to the next event loop so open spans have a chance to finish before the transaction closes
+      setImmediate(() => {
+        // if using koa router, a nicer way to capture transaction using the matched route
+        if (ctx._matchedRoute) {
+          const mountPath = ctx.mountPath || "";
+          transaction.setName(`${reqMethod} ${mountPath}${ctx._matchedRoute}`);
+        }
+        transaction.setHttpStatus(ctx.status);
+        transaction.finish();
+      });
+    });
+
+    await next();
+  };

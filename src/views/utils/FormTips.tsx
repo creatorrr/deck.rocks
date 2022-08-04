@@ -10,7 +10,7 @@ export interface FormTipsProps {
 
 export default ({ items, type_ = "tip" }: FormTipsProps) => (
   <details
-    open={true}
+    open={false}
     className={classnames({
       "hl-lightsalmon": type_ === "error",
       "hl-lightyellow": type_ === "tip",

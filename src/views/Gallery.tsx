@@ -19,7 +19,7 @@ export default ({ total, ...props }: GalleryProps) => (
   <html>
     <Head {...props} />
     <Controls
-      idea={null}
+      idea={props.idea}
       job_id={null}
       hash={null}
       shareUrl="/gallery"
@@ -30,7 +30,7 @@ export default ({ total, ...props }: GalleryProps) => (
         <ProductHunt size={2} />
       </span>
 
-      <h2>Gallery</h2>
+      <h2 className="inline-block clear-right">Gallery</h2>
 
       <p>
         Some of the ideas people generated so far.{" "}
