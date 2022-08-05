@@ -10,7 +10,7 @@ import {
   replicateEndpoint,
 } from "../env";
 
-async function genLogos(keywords: string, n: number = 1): Promise<string[]> {
+async function genLogos(idea: string, n: number = 1): Promise<string[]> {
   const headers = {
     accept: "application/json",
     "content-type": "application/json",
@@ -18,8 +18,14 @@ async function genLogos(keywords: string, n: number = 1): Promise<string[]> {
   };
 
   const input = {
-    prompt: `logo of a ${keywords} product`,
-    n_predictions: `${n}`,
+    text: `logo of a startup: ${idea}`,
+    temperature: 0.66,
+    top_k: 128,
+    supercondition_factor: 4,
+    save_as_png: true,
+    progressive_outputs: false,
+    seamless: false,
+    grid_size: n,
   };
 
   const body = {
