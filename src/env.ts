@@ -70,7 +70,6 @@ export const huggingtweetModels: string[] = [
   "elonmusk",
   "normmacdonald",
   "gordonramsay",
-  "bestmusiclyric-bygpt3",
 ];
 
 export const openaiModels = {
