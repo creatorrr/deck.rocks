@@ -1,6 +1,7 @@
 // generate/genLogos.ts
 
 import fetch from "@adobe/node-fetch-retry";
+import cyrb53 from "cyrb53";
 
 import { memoize } from "../clients/cache";
 import pollReplicate from "../utils/pollReplicate";
@@ -10,7 +11,7 @@ import {
   replicateEndpoint,
 } from "../env";
 
-async function genLogos(keywords: string, n: number = 1): Promise<string[]> {
+async function genLogos(idea: string, n: number = 1): Promise<string[]> {
   const headers = {
     accept: "application/json",
     "content-type": "application/json",
@@ -18,8 +19,14 @@ async function genLogos(keywords: string, n: number = 1): Promise<string[]> {
   };
 
   const input = {
-    prompt: `logo of a ${keywords} product`,
-    n_predictions: `${n}`,
+    text: `logo of a startup: ${idea}`,
+    temperature: 0.66,
+    top_k: 128,
+    supercondition_factor: 4,
+    save_as_png: true,
+    progressive_outputs: false,
+    seamless: false,
+    grid_size: n,
   };
 
   const body = {
@@ -28,6 +35,8 @@ async function genLogos(keywords: string, n: number = 1): Promise<string[]> {
   };
 
   try {
+    const hash = cyrb53(idea);
+    console.time(`logo-${hash}`);
     const response = await fetch(replicateEndpoint, {
       headers,
       body: JSON.stringify(body),
@@ -39,13 +48,17 @@ async function genLogos(keywords: string, n: number = 1): Promise<string[]> {
     } = await response.json();
 
     // Need to poll replicate endpoint until the results are ready
-    return (await pollReplicate(url)).map(({ image }) => image);
+    const result = await pollReplicate(url);
+    console.timeEnd(`logo-${hash}`);
+
+    return result;
   } catch (e) {
     console.error(e);
     return [
-      "https://replicate.com/api/models/borisdayma/dalle-mini/files/2c5b61dd-6bcd-400d-8abf-1712a915c432/output_0.png",
+      "https://replicate.com/api/models/kuprel/min-dalle/files/00a9ba69-2ef1-446e-8399-16d081001e4b/logo-of-a-startup-some-idea.png",
     ];
   }
 }
 
 export default memoize(genLogos);
+// export default genLogos;
