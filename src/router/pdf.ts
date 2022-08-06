@@ -17,7 +17,8 @@ export default async (ctx: Koa.Context) => {
     hash,
     nocontrols: true,
     print: true,
-    format,
+    format: "site",
+    // format,
   };
 
   const deckUrl: string = `${hostname}/display?${stringify(deckParams)}`;
@@ -25,7 +26,7 @@ export default async (ctx: Koa.Context) => {
   const config: Record<string, any> = {
     emulateScreenMedia: false,
     scrollPage: true,
-    waitFor: 3000,
+    waitFor: 200,
     "pdf.printBackground": true,
     ignoreHttpsErrors: true,
     attachmentName: `deck-${job_id}-${hash}.pdf`,
