@@ -53,7 +53,7 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@adobe/node-fetch-retry": "^2.2.0",
+    "@adobe/node-fetch-retry": "github:creatorrr/node-fetch-retry",
     "@koa/router": "^11.0.1",
     "@sentry/node": "^7.8.0",
     "@sentry/tracing": "^7.8.0",

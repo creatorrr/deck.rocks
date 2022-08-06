@@ -1,5 +1,7 @@
 // clients/huggingface.ts
 
+import fetch from "@adobe/node-fetch-retry";
+
 import { debug, defaultHuggingfaceOptions, huggingfaceToken } from "../env";
 
 export interface HasError {
@@ -13,7 +15,8 @@ export interface HFResponse {
 export async function queryApi(
   data: Record<string, any>,
   model: string,
-  pipeline: string | null = null
+  pipeline: string | null = null,
+  signal?: AbortSignal
 ): Promise<HasError | HFResponse[] | number[][]> {
   data = Object.assign({ options: defaultHuggingfaceOptions }, data);
 
@@ -26,6 +29,7 @@ export async function queryApi(
     headers: { Authorization: `Bearer ${huggingfaceToken}` },
     method: "POST",
     body: JSON.stringify(data),
+    ...(signal ? { signal } : {}),
   });
 
   const results = await response.json();
