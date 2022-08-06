@@ -6,7 +6,10 @@ import GeneratedUsing, { GeneratedUsingProps } from "../utils/GeneratedUsing";
 export interface ThankYouProps extends GeneratedUsingProps {}
 
 export default (props: ThankYouProps) => (
-  <section className="bg-illustration" style={illustration("space")}>
+  <section
+    className="bg-illustration not-printable"
+    style={illustration("space")}
+  >
     <h2>Thank you!</h2>
     <p>
       I hope you enjoyed this project! If you liked{" "}

@@ -10,6 +10,76 @@ blockquote,
 ul,
 ol {
   font-family: "Mulish", sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+main {
+  break-inside: auto;
+}
+
+header,
+section,
+article {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  break-after: page;
+}
+
+table,
+blockquote,
+pre,
+code,
+figure,
+li,
+ul,
+ol,
+a,
+tr {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+h2,
+h3,
+h4,
+p,
+a {
+  orphans: 3;
+  widows: 3;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  page-break-after: avoid;
+  page-break-inside: avoid;
+  break-after: avoid;
+  break-inside: avoid;
+}
+
+h1 + p,
+h2 + p,
+h3 + p {
+  page-break-before: avoid;
+  break-before: avoid;
+}
+
+img {
+  page-break-after: auto;
+  page-break-before: auto;
+  page-break-inside: avoid;
+  break-after: auto;
+  break-before: auto;
+  break-inside: avoid;
+}
+
+pre {
+  white-space: pre-wrap !important;
+  word-wrap: break-word;
 }
 
 .grid-span-full {
@@ -124,6 +194,7 @@ a > sup {
     background-image: linear-gradient(#212121, #212121), var(--illustration) !important;
   }
 
+  #pdf kbd svg,
   #print kbd svg {
     filter: invert(1);
   }
@@ -210,17 +281,20 @@ nav#sharer a:hover img {
   cursor: pointer;
 }
 
-#print {
+#print,
+#pdf {
   position: relative;
   bottom: 4px;
   cursor: pointer;
 }
 
+#pdf kbd,
 #print kbd {
   vertical-align: super;
   font-size: 112%;
 }
 
+#pdf kbd:hover,
 #print kbd:hover {
   filter: contrast(2);
 }
@@ -392,15 +466,17 @@ body.format-site nav#sharer {
   }
 }
 
-@media (max-width: 767px) and (orientation: portrait) {
-  .item-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 0.5em 1em;
-  }
+@media not print {
+  @media (max-width: 767px) and (orientation: portrait) {
+    .item-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0.5em 1em;
+    }
 
-  .gap-6 {
-    gap: 3em;
+    .gap-6 {
+      gap: 3em;
+    }
   }
 }
 
@@ -598,15 +674,14 @@ html.print-pdf body {
   display: revert;
 }
 
-@media print {
-  video,
-  img,
-  blockquote,
-  div,
-  section,
-  header,
-  footer {
-    break-inside: avoid !important;
+@page {
+  size: landscape;
+  margin: 0.5in;
+}
+
+@media only print {
+  .not-printable {
+    display: none;
   }
 }
 

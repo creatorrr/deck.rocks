@@ -23,7 +23,7 @@ export default ({
   ...formProps
 }: ControlsProps) => (
   <>
-    <div id="controls" className="grid-span-full">
+    <div id="controls" className="grid-span-full not-printable">
       <h3 id="home-button" className="float-left std-padding-md no-margin">
         <a href="/">deck.rocks</a> 🤘
       </h3>
@@ -32,13 +32,10 @@ export default ({
         className="float-right std-padding-md"
         showPrintBtn={!!formProps.prefill}
         showGeneratedUsing={nocontrols}
-        url={
-          formProps.job_id
-            ? `${hostname || "https://deck.rocks"}/display?job_id=${
-                formProps.job_id
-              }&hash=${formProps.hash}&format=${formProps.format || "site"}`
-            : `${hostname || "https://deck.rocks"}${shareUrl}`
-        }
+        job_id={formProps.job_id}
+        hash={formProps.hash}
+        format={formProps.format}
+        url={formProps.job_id ? "" : `${hostname}${shareUrl}`}
         title={formProps.prefill || "Check out deck.rocks!"}
         additionalParams={formProps.prefill ? { nocontrols: true } : {}}
       />

@@ -8,7 +8,7 @@ export let {
   HUGGINGFACE_API_TOKEN: huggingfaceToken,
   REPLICATE_API_KEY: replicateApiKey,
   REPLICATE_MODEL_VERSION: replicateModelVersion,
-  REDIS_URL: redisUrl,
+  REDIS_URL: redisUrl = "0.0.0.0:6379",
   PEXELS_API_KEY: pexelsApiKey,
   PRODUCT_HUNT_TOKEN: productHuntToken,
   MAX_JOBS_PER_WORKER: _maxJobsPerWorker,
@@ -16,20 +16,18 @@ export let {
   HIGH_ACCURACY: _highAccuracy,
   ENABLE_ADS: _enableAds,
   STRICT_FILTER_MODE: _strictFilterMode,
-  GOOGLE_ANALYTICS_ID: googleAnalyticsId,
+  GOOGLE_ANALYTICS_ID: googleAnalyticsId = "G-88P3G4KMHX",
+  GOOGLE_ADS_CLIENT_ID: googleAdsClientId = "ca-pub-9216734241053665",
   DEBUG: _debug,
   DEFAULT_REDIS_TTL: _defaultRedisTtl,
   DEFAULT_TASK_TIMEOUT: _defaultTaskTimeout,
-  SENTRY_DSN: _sentryDsn,
-  HOSTNAME: hostname,
+  SENTRY_DSN: sentryDsn = "",
+  HOSTNAME: hostname = "http://localhost:3000",
+  PDF_API_KEY: pdfApiKey,
+  PDF_API_ENDPOINT: pdfApiEndpoint = "https://pdf.deck.rocks/api/render",
 } = process.env;
 
-export const sentryDsn: string = _sentryDsn || "";
-
 export const debug = !_.isUndefined(_debug);
-googleAnalyticsId = googleAnalyticsId || "G-88P3G4KMHX";
-
-export const googleAdsClientId: string = "ca-pub-9216734241053665";
 
 export const enableAds = !_.isUndefined(_enableAds);
 export const highAccuracy = !_.isUndefined(_highAccuracy);
@@ -37,7 +35,6 @@ export const strictFilterMode = !_.isUndefined(_strictFilterMode);
 export const maxJobsPerWorker = parseInt(_maxJobsPerWorker || "") || 50;
 export const port = parseInt(_port || "") || 3000;
 
-redisUrl = redisUrl || "0.0.0.0:6379";
 export const defaultRedisTtl = parseInt(_defaultRedisTtl || "") || 48 * 3600; // 48 hours
 export const defaultTaskTimeout =
   parseInt(_defaultTaskTimeout || "") || 60 * 1000; // 60 seconds
@@ -57,8 +54,6 @@ export const maxInputLength: number = (5 + 1) * 120; // 120 words with an averag
 export const maxPromptLength: number = maxInputLength + (5 + 1) * 640; // 640 words with an average of 5 chars each and spaces
 
 export const huggingfaceQnAModel: string = "allenai/macaw-large";
-// highAccuracy ? "allenai/macaw-3b" : "allenai/macaw-large",
-
 export const huggingfaceFinanceModel: string = "diwank/bartner";
 
 export const huggingtweetModels: string[] = [

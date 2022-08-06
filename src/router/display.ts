@@ -17,8 +17,9 @@ import {
 } from "../utils/jobs";
 
 export default async (ctx: Koa.Context) => {
-  let { job_id, hash, format, nocontrols } = ctx.query;
+  let { job_id, hash, format, nocontrols, print } = ctx.query;
   const _nocontrols = !isUndefined(nocontrols);
+  const _print = !isUndefined(print);
 
   if (isUndefined(job_id) || isUndefined(hash)) {
     ctx.body = "Both job_id and hash are required.";
@@ -48,6 +49,7 @@ export default async (ctx: Koa.Context) => {
 
   await ctx.render(Component, {
     ...result,
+    print: _print,
     tips: tips
       .map(({ reason }: { reason: string }) => reason)
       .filter((x: string) => !!x),
