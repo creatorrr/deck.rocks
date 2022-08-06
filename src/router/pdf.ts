@@ -25,7 +25,7 @@ export default async (ctx: Koa.Context) => {
   const config: Record<string, any> = {
     emulateScreenMedia: false,
     scrollPage: true,
-    waitFor: 500,
+    waitFor: 3000,
     "pdf.printBackground": true,
     ignoreHttpsErrors: true,
     attachmentName: `deck-${job_id}-${hash}.pdf`,
@@ -43,8 +43,10 @@ export default async (ctx: Koa.Context) => {
   });
 
   if (!pdfResponse.ok) {
-    Sentry.captureException(new Error(await pdfResponse.text()));
-    return ctx.throw(500, "The pdf service was unable to fulfil your request.");
+    const error: string = `The pdf service was unable to render job#(${job_id})&hash#(${hash})`;
+
+    Sentry.captureException(new Error(error));
+    return ctx.throw(500, error);
   }
 
   pdfResponse.headers.forEach((value, header) => ctx.set(header, value));
