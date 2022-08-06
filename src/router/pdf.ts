@@ -5,6 +5,7 @@ import { stringify } from "node:querystring";
 import * as Koa from "koa";
 import _ from "lodash";
 
+import Sentry from "../clients/sentry";
 import { hostname, pdfApiEndpoint, pdfApiKey } from "../env";
 
 export default async (ctx: Koa.Context) => {
@@ -15,7 +16,7 @@ export default async (ctx: Koa.Context) => {
     job_id,
     hash,
     nocontrols: true,
-    "print-pdf": true,
+    print: true,
     format,
   };
 
@@ -41,8 +42,10 @@ export default async (ctx: Koa.Context) => {
     },
   });
 
-  if (!pdfResponse.ok)
+  if (!pdfResponse.ok) {
+    Sentry.captureException(new Error(await pdfResponse.text()));
     return ctx.throw(500, "The pdf service was unable to fulfil your request.");
+  }
 
   pdfResponse.headers.forEach((value, header) => ctx.set(header, value));
 

@@ -18,7 +18,7 @@ import MarketSize from "./MarketSize";
 import HowWillWeMakeMoney from "./HowWillWeMakeMoney";
 import Competition from "./Competition";
 import ExpertsSay from "./ExpertsSay";
-import Owen from "./Owen";
+/* import Owen from "./Owen"; */
 import Opening from "./Opening";
 import ThankYou from "./ThankYou";
 
@@ -32,7 +32,9 @@ export interface DeckProps
     ExpertsSayProps,
     OwenProps,
     QuoteProps,
-    HowWillWeMakeMoneyProps {}
+    HowWillWeMakeMoneyProps {
+  print?: boolean;
+}
 
 const revealOpts = {
   slideNumber: true,
@@ -63,7 +65,15 @@ export default (props: DeckProps) => (
 
       <script
         dangerouslySetInnerHTML={{
-          __html: `typeof(Reveal) !== "undefined" && Reveal.initialize(${JSON.stringify(
+          __html: `
+          ${
+            !props.print
+              ? ""
+              : `window.history.replaceState(null, "",
+            window.location.search + (window.location.search ? "&" : "?") + "print-pdf"
+          );`
+          }
+          typeof(Reveal) !== "undefined" && Reveal.initialize(${JSON.stringify(
             revealOpts
           )});`,
         }}

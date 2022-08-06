@@ -1,21 +1,5 @@
 // assets/js/control.js
 
-const handlePermalinkBtn = (e) => {
-  const { prefill, contentSelector } = APPLICATION_DATA;
-
-  // prevent anchor click
-  e.preventDefault();
-
-  const permalink = window.location.href + "&nocontrols";
-
-  // Copy permalink
-  navigator.clipboard.writeText(permalink);
-  alert("Copied!");
-
-  // Navigate to permalink
-  window.location = permalink;
-};
-
 const handlePrintBtn = (e) => {
   // prevent anchor click
   e && e.preventDefault();
@@ -38,20 +22,9 @@ $(() => {
   const form = $("#input-form");
 
   $(window).on("beforeprint", () => (form.hide(), controls.hide()));
-  $(window).on("afterprint", () => (form.hide(), controls.show()));
+  $(window).on("afterprint", () => (form.show(), controls.show()));
 
-  const [permalinkBtn, printBtn] = ["permalink", "print"].map((id) =>
-    $(`a#${id}`)
-  );
+  const printBtn = $(`a#print`);
 
-  // If printing is set up, start print after a delay
-  if (typeof Reveal !== "undefined" && Reveal.isPrintingPDF()) {
-    setTimeout(handlePrintBtn, 500);
-  }
-
-  // Only if form was prefilled
-  if (prefill) {
-    // permalinkBtn.on("click", handlePermalinkBtn);
-    printBtn.on("click", handlePrintBtn);
-  }
+  printBtn.on("click", handlePrintBtn);
 });

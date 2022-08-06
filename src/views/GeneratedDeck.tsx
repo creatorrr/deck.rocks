@@ -55,7 +55,7 @@ export default ({
       <Deck {...props} />
       <hr style={{ width: "100%" }} />
 
-      <p>
+      <p className="not-printable">
         <cite>
           You can use arrow keys <kbd>←</kbd> <kbd>→</kbd> to navigate between
           slides. On touch-screen devices, swipe left/right.
