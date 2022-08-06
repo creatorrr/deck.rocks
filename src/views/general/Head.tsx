@@ -96,10 +96,6 @@ export default ({
     <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
 
     <script
-      async
-      src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
-    ></script>
-    <script
       dangerouslySetInnerHTML={{
         __html: `
       window.dataLayer = window.dataLayer || [];
@@ -113,14 +109,20 @@ export default ({
 
     <script
       async
-      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${googleAdsClientId}`}
-      crossOrigin="anonymous"
+      src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
     ></script>
 
     <script
       dangerouslySetInnerHTML={{
         __html: `(adsbygoogle = window.adsbygoogle || []).push({});`,
       }}
+    ></script>
+
+    <script
+      data-cfasync="false"
+      async
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${googleAdsClientId}`}
+      crossOrigin="anonymous"
     ></script>
   </head>
 );
