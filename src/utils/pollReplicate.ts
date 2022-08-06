@@ -10,7 +10,7 @@ export const pollReplicate = async (
   count = 1,
   maxRetries = 20,
   waitSeconds = 3
-): Promise<{ image: string }[]> => {
+): Promise<string[]> => {
   if (count >= maxRetries)
     throw new Error(`Max retries limit (${maxRetries}) reached`);
 
