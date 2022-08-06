@@ -68,6 +68,9 @@ export const huggingtweetModels: string[] = [
   "arstechnica",
   "barackobama",
   "elonmusk",
+  "normmacdonald",
+  "gordonramsay",
+  "bestmusiclyric-bygpt3",
 ];
 
 export const openaiModels = {

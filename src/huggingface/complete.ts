@@ -9,11 +9,12 @@ export default async function complete(
   inputs: string,
   model: string,
   removeString: string = "",
-  opts = {}
+  opts: Record<string, any> = {},
+  signal?: AbortSignal
 ) {
   const data = { ...opts, inputs };
 
-  const results = await hf.queryApi(data, model);
+  const results = await hf.queryApi(data, model, null, signal);
 
   if ("error" in results) {
     console.error(results.error);

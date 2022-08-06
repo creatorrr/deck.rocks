@@ -12,9 +12,17 @@ export interface Verdict {
 }
 
 export default async function genVerdicts(idea: string, n: number = 3) {
+  const controllers: AbortController[] = [
+    ...Array(huggingtweetModels.length),
+  ].map((_x) => new AbortController());
+
   const verdictPromises: Promise<Verdict>[] = _(huggingtweetModels)
+    .zip(controllers)
     .shuffle()
-    .map(async (handle) => ({ handle, content: await tweet(idea, handle) }))
+    .map(async ([handle, controller]) => ({
+      handle,
+      content: await tweet(idea, handle, controller.signal),
+    }))
     .value();
 
   const verdicts: Verdict[] = [];
@@ -26,6 +34,8 @@ export default async function genVerdicts(idea: string, n: number = 3) {
 
     if (i >= n) break;
   }
+
+  controllers.forEach((controller) => controller.abort());
 
   debug && console.debug(verdicts);
 
