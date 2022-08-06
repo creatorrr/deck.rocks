@@ -60,7 +60,9 @@ export default ({
           </a>
         )}
         <ShareBtn sharer="twitter" url={shareUrl} {...props} />
-        {/* <ShareBtn sharer="hackernews" url={shareUrl} {...props} /> */}
+        {showPrintBtn || (
+          <ShareBtn sharer="hackernews" url={shareUrl} {...props} />
+        )}
         <ShareBtn sharer="email" url={shareUrl} {...props} />
         <ShareBtn sharer="linkedin" url={shareUrl} {...props} />
       </span>

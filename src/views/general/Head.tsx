@@ -21,7 +21,7 @@ export interface HeadProps {
 
 export default ({
   format = "site",
-  name = "decks rock!",
+  name = "deck.rocks: Generate pitch decks using GPT-3",
   tagline = "",
   appData = {},
   supportsMobile = true,
