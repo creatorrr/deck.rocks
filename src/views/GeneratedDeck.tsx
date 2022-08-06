@@ -4,7 +4,6 @@ import type { FormProps } from "./general/Form";
 import type { HeadProps } from "./general/Head";
 import type { DeckProps } from "./deck";
 
-import { hostname } from "../env";
 import Controls from "./Controls";
 import Deck from "./deck";
 import Footer from "./general/Footer";
@@ -45,11 +44,9 @@ export default ({
         <Sharer
           showPrintBtn={true}
           showGeneratedUsing={nocontrols}
-          url={`${
-            hostname || "https://deck.rocks"
-          }/display?job_id=${job_id}&hash=${hash}&format=${
-            props.format || "deck"
-          }`}
+          job_id={job_id}
+          hash={hash}
+          format={props.format}
           title={props.idea}
           additionalParams={{ nocontrols: true }}
         />
@@ -69,11 +66,9 @@ export default ({
         className="no-margin"
         showPrintBtn={true}
         showGeneratedUsing={nocontrols}
-        url={`${
-          hostname || "https://deck.rocks"
-        }/display?job_id=${job_id}&hash=${hash}&format=${
-          props.format || "deck"
-        }`}
+        job_id={job_id}
+        hash={hash}
+        format={props.format}
         title={props.idea}
         additionalParams={{ nocontrols: true }}
       />

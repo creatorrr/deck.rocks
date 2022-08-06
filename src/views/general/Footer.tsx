@@ -7,7 +7,7 @@ import ProductHunt from "../utils/ProductHunt";
 export interface FooterProps extends GeneratedUsingProps {}
 
 export default (props: FooterProps) => (
-  <footer>
+  <footer className="not-printable">
     {props.idea && (
       <>
         <GeneratedUsing {...props} />

@@ -18,44 +18,47 @@ export default ({
   prefill = "",
   format = "site",
 }: FormProps) => (
-  <>
-    <form id="input-form" action="/generate" method="GET">
-      {errors && !!errors.length && <FormTips items={errors} type_="error" />}
-      {tips && !!tips.length && <FormTips items={tips} type_="tip" />}
+  <form
+    id="input-form"
+    className="not-printable"
+    action="/generate"
+    method="GET"
+  >
+    {errors && !!errors.length && <FormTips items={errors} type_="error" />}
+    {tips && !!tips.length && <FormTips items={tips} type_="tip" />}
 
-      <textarea
-        className="va-top no-border width-100"
-        placeholder={`💡 What's your new idea? e.g. ${idea}`}
-        autoFocus={!prefill}
-        name="idea"
-        minLength={minInputLength}
-        maxLength={maxInputLength}
-        required={true}
-        defaultValue={prefill}
-      ></textarea>
-      <input type="submit" className="va-top" value={"Go! 🔥"} />
+    <textarea
+      className="va-top no-border width-100"
+      placeholder={`💡 What's your new idea? e.g. ${idea}`}
+      autoFocus={!prefill}
+      name="idea"
+      minLength={minInputLength}
+      maxLength={maxInputLength}
+      required={true}
+      defaultValue={prefill}
+    ></textarea>
+    <input type="submit" className="va-top" value={"Go! 🔥"} />
 
-      <span>Format:</span>
+    <span>Format:</span>
 
-      <label>
-        <input
-          type="radio"
-          name="format"
-          value="site"
-          defaultChecked={format === "site"}
-        />
-        Exec Summary
-      </label>
+    <label>
+      <input
+        type="radio"
+        name="format"
+        value="site"
+        defaultChecked={format === "site"}
+      />
+      Exec Summary
+    </label>
 
-      <label>
-        <input
-          type="radio"
-          name="format"
-          value="deck"
-          defaultChecked={format === "deck"}
-        />
-        Deck
-      </label>
-    </form>
-  </>
+    <label>
+      <input
+        type="radio"
+        name="format"
+        value="deck"
+        defaultChecked={format === "deck"}
+      />
+      Deck
+    </label>
+  </form>
 );

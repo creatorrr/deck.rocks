@@ -52,9 +52,9 @@ export default ({
         <Sharer
           showPrintBtn={true}
           showGeneratedUsing={nocontrols}
-          url={`${
-            hostname || "https://deck.rocks"
-          }/display?job_id=${job_id}&hash=${hash}&format=${format || "site"}`}
+          job_id={job_id}
+          hash={hash}
+          format={format}
           title={props.idea}
           additionalParams={{ nocontrols: true }}
         />
@@ -72,9 +72,9 @@ export default ({
       <Sharer
         showPrintBtn={true}
         showGeneratedUsing={nocontrols}
-        url={`${
-          hostname || "https://deck.rocks"
-        }/display?job_id=${job_id}&hash=${hash}&format=${format || "site"}`}
+        job_id={job_id}
+        hash={hash}
+        format={format}
         title={props.idea}
         additionalParams={{ nocontrols: true }}
       />
