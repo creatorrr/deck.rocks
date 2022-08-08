@@ -6,7 +6,7 @@ export default () =>
   enableAds && (
     <>
       <ins
-        className="adsbygoogle"
+        className="adsbygoogle not-printable"
         style={{ display: "block" }}
         data-ad-client={googleAdsClientId}
         data-ad-slot="6384944670"
