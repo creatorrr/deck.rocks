@@ -7,7 +7,7 @@ import ProductHunt from "../utils/ProductHunt";
 export interface FooterProps extends GeneratedUsingProps {}
 
 export default (props: FooterProps) => (
-  <footer className="not-printable">
+  <footer>
     {props.idea && (
       <>
         <GeneratedUsing {...props} />
@@ -17,7 +17,7 @@ export default (props: FooterProps) => (
 
     <AdInsert />
 
-    <nav>
+    <nav className="not-printable">
       <a href="/">Home</a> <a href="/gallery">Gallery</a>{" "}
       <a href="//github.com/creatorrr/deck.rocks">Github</a>{" "}
       <a href="//diwank.name">Author</a> <a href="/privacy.html">Privacy</a>{" "}
