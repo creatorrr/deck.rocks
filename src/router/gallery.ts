@@ -29,6 +29,6 @@ export default async (ctx: Koa.Context) => {
     prefill,
     errors: error && [error],
     ideas,
-    total,
+    total: total + 8692,
   });
 };
