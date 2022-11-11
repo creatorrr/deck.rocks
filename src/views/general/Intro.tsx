@@ -53,6 +53,20 @@ export default ({ examples, showGallery = false }: IntroProps) => (
     </p>
 
     <hr />
+    <h4>
+      {" "}
+      Special thanks to the <a href="https://replicate.com">
+        {" "}
+        Replicate team{" "}
+      </a>{" "}
+      for their support!{" "}
+    </h4>
+    <a href="https://replicate.com">
+      <img src="https://user-images.githubusercontent.com/931887/201377564-033ffc28-7ffb-4d01-8b19-1a9e90a2868a.png" />
+    </a>
+
+    <hr />
+
     <Examples examples={examples} showGallery={showGallery} />
 
     <hr />
