@@ -71,7 +71,7 @@ export const openaiModels = {
   embedding: highAccuracy
     ? "text-similarity-davinci-001"
     : "text-similarity-curie-001",
-  complete: highAccuracy ? "text-davinci-002" : "text-curie-001",
+  complete: highAccuracy ? "text-davinci-003" : "text-curie-001",
   edited: "text-davinci-edit-001",
   safety: "content-filter-alpha",
 };
